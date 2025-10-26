@@ -12,10 +12,10 @@ interface Step {
 }
 
 const steps: Step[] = [
-  { id: "01", label: "Discovery", descr: "Learn about your business, goals, and vision to establish clear project objectives." },
-  { id: "02", label: "Strategy", descr: "Develop a detailed roadmap and technical approach tailored to your specific needs." },
-  { id: "03", label: "Design & Development", descr: "We craft beautiful experiences and build robust interfaces with clean design." },
-  { id: "04", label: "Launch & Optimize", descr: "Deploy your project and provide ongoing support to ensure continued success." },
+  { id: "01", label: "Selection", descr: "Carefully selected premium tobacco leaves from the finest regions." },
+  { id: "02", label: "Crafting", descr: "Master artisans hand-roll each cigar using traditional techniques." },
+  { id: "03", label: "Aging", descr: "Cigars are aged in cedar rooms to develop complex flavors and aromas." },
+  { id: "04", label: "Quality", descr: "Each cigar undergoes rigorous inspection to ensure perfection." },
 ]
 
 export default function ProcessDropdown({ onClose }: { onClose: () => void }) {

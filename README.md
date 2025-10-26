@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Don Regelio - Premium Cigar Shop
+
+A modern e-commerce website for Don Regelio premium cigars, built with [Next.js](https://nextjs.org) and TypeScript.
 
 ## Getting Started
 
@@ -16,9 +18,17 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Premium Cigar Collection**: Showcase of 8 different cigar varieties including Double Toro, Lancero, Los DGO, Perfecto, Salomon, Taco, Toro, and Torpedo
+- **Responsive Design**: Modern, mobile-first design with dark/light theme support
+- **Interactive Shopping**: Product selection, size options, cart functionality
+- **Heritage Section**: Information about the cigar crafting process
+- **Professional Branding**: Complete Don Regelio brand integration
+
+## Product Line
+
+The shop features premium handcrafted cigars with various shapes and flavor profiles, each available in single units or bulk packs.
 
 ## Learn More
 

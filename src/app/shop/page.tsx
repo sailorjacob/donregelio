@@ -77,7 +77,7 @@ export default function ShopPage() {
 
   // Add to cart function
   const addToCart = (product: Product) => {
-    const selectedSize = productSizes[product.id] || 'M' // Default to M if no size selected
+    const selectedSize = productSizes[product.id] || 'Single' // Default to Single if no size selected
     const cartItemId = `${product.id}-${selectedSize}`
 
     setCartItems(prev => {
@@ -201,38 +201,68 @@ export default function ShopPage() {
   // 🎨 CUSTOMIZE YOUR PRODUCTS HERE
   const products: Product[] = [
     {
-      id: "product-1",
-      name: "Premium T-Shirt",
-      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=500&fit=crop",
-      hoverImage: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=500&h=500&fit=crop", // Optional hover image
-      description: "High-quality cotton t-shirt with modern design",
-      price: "$42",
-      paymentLink: "https://your-payment-link.com" // Replace with your payment processor link
+      id: "doubletoro",
+      name: "Double Toro",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/doubletoro.png",
+      description: "Premium double toro cigar with rich, complex flavors. Perfect for extended smoking sessions.",
+      price: "$12.50",
+      paymentLink: "https://your-payment-link.com/doubletoro"
     },
     {
-      id: "product-2",
-      name: "Designer Hoodie",
-      image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&h=500&fit=crop",
-      description: "Comfortable hoodie perfect for any season",
-      price: "$68",
-      paymentLink: "https://your-payment-link.com"
+      id: "lancero",
+      name: "Lancero",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero.png",
+      description: "Elegant lancero cigar offering a refined smoking experience with exceptional draw.",
+      price: "$15.00",
+      paymentLink: "https://your-payment-link.com/lancero"
     },
     {
-      id: "product-3",
-      name: "Classic Cap",
-      image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&h=500&fit=crop",
-      description: "Stylish cap with adjustable strap",
-      price: "$28",
-      paymentLink: "https://your-payment-link.com"
+      id: "losdgo",
+      name: "Los DGO",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png",
+      description: "Signature Los DGO blend featuring notes of cocoa, leather, and subtle spice.",
+      price: "$18.00",
+      paymentLink: "https://your-payment-link.com/losdgo"
     },
     {
-      id: "product-4",
-      name: "Vintage Jacket",
-      image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&h=500&fit=crop",
-      hoverImage: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500&h=500&fit=crop",
-      description: "Retro-style jacket with modern comfort",
-      price: "$89",
-      paymentLink: "https://your-payment-link.com"
+      id: "perfecto",
+      name: "Perfecto",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png",
+      description: "Classic perfecto shape delivering concentrated flavors and perfect construction.",
+      price: "$14.00",
+      paymentLink: "https://your-payment-link.com/perfecto"
+    },
+    {
+      id: "salamon",
+      name: "Salomon",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/salamon.png",
+      description: "Artisan salomon cigar with a unique shape that enhances flavor development.",
+      price: "$16.50",
+      paymentLink: "https://your-payment-link.com/salamon"
+    },
+    {
+      id: "taco",
+      name: "Taco",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/taco.png",
+      description: "Distinctive taco-shaped cigar offering a bold and memorable smoking experience.",
+      price: "$13.00",
+      paymentLink: "https://your-payment-link.com/taco"
+    },
+    {
+      id: "toro",
+      name: "Toro",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png",
+      description: "Classic toro cigar with perfect balance of size and smoking time.",
+      price: "$11.00",
+      paymentLink: "https://your-payment-link.com/toro"
+    },
+    {
+      id: "torpedo",
+      name: "Torpedo",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/torpedo.png",
+      description: "Sophisticated torpedo cigar with a tapered head for enhanced flavor concentration.",
+      price: "$13.50",
+      paymentLink: "https://your-payment-link.com/torpedo"
     }
   ]
 
@@ -256,27 +286,12 @@ export default function ShopPage() {
           <nav className="flex items-center justify-between">
             <div className="flex items-center space-x-8">
               <Link href="/" className="flex items-center">
-                <div className="relative">
-                  <Hexagon className={`w-8 h-8 transition-colors duration-300 delay-100 ${
-                    processOpen
-                      ? theme === 'dark'
-                        ? 'text-zinc-200 opacity-60'
-                        : 'text-zinc-500 opacity-60'
-                      : theme === 'dark'
-                        ? 'text-zinc-300 opacity-40'
-                        : 'text-zinc-400 opacity-40'
-                  }`} strokeWidth={1} />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Code className={`w-4 h-4 transition-colors duration-300 delay-100 ${
-                      processOpen
-                        ? theme === 'dark'
-                          ? 'text-zinc-200 opacity-60'
-                          : 'text-zinc-500 opacity-60'
-                        : theme === 'dark'
-                          ? 'text-zinc-300 opacity-40'
-                          : 'text-zinc-400 opacity-40'
-                    }`} />
-                  </div>
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-amber-600">
+                  <img
+                    src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png"
+                    alt="Don Regelio"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </Link>
 
@@ -284,7 +299,7 @@ export default function ShopPage() {
               <div className="hidden md:flex items-center space-x-6">
                 {/* Process with dropdown trigger */}
                 <div className="relative flex items-center" onMouseEnter={()=>setProcessOpen(true)}>
-                  <Link href="/" className={`text-sm font-light transition-colors duration-300 delay-100 group ${
+                  <Link href="/about" className={`text-sm font-light transition-colors duration-300 delay-100 group ${
                     processOpen
                       ? theme === 'dark'
                         ? 'text-zinc-400 hover:text-zinc-200'
@@ -293,8 +308,8 @@ export default function ShopPage() {
                         ? 'text-zinc-300 hover:text-zinc-100'
                         : 'text-zinc-600 hover:text-zinc-900'
                   }`}>
-                    <span className="group-hover:hidden">process</span>
-                    <span className={`hidden group-hover:inline ${navColors.studio}`}>process</span>
+                    <span className="group-hover:hidden">heritage</span>
+                    <span className={`hidden group-hover:inline ${navColors.studio}`}>heritage</span>
                   </Link>
                   {/* Dropdown indicator */}
                   <motion.span
@@ -321,15 +336,15 @@ export default function ShopPage() {
                         : 'text-zinc-600 hover:text-zinc-900'
                   }`}
                 >
-                  shop
+                  cigars
                 </Link>
               </div>
             </div>
 
             <div className="flex items-center space-x-4">
-              {/* Blog link */}
+              {/* Stories link */}
               <Link
-                href="/blog"
+                href="/stories"
                 className={`hidden md:inline text-sm font-light transition-colors duration-300 delay-100 ${
                   processOpen
                     ? theme === 'dark'
@@ -340,7 +355,7 @@ export default function ShopPage() {
                       : 'text-zinc-600 hover:text-zinc-900'
                 }`}
               >
-                blog
+                stories
               </Link>
               {/* Contact button */}
               <Link
@@ -408,8 +423,8 @@ export default function ShopPage() {
               className="md:hidden border-b transition-colors duration-300 bg-zinc-900 border-zinc-700"
             >
               <div className="container mx-auto px-6 py-4 space-y-3">
-                <Link href="/blog" className="block text-sm text-zinc-400 hover:text-zinc-200 transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
-                  Blog
+                <Link href="/stories" className="block text-sm text-zinc-400 hover:text-zinc-200 transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
+                  Stories
                 </Link>
                 <Link href="/" className="block text-sm text-zinc-400 hover:text-zinc-200 transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
                   Home
@@ -512,10 +527,10 @@ export default function ShopPage() {
                       </span>
                     </div>
 
-                    {/* Size Selector */}
+                    {/* Pack Size Selector */}
                     <div className="mb-6">
                       <div className="flex space-x-2">
-                        {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
+                        {['Single', 'Pack of 5', 'Box of 20'].map((size) => (
                           <button
                             key={size}
                             onClick={(e) => {
@@ -727,10 +742,10 @@ export default function ShopPage() {
                           </span>
                         </div>
 
-                        {/* Size Selector */}
+                        {/* Pack Size Selector */}
                         <div className="mb-6">
                           <div className="flex space-x-2">
-                            {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
+                            {['Single', 'Pack of 5', 'Box of 20'].map((size) => (
                               <button
                                 key={size}
                                 onClick={(e) => {
@@ -831,7 +846,7 @@ export default function ShopPage() {
               <p className={`text-sm transition-colors duration-300 ${
                 theme === 'dark' ? 'text-zinc-500' : 'text-zinc-500'
               }`}>
-                All designs are printed on demand. Shipping worldwide.
+                Premium cigars handcrafted with tradition. Worldwide shipping available.
               </p>
             </motion.div>
           )}
@@ -930,7 +945,7 @@ export default function ShopPage() {
                           <div className="flex-1">
                             <h3 className="font-medium">{item.name}</h3>
                             <p className="text-sm text-zinc-500">{item.price}</p>
-                            <p className="text-xs text-zinc-400">Size: {item.size}</p>
+                            <p className="text-xs text-zinc-400">Pack: {item.size}</p>
                           </div>
                           <div className="flex items-center space-x-2">
                             <button

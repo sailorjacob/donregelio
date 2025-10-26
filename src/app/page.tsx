@@ -8,14 +8,18 @@ export default function Home() {
         <div className="text-center max-w-4xl mx-auto">
           {/* Logo/Brand */}
           <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-zinc-900 dark:bg-zinc-100 rounded-full mb-6">
-              <ShoppingBag className="w-8 h-8 text-zinc-100 dark:text-zinc-900" />
+            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 overflow-hidden border-2 border-amber-600">
+              <img
+                src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png"
+                alt="Don Regelio Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
             <h1 className="text-5xl md:text-7xl font-light tracking-tight text-zinc-900 dark:text-zinc-100 mb-4">
-              Your Store
+              Don Regelio
             </h1>
             <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 font-light">
-              Beautiful products, modern design
+              Premium handcrafted cigars
             </p>
           </div>
 
@@ -32,11 +36,11 @@ export default function Home() {
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
               <div className="text-center">
                 <div className="text-2xl font-light text-zinc-900 dark:text-zinc-100 mb-2">Premium</div>
-                <div className="text-sm text-zinc-600 dark:text-zinc-400">Quality products</div>
+                <div className="text-sm text-zinc-600 dark:text-zinc-400">Handcrafted quality</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-light text-zinc-900 dark:text-zinc-100 mb-2">Modern</div>
-                <div className="text-sm text-zinc-600 dark:text-zinc-400">Contemporary design</div>
+                <div className="text-2xl font-light text-zinc-900 dark:text-zinc-100 mb-2">Heritage</div>
+                <div className="text-sm text-zinc-600 dark:text-zinc-400">Traditional craftsmanship</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-light text-zinc-900 dark:text-zinc-100 mb-2">Global</div>
