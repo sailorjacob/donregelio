@@ -201,58 +201,76 @@ export default function ShopPage() {
   // 🎨 CUSTOMIZE YOUR PRODUCTS HERE
   const products: Product[] = [
     {
-      id: "robusto-closed",
-      name: "Robusto Closed",
+      id: "robusto",
+      name: "Robusto",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
-      description: "Premium robusto cigar in closed presentation. Rich, complex flavors with perfect construction.",
-      price: "$12.50",
-      paymentLink: "https://your-payment-link.com/robusto"
-    },
-    {
-      id: "robusto-open",
-      name: "Robusto Open",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
-      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
-      description: "Premium robusto cigar in open presentation. Elegant smoking experience with exceptional draw.",
+      description: "Our signature robusto cigar. Perfect balance of size and flavor, ideal for everyday enjoyment.",
       price: "$12.50",
       paymentLink: "https://your-payment-link.com/robusto"
     },
     {
       id: "doubletoro",
       name: "Double Toro",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/doubletoro.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
-      description: "Extended robusto cigar with rich, complex flavors. Perfect for extended smoking sessions.",
+      description: "Premium doubletoro cigar with rich, complex flavors. Perfect for extended smoking sessions.",
       price: "$14.00",
       paymentLink: "https://your-payment-link.com/doubletoro"
     },
     {
       id: "lancero",
       name: "Lancero",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
-      description: "Elegant lancero-style cigar offering a refined smoking experience with exceptional draw.",
+      description: "Elegant lancero cigar offering a refined smoking experience with exceptional draw.",
       price: "$15.00",
       paymentLink: "https://your-payment-link.com/lancero"
     },
     {
       id: "perfecto",
       name: "Perfecto",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
       description: "Classic perfecto shape delivering concentrated flavors and perfect construction.",
       price: "$13.50",
       paymentLink: "https://your-payment-link.com/perfecto"
     },
     {
+      id: "salamon",
+      name: "Salamon",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/salamon.png",
+      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      description: "Artisan salamon cigar with a unique shape that enhances flavor development.",
+      price: "$16.50",
+      paymentLink: "https://your-payment-link.com/salamon"
+    },
+    {
+      id: "toro",
+      name: "Toro",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png",
+      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      description: "Classic toro cigar with perfect balance of size and smoking time.",
+      price: "$11.00",
+      paymentLink: "https://your-payment-link.com/toro"
+    },
+    {
       id: "torpedo",
       name: "Torpedo",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/torpedo.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
       description: "Sophisticated torpedo cigar with a tapered head for enhanced flavor concentration.",
-      price: "$16.00",
+      price: "$13.00",
       paymentLink: "https://your-payment-link.com/torpedo"
+    },
+    {
+      id: "taco",
+      name: "Taco",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/taco.png",
+      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      description: "Distinctive taco-shaped cigar offering a bold and memorable smoking experience.",
+      price: "$14.50",
+      paymentLink: "https://your-payment-link.com/taco"
     }
   ]
 

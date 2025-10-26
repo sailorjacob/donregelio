@@ -9,7 +9,7 @@ const stories = [
     excerpt: "Discover the centuries-old techniques that go into creating each Don Regelio cigar, passed down through generations of master rollers.",
     date: "March 15, 2024",
     author: "Maria Rodriguez",
-    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png"
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png"
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const stories = [
     excerpt: "Explore the world's most prestigious tobacco growing regions and learn how terroir influences the flavor profiles of our premium blends.",
     date: "February 28, 2024",
     author: "Carlos Mendez",
-    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png"
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero.png"
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const stories = [
     excerpt: "From aged rums to single malt whiskies, discover the art of pairing cigars with the world's finest spirits for an elevated experience.",
     date: "February 10, 2024",
     author: "Elena Santos",
-    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png"
+    image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png"
   }
 ]
 

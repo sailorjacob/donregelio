@@ -23,25 +23,47 @@ export default function Home() {
             </h1>
           </div>
 
-          {/* Product Preview */}
-          <div className="mt-12 mb-8 flex items-center justify-center gap-8 opacity-80">
+          {/* Product Showcase */}
+          <div className="mt-12 mb-8 grid grid-cols-2 md:grid-cols-4 gap-6 opacity-80">
             <div className="relative">
               <Image
                 src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png"
-                alt="Robusto Cigar Closed"
-                width={200}
-                height={120}
-                className="object-contain drop-shadow-lg"
+                alt="Robusto Cigar"
+                width={150}
+                height={90}
+                className="object-contain drop-shadow-lg mx-auto"
               />
+              <p className="text-xs text-blue-200 text-center mt-2">Robusto</p>
             </div>
             <div className="relative">
               <Image
-                src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png"
-                alt="Robusto Cigar Open"
-                width={200}
-                height={120}
-                className="object-contain drop-shadow-lg"
+                src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png"
+                alt="Toro Cigar"
+                width={150}
+                height={90}
+                className="object-contain drop-shadow-lg mx-auto"
               />
+              <p className="text-xs text-blue-200 text-center mt-2">Toro</p>
+            </div>
+            <div className="relative">
+              <Image
+                src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero.png"
+                alt="Lancero Cigar"
+                width={150}
+                height={90}
+                className="object-contain drop-shadow-lg mx-auto"
+              />
+              <p className="text-xs text-blue-200 text-center mt-2">Lancero</p>
+            </div>
+            <div className="relative">
+              <Image
+                src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png"
+                alt="Perfecto Cigar"
+                width={150}
+                height={90}
+                className="object-contain drop-shadow-lg mx-auto"
+              />
+              <p className="text-xs text-blue-200 text-center mt-2">Perfecto</p>
             </div>
           </div>
 
@@ -55,20 +77,6 @@ export default function Home() {
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
 
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
-              <div className="text-center">
-                <div className="text-2xl font-light text-white mb-2">Premium</div>
-                <div className="text-sm text-blue-200">Handcrafted quality</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-light text-white mb-2">Heritage</div>
-                <div className="text-sm text-blue-200">Traditional craftsmanship</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-light text-white mb-2">Global</div>
-                <div className="text-sm text-blue-200">Worldwide shipping</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
