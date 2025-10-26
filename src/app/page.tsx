@@ -71,12 +71,11 @@ export default function Home() {
           <div className="mt-8">
             <Link
               href="/shop"
-              className="inline-flex items-center gap-3 bg-white text-blue-900 px-8 py-4 rounded-full text-lg font-medium hover:bg-blue-50 transition-all duration-300 group"
+              className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors duration-300 group"
             >
-              <span>Shop Now</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              <span className="text-sm font-light tracking-wide">Explore Collection</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
-
           </div>
         </div>
       </div>

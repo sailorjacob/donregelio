@@ -23,6 +23,11 @@ interface Product {
   name: string
   image: string
   hoverImage?: string
+  packImages?: {
+    single: string
+    pack5: string
+    box20: string
+  }
   description: string
   price: string
   paymentLink: string
@@ -168,11 +173,27 @@ export default function ShopPage() {
     }))
   }
 
-  // Get current image for product (hover state)
+  // Get current image for product (hover state and pack size)
   const getCurrentImage = (product: Product) => {
+    // First check for hover state
     if (hoveredProductImage[product.id] && product.hoverImage) {
       return product.hoverImage
     }
+
+    // Then check for pack size specific images
+    const selectedSize = productSizes[product.id] || 'Single'
+    if (product.packImages) {
+      switch (selectedSize) {
+        case 'Pack of 5':
+          return product.packImages.pack5
+        case 'Box of 20':
+          return product.packImages.box20
+        default:
+          return product.packImages.single
+      }
+    }
+
+    // Default to main image
     return product.image
   }
 
@@ -205,6 +226,11 @@ export default function ShopPage() {
       name: "Robusto",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      packImages: {
+        single: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
+        pack5: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+        box20: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png"
+      },
       description: "Our signature robusto cigar. Perfect balance of size and flavor, ideal for everyday enjoyment.",
       price: "$12.50",
       paymentLink: "https://your-payment-link.com/robusto"
@@ -214,6 +240,11 @@ export default function ShopPage() {
       name: "Double Toro",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/doubletoro.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      packImages: {
+        single: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/doubletoro.png",
+        pack5: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero.png",
+        box20: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png"
+      },
       description: "Premium doubletoro cigar with rich, complex flavors. Perfect for extended smoking sessions.",
       price: "$14.00",
       paymentLink: "https://your-payment-link.com/doubletoro"
@@ -223,6 +254,11 @@ export default function ShopPage() {
       name: "Lancero",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      packImages: {
+        single: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero.png",
+        pack5: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/torpedo.png",
+        box20: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/salamon.png"
+      },
       description: "Elegant lancero cigar offering a refined smoking experience with exceptional draw.",
       price: "$15.00",
       paymentLink: "https://your-payment-link.com/lancero"
@@ -232,6 +268,11 @@ export default function ShopPage() {
       name: "Perfecto",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      packImages: {
+        single: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png",
+        pack5: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png",
+        box20: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/doubletoro.png"
+      },
       description: "Classic perfecto shape delivering concentrated flavors and perfect construction.",
       price: "$13.50",
       paymentLink: "https://your-payment-link.com/perfecto"
@@ -241,6 +282,11 @@ export default function ShopPage() {
       name: "Salamon",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/salamon.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      packImages: {
+        single: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/salamon.png",
+        pack5: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero.png",
+        box20: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png"
+      },
       description: "Artisan salamon cigar with a unique shape that enhances flavor development.",
       price: "$16.50",
       paymentLink: "https://your-payment-link.com/salamon"
@@ -250,6 +296,11 @@ export default function ShopPage() {
       name: "Toro",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      packImages: {
+        single: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png",
+        pack5: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png",
+        box20: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero.png"
+      },
       description: "Classic toro cigar with perfect balance of size and smoking time.",
       price: "$11.00",
       paymentLink: "https://your-payment-link.com/toro"
@@ -259,6 +310,11 @@ export default function ShopPage() {
       name: "Torpedo",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/torpedo.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      packImages: {
+        single: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/torpedo.png",
+        pack5: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/salamon.png",
+        box20: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/doubletoro.png"
+      },
       description: "Sophisticated torpedo cigar with a tapered head for enhanced flavor concentration.",
       price: "$13.00",
       paymentLink: "https://your-payment-link.com/torpedo"
@@ -268,6 +324,11 @@ export default function ShopPage() {
       name: "Taco",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/taco.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      packImages: {
+        single: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/taco.png",
+        pack5: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/torpedo.png",
+        box20: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/salamon.png"
+      },
       description: "Distinctive taco-shaped cigar offering a bold and memorable smoking experience.",
       price: "$14.50",
       paymentLink: "https://your-payment-link.com/taco"
@@ -517,7 +578,7 @@ export default function ShopPage() {
                             }}
                             className={`px-3 py-2 text-sm font-medium rounded-md border transition-all duration-200 ${
                               productSizes[product.id] === size
-                                ? 'border-white bg-white text-blue-900'
+                                ? 'border-white bg-white text-blue-900 shadow-lg'
                                 : 'border-blue-400 text-blue-200 hover:border-white hover:bg-white/10'
                             }`}
                           >
@@ -537,7 +598,7 @@ export default function ShopPage() {
                         className="flex-1 flex items-center justify-center border font-medium py-3 px-6 rounded-full text-sm transition-all duration-300 border-blue-400 text-blue-200 hover:bg-blue-800 hover:border-white"
                       >
                         <ShoppingCart className="w-4 h-4 mr-2" />
-                        Add to Cart
+                        Order
                       </button>
 
                       <button
@@ -750,7 +811,7 @@ export default function ShopPage() {
                             }`}
                           >
                             <ShoppingCart className="w-4 h-4 mr-2" />
-                            Add to Cart
+                            Order
                           </button>
 
                           <button
