@@ -79,6 +79,41 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Scattered Document Papers */}
+      <div className="fixed bottom-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+        {/* Bottom Left Document - Peeking from left edge */}
+        <div className="absolute -bottom-8 -left-6 transform -rotate-15 opacity-70 hover:opacity-90 transition-all duration-500 hover:-rotate-12">
+          <div className="relative">
+            <Image
+              src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/infopack1.png"
+              alt="Product Information Document"
+              width={160}
+              height={220}
+              className="object-contain drop-shadow-2xl"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 pointer-events-none" />
+            {/* Paper edge effect */}
+            <div className="absolute top-2 left-2 right-2 bottom-2 border border-white/20 rounded-sm pointer-events-none" />
+          </div>
+        </div>
+
+        {/* Bottom Right Document - Peeking from right edge */}
+        <div className="absolute -bottom-12 -right-8 transform rotate-8 opacity-70 hover:opacity-90 transition-all duration-500 hover:rotate-5">
+          <div className="relative">
+            <Image
+              src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/infobackbackside.png"
+              alt="Product Details Document"
+              width={140}
+              height={190}
+              className="object-contain drop-shadow-2xl"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tl from-white/20 via-transparent to-black/10 pointer-events-none" />
+            {/* Paper edge effect */}
+            <div className="absolute top-2 left-2 right-2 bottom-2 border border-white/20 rounded-sm pointer-events-none" />
+          </div>
+        </div>
+      </div>
     </main>
   )
 }
