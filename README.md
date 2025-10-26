@@ -20,15 +20,27 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Features
 
-- **Premium Cigar Collection**: Showcase of 8 different cigar varieties including Double Toro, Lancero, Los DGO, Perfecto, Salomon, Taco, Toro, and Torpedo
-- **Responsive Design**: Modern, mobile-first design with dark/light theme support
-- **Interactive Shopping**: Product selection, size options, cart functionality
-- **Heritage Section**: Information about the cigar crafting process
-- **Professional Branding**: Complete Don Regelio brand integration
+- **Premium Cigar Collection**: Showcase of 7 different cigar varieties (Doubletoro, Lancero, Perfecto, Salamon, Taco, Toro, Torpedo)
+- **Royal Blue Theme**: Elegant royal blue gradient design throughout the site
+- **Responsive Design**: Modern, mobile-first design optimized for all devices
+- **Interactive Shopping**: Product selection, pack size options (Single, Pack of 5, Box of 20), cart functionality
+- **Complete Pages**: Heritage (About), Stories, Contact, and Shop sections
+- **Professional Branding**: Complete Don Regelio brand integration with custom logo
 
 ## Product Line
 
-The shop features premium handcrafted cigars with various shapes and flavor profiles, each available in single units or bulk packs.
+The shop features premium handcrafted cigars with various shapes and flavor profiles:
+- **Doubletoro** - Premium cigar with rich, complex flavors for extended sessions
+- **Lancero** - Elegant cigar offering refined smoking experience
+- **Perfecto** - Classic shape delivering concentrated flavors
+- **Salamon** - Artisan cigar with unique shape enhancing flavor development
+- **Taco** - Distinctive shape offering bold and memorable experience
+- **Toro** - Classic cigar with perfect balance of size and smoking time
+- **Torpedo** - Sophisticated cigar with tapered head for enhanced concentration
+
+All cigars available as Single, Pack of 5, or Box of 20.
+
+**Note**: The Losdgo image serves as the official Don Regelio logo and is not available as a product.
 
 ## Learn More
 

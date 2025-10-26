@@ -202,9 +202,9 @@ export default function ShopPage() {
   const products: Product[] = [
     {
       id: "doubletoro",
-      name: "Double Toro",
+      name: "Doubletoro",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/doubletoro.png",
-      description: "Premium double toro cigar with rich, complex flavors. Perfect for extended smoking sessions.",
+      description: "Premium doubletoro cigar with rich, complex flavors. Perfect for extended smoking sessions.",
       price: "$12.50",
       paymentLink: "https://your-payment-link.com/doubletoro"
     },
@@ -217,14 +217,6 @@ export default function ShopPage() {
       paymentLink: "https://your-payment-link.com/lancero"
     },
     {
-      id: "losdgo",
-      name: "Los DGO",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png",
-      description: "Signature Los DGO blend featuring notes of cocoa, leather, and subtle spice.",
-      price: "$18.00",
-      paymentLink: "https://your-payment-link.com/losdgo"
-    },
-    {
       id: "perfecto",
       name: "Perfecto",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png",
@@ -234,9 +226,9 @@ export default function ShopPage() {
     },
     {
       id: "salamon",
-      name: "Salomon",
+      name: "Salamon",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/salamon.png",
-      description: "Artisan salomon cigar with a unique shape that enhances flavor development.",
+      description: "Artisan salamon cigar with a unique shape that enhances flavor development.",
       price: "$16.50",
       paymentLink: "https://your-payment-link.com/salamon"
     },
@@ -267,20 +259,12 @@ export default function ShopPage() {
   ]
 
   return (
-    <main className={`min-h-screen transition-colors duration-300 ${
-      theme === 'dark'
-        ? 'bg-zinc-900 text-zinc-100'
-        : 'bg-white text-zinc-900'
-    }`}>
+    <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white">
       {/* Header */}
       <header onMouseLeave={()=>setProcessOpen(false)} className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b relative transition-all duration-300 delay-100 ${
         processOpen
-          ? theme === 'dark'
-            ? 'bg-zinc-900/95 border-zinc-700'
-            : 'bg-zinc-900/95 border-zinc-700'
-          : theme === 'dark'
-            ? 'bg-zinc-900/80 border-zinc-700'
-            : 'bg-white/80 border-zinc-200'
+          ? 'bg-blue-900/95 border-blue-700'
+          : 'bg-blue-900/80 border-blue-700'
       }`}>
         <div className="w-full px-4 sm:px-6 py-2">
           <nav className="flex items-center justify-between">
@@ -288,7 +272,7 @@ export default function ShopPage() {
               <Link href="/" className="flex items-center">
                 <div className="w-8 h-8 rounded-full overflow-hidden border border-amber-600">
                   <img
-                    src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png"
+                    src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                     alt="Don Regelio"
                     className="w-full h-full object-cover"
                   />
@@ -301,12 +285,8 @@ export default function ShopPage() {
                 <div className="relative flex items-center" onMouseEnter={()=>setProcessOpen(true)}>
                   <Link href="/about" className={`text-sm font-light transition-colors duration-300 delay-100 group ${
                     processOpen
-                      ? theme === 'dark'
-                        ? 'text-zinc-400 hover:text-zinc-200'
-                        : 'text-zinc-200 hover:text-zinc-100'
-                      : theme === 'dark'
-                        ? 'text-zinc-300 hover:text-zinc-100'
-                        : 'text-zinc-600 hover:text-zinc-900'
+                      ? 'text-blue-200 hover:text-white'
+                      : 'text-blue-200 hover:text-white'
                   }`}>
                     <span className="group-hover:hidden">heritage</span>
                     <span className={`hidden group-hover:inline ${navColors.studio}`}>heritage</span>
@@ -328,12 +308,8 @@ export default function ShopPage() {
                   href="/shop"
                   className={`text-sm font-light transition-colors duration-300 delay-100 ${
                     processOpen
-                      ? theme === 'dark'
-                        ? 'text-zinc-500 hover:text-zinc-200'
-                        : 'text-zinc-400 hover:text-zinc-200'
-                      : theme === 'dark'
-                        ? 'text-zinc-500 hover:text-zinc-200'
-                        : 'text-zinc-600 hover:text-zinc-900'
+                      ? 'text-blue-300 hover:text-white'
+                      : 'text-blue-300 hover:text-white'
                   }`}
                 >
                   cigars
@@ -347,12 +323,8 @@ export default function ShopPage() {
                 href="/stories"
                 className={`hidden md:inline text-sm font-light transition-colors duration-300 delay-100 ${
                   processOpen
-                    ? theme === 'dark'
-                      ? 'text-zinc-500 hover:text-zinc-200'
-                      : 'text-zinc-400 hover:text-zinc-200'
-                    : theme === 'dark'
-                      ? 'text-zinc-500 hover:text-zinc-200'
-                      : 'text-zinc-600 hover:text-zinc-900'
+                    ? 'text-blue-300 hover:text-white'
+                    : 'text-blue-300 hover:text-white'
                 }`}
               >
                 stories
@@ -362,30 +334,26 @@ export default function ShopPage() {
                 href="/contact"
                 className={`hidden md:inline-flex items-center border font-medium py-2 px-6 rounded-full transition-all duration-300 delay-100 text-sm ${
                   processOpen
-                    ? theme === 'dark'
-                      ? 'border-zinc-600 hover:bg-zinc-800 text-zinc-200'
-                      : 'border-zinc-600 hover:bg-zinc-800 text-zinc-200'
-                    : theme === 'dark'
-                      ? 'border-zinc-600 hover:bg-zinc-800 text-zinc-200'
-                      : 'border-zinc-300 hover:bg-zinc-50 text-zinc-900'
+                    ? 'border-blue-400 hover:bg-blue-800 text-white'
+                    : 'border-blue-400 hover:bg-blue-800 text-white'
                 }`}
               >
                 contact
               </Link>
 
-              {/* Dark Mode Toggle */}
+              {/* Theme Toggle */}
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="hidden p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-200"
-                aria-label="Toggle dark mode"
+                className="hidden p-2 rounded-full hover:bg-blue-800 transition-colors duration-200"
+                aria-label="Toggle theme"
               >
                 {theme === 'dark' ? (
                   <Sun className={`w-5 h-5 transition-colors duration-300 delay-100 ${
-                    processOpen ? 'text-zinc-200' : 'text-zinc-900 dark:text-zinc-100'
+                    processOpen ? 'text-blue-200' : 'text-blue-200'
                   }`} />
                 ) : (
                   <Moon className={`w-5 h-5 transition-colors duration-300 delay-100 ${
-                    processOpen ? 'text-zinc-200' : 'text-zinc-900'
+                    processOpen ? 'text-blue-200' : 'text-blue-200'
                   }`} />
                 )}
               </button>
@@ -396,9 +364,9 @@ export default function ShopPage() {
                 className="md:hidden p-2"
               >
                 {mobileMenuOpen ? <X className={`w-5 h-5 transition-colors duration-300 delay-100 ${
-                  processOpen ? 'text-zinc-200' : 'text-zinc-900 dark:text-zinc-100'
+                  processOpen ? 'text-blue-200' : 'text-blue-200'
                 }`} /> : <Menu className={`w-5 h-5 transition-colors duration-300 delay-100 ${
-                  processOpen ? 'text-zinc-200' : 'text-zinc-900 dark:text-zinc-100'
+                  processOpen ? 'text-blue-200' : 'text-blue-200'
                 }`} />}
               </button>
             </div>
@@ -420,13 +388,13 @@ export default function ShopPage() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden border-b transition-colors duration-300 bg-zinc-900 border-zinc-700"
+              className="md:hidden border-b transition-colors duration-300 bg-blue-900 border-blue-700"
             >
               <div className="container mx-auto px-6 py-4 space-y-3">
-                <Link href="/stories" className="block text-sm text-zinc-400 hover:text-zinc-200 transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
+                <Link href="/stories" className="block text-sm text-blue-200 hover:text-white transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
                   Stories
                 </Link>
-                <Link href="/" className="block text-sm text-zinc-400 hover:text-zinc-200 transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
+                <Link href="/" className="block text-sm text-blue-200 hover:text-white transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
                   Home
                 </Link>
               </div>
@@ -462,11 +430,7 @@ export default function ShopPage() {
                   onMouseEnter={() => handleProductHover(product.id, true)}
                   onMouseLeave={() => handleProductHover(product.id, false)}
                 >
-                  <div className={`relative rounded-xl overflow-hidden border transition-all duration-300 w-full ${
-                    theme === 'dark'
-                      ? 'bg-zinc-800 border-zinc-700 hover:border-zinc-600'
-                      : 'bg-zinc-50 border-zinc-200 hover:border-zinc-300'
-                  }`}>
+                  <div className="relative rounded-xl overflow-hidden border transition-all duration-300 w-full bg-white/10 backdrop-blur-sm border-white/20 hover:border-white/40">
                   {/* Product Image */}
                   <div className={`relative overflow-hidden transition-all duration-500 ${
                     isSelected && !isMobile ? 'h-[600px]' : 'h-96'
@@ -515,14 +479,10 @@ export default function ShopPage() {
                   {/* Product Info */}
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className={`text-2xl font-light transition-colors duration-300 ${
-                        theme === 'dark' ? 'text-zinc-100' : 'text-zinc-900'
-                      }`}>
+                      <h3 className="text-2xl font-light transition-colors duration-300 text-white">
                         {product.name}
                       </h3>
-                      <span className={`text-xl font-medium transition-colors duration-300 ${
-                        theme === 'dark' ? 'text-zinc-300' : 'text-zinc-700'
-                      }`}>
+                      <span className="text-xl font-medium transition-colors duration-300 text-blue-200">
                         {product.price}
                       </span>
                     </div>
@@ -539,12 +499,8 @@ export default function ShopPage() {
                             }}
                             className={`px-3 py-2 text-sm font-medium rounded-md border transition-all duration-200 ${
                               productSizes[product.id] === size
-                                ? theme === 'dark'
-                                  ? 'border-zinc-300 bg-zinc-700 text-zinc-100'
-                                  : 'border-zinc-400 bg-zinc-200 text-zinc-900'
-                                : theme === 'dark'
-                                  ? 'border-zinc-600 text-zinc-400 hover:border-zinc-500'
-                                  : 'border-zinc-300 text-zinc-600 hover:border-zinc-400'
+                                ? 'border-white bg-white text-blue-900'
+                                : 'border-blue-400 text-blue-200 hover:border-white hover:bg-white/10'
                             }`}
                           >
                             {size}
@@ -560,11 +516,7 @@ export default function ShopPage() {
                           e.stopPropagation()
                           addToCart(product)
                         }}
-                        className={`flex-1 flex items-center justify-center border font-medium py-3 px-6 rounded-full text-sm transition-all duration-300 ${
-                          theme === 'dark'
-                            ? 'border-zinc-600 text-zinc-200 hover:bg-zinc-700'
-                            : 'border-zinc-300 text-zinc-900 hover:bg-zinc-50'
-                        }`}
+                        className="flex-1 flex items-center justify-center border font-medium py-3 px-6 rounded-full text-sm transition-all duration-300 border-blue-400 text-blue-200 hover:bg-blue-800 hover:border-white"
                       >
                         <ShoppingCart className="w-4 h-4 mr-2" />
                         Add to Cart
@@ -578,9 +530,7 @@ export default function ShopPage() {
                         className={`relative p-3 rounded-full border transition-all duration-300 ${
                           likedProducts.has(product.id)
                             ? 'border-green-500 text-green-400 bg-green-500/10'
-                            : theme === 'dark'
-                              ? 'border-zinc-600 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200'
-                              : 'border-zinc-300 text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900'
+                            : 'border-blue-400 text-blue-200 hover:bg-blue-800 hover:border-white'
                         }`}
                       >
                         <Heart
@@ -908,17 +858,15 @@ export default function ShopPage() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className={`fixed top-0 right-0 h-full w-full max-w-md z-50 transition-colors duration-300 ${
-                theme === 'dark' ? 'bg-zinc-900 border-l border-zinc-700' : 'bg-white border-l border-zinc-200'
-              }`}
+              className="fixed top-0 right-0 h-full w-full max-w-md z-50 bg-blue-900 border-l border-blue-700"
             >
               <div className="flex flex-col h-full">
                 {/* Cart Header */}
-                <div className="flex items-center justify-between p-6 border-b border-zinc-200 dark:border-zinc-700">
-                  <h2 className="text-xl font-light">Cart</h2>
+                <div className="flex items-center justify-between p-6 border-b border-blue-700">
+                  <h2 className="text-xl font-light text-white">Cart</h2>
                   <button
                     onClick={() => setIsCartOpen(false)}
-                    className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full transition-colors"
+                    className="p-2 hover:bg-blue-800 rounded-full transition-colors text-blue-200"
                   >
                     <X className="w-5 h-5" />
                   </button>
