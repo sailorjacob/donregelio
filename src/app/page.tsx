@@ -105,12 +105,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* CTA Section */}
-          <div className="mt-8">
-            <div className="inline-flex items-center gap-2 text-blue-200 transition-colors duration-300">
-              <span className="text-sm font-light tracking-wide">Coming Soon</span>
-            </div>
-          </div>
         </div>
       </div>
 
