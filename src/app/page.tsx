@@ -86,9 +86,9 @@ export default function Home() {
       </div>
 
       {/* Scattered Document Papers */}
-      <div className="fixed bottom-0 left-0 w-full h-full overflow-hidden">
+      <div className="fixed bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         {/* Bottom Left Document - Peeking from left edge */}
-        <motion.div 
+        <motion.div
           className="absolute -bottom-6 -left-4 transform -rotate-20 opacity-85 hover:opacity-100 transition-all duration-500 hover:-rotate-15 cursor-pointer pointer-events-auto"
           onClick={() => setSelectedDocument('document1')}
           whileHover={{ scale: 1.05 }}
@@ -109,7 +109,7 @@ export default function Home() {
         </motion.div>
 
         {/* Bottom Right Document - Peeking from right edge */}
-        <motion.div 
+        <motion.div
           className="absolute -bottom-8 -right-6 transform rotate-12 opacity-85 hover:opacity-100 transition-all duration-500 hover:rotate-8 cursor-pointer pointer-events-auto"
           onClick={() => setSelectedDocument('document2')}
           whileHover={{ scale: 1.05 }}
@@ -155,13 +155,13 @@ export default function Home() {
               {/* Close Button */}
               <button
                 onClick={() => setSelectedDocument(null)}
-                className="absolute top-2 right-2 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+                className="absolute top-2 right-2 z-10 p-2 text-white hover:text-gray-200 transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>
-              
+
               {/* Document Image */}
-              <div className="relative bg-white rounded-lg shadow-2xl overflow-hidden">
+              <div className="relative shadow-2xl overflow-hidden">
                 <Image
                   src={selectedDocument === 'document1' 
                     ? "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/infopack1.png"
