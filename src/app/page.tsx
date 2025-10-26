@@ -1,24 +1,13 @@
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { ShoppingBag, ArrowRight } from "lucide-react"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-black flex items-center justify-center">
       <div className="container mx-auto px-6 py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-4xl mx-auto"
-        >
+        <div className="text-center max-w-4xl mx-auto">
           {/* Logo/Brand */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-8"
-          >
+          <div className="mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-zinc-900 dark:bg-zinc-100 rounded-full mb-6">
               <ShoppingBag className="w-8 h-8 text-zinc-100 dark:text-zinc-900" />
             </div>
@@ -28,15 +17,10 @@ export default function Home() {
             <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 font-light">
               Beautiful products, modern design
             </p>
-          </motion.div>
+          </div>
 
           {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-16"
-          >
+          <div className="mt-16">
             <Link
               href="/shop"
               className="inline-flex items-center gap-3 bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 px-8 py-4 rounded-full text-lg font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all duration-300 group"
@@ -59,8 +43,8 @@ export default function Home() {
                 <div className="text-sm text-zinc-600 dark:text-zinc-400">Worldwide shipping</div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </main>
   )
