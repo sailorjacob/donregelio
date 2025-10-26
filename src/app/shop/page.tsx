@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import { ShoppingCart, Heart, ChevronDown, Sun, Moon, Menu, X, ChevronLeft } from "lucide-react"
+import { ShoppingCart, Heart, ChevronDown, Sun, Moon, Menu, X } from "lucide-react"
 import { useTheme } from "next-themes"
 import ProcessDropdown from "@/components/ProcessDropdown"
 
@@ -488,404 +488,175 @@ export default function ShopPage() {
       </header>
 
       {/* Main Content */}
-      <section className="pt-20 px-6 pb-12">
+      <section className="pt-20 px-6 pb-12 min-h-screen">
         <div className="container max-w-7xl mx-auto">
-          {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {products.map((product, index) => {
-              const isSelected = selectedProduct === product.id
-
-              return (
-                <motion.div
-                  key={`grid-${product.id}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{
-                    opacity: selectedProduct && !isMobile ? (isSelected ? 0 : 0.3) : 1,
-                    scale: selectedProduct && !isMobile ? (isSelected ? 0.95 : 0.95) : 1,
-                    y: 0
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.1,
-                    ease: "easeInOut"
-                  }}
-                  className="group cursor-pointer"
-                  onClick={() => selectProduct(product.id)}
-                  onMouseEnter={() => handleProductHover(product.id, true)}
-                  onMouseLeave={() => handleProductHover(product.id, false)}
-                >
-                  <div className="relative rounded-xl overflow-hidden border transition-all duration-300 w-full bg-white/10 backdrop-blur-sm border-white/20 hover:border-white/40">
-                  {/* Product Image */}
-                  <div className={`relative overflow-hidden transition-all duration-500 ${
-                    isSelected && !isMobile ? 'h-[400px]' : 'h-64'
-                  }`}>
-                    <Image
-                      src={getCurrentImage(product)}
-                      alt={product.name}
-                      fill
-                      className="object-contain transition-all duration-700 ease-in-out p-4"
-                      key={`${product.id}-${productSizes[product.id] || 'Single'}-${hoveredProductImage[product.id] ? 'hover' : 'normal'}-${imageUpdateTrigger}`}
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-
-                    {/* Image Toggle for Selected Product */}
-                    {isSelected && !isMobile && product.hoverImage && (
-                      <div className="absolute top-4 right-4 flex space-x-2">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            handleProductHover(product.id, false)
-                          }}
-                          className={`px-3 py-1 text-xs rounded-full transition-all duration-200 ${
-                            !hoveredProductImage[product.id]
-                              ? 'bg-zinc-900 text-white'
-                              : 'bg-zinc-700 text-zinc-300 hover:bg-zinc-600'
-                          }`}
-                        >
-                          Full
-                        </button>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            handleProductHover(product.id, true)
-                          }}
-                          className={`px-3 py-1 text-xs rounded-full transition-all duration-200 ${
-                            hoveredProductImage[product.id]
-                              ? 'bg-zinc-900 text-white'
-                              : 'bg-zinc-700 text-zinc-300 hover:bg-zinc-600'
-                          }`}
-                        >
-                          Close-up
-                        </button>
+          {/* Product Navigation and Display */}
+          <div className="flex gap-8 min-h-[calc(100vh-8rem)]">
+            {/* Left Navigation Sidebar */}
+            <div className="w-80 flex-shrink-0">
+              <div className="sticky top-24">
+                <h2 className="text-xl font-light text-white mb-6 tracking-wide">Our Collection</h2>
+                <div className="space-y-2">
+                  {products.map((product, index) => (
+                    <motion.button
+                      key={`nav-${product.id}`}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      onClick={() => selectProduct(product.id)}
+                      onMouseEnter={() => handleProductHover(product.id, true)}
+                      onMouseLeave={() => handleProductHover(product.id, false)}
+                      className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 border ${
+                        selectedProduct === product.id
+                          ? 'border-amber-400 bg-amber-400/10 text-amber-200'
+                          : 'border-white/10 bg-white/5 text-blue-200 hover:border-white/20 hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-light tracking-wide">{product.name}</span>
+                        <span className="text-sm opacity-60">{product.price}</span>
                       </div>
-                    )}
-                  </div>
-
-                  {/* Product Info */}
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-2xl font-light transition-colors duration-300 text-white">
-                        {product.name}
-                      </h3>
-                      <span className="text-xl font-medium transition-colors duration-300 text-blue-200">
-                        {product.price}
-                      </span>
-                    </div>
-
-                    {/* Pack Size Selector */}
-                    <div className="mb-6">
-                      <div className="flex space-x-2">
-                        {['Single', 'Pack of 5', 'Box of 20'].map((size) => (
-                          <button
-                            key={size}
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              selectSize(product.id, size)
-                            }}
-                            className={`px-3 py-2 text-sm font-medium rounded-md border transition-all duration-200 ${
-                              productSizes[product.id] === size
-                                ? 'border-white bg-white text-blue-900 shadow-lg'
-                                : 'border-blue-400 text-blue-200 hover:border-white hover:bg-white/10'
-                            }`}
-                          >
-                            {size}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex space-x-3">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          addToCart(product)
-                        }}
-                        className="flex-1 flex items-center justify-center border font-medium py-3 px-6 rounded-full text-sm transition-all duration-300 border-blue-400 text-blue-200 hover:bg-blue-800 hover:border-white"
-                      >
-                        <ShoppingCart className="w-4 h-4 mr-2" />
-                        Order
-                      </button>
-
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          toggleLike(product.id)
-                        }}
-                        className={`relative p-3 rounded-full border transition-all duration-300 ${
-                          likedProducts.has(product.id)
-                            ? 'border-green-500 text-green-400 bg-green-500/10'
-                            : 'border-blue-400 text-blue-200 hover:bg-blue-800 hover:border-white'
-                        }`}
-                      >
-                        <Heart
-                          className={`w-4 h-4 transition-all duration-300 ${
-                            likedProducts.has(product.id) ? 'fill-current scale-110' : ''
-                          }`}
-                        />
-                        {/* Flying heart animation */}
-                        {likedProducts.has(product.id) && (
-                          <motion.div
-                            initial={{ scale: 1, opacity: 1, y: 0 }}
-                            animate={{
-                              scale: [1, 1.5, 0.5],
-                              opacity: [1, 0.8, 0],
-                              y: [-20, -60, -100],
-                              x: [0, 10, 20]
-                            }}
-                            transition={{
-                              duration: 1,
-                              ease: "easeOut"
-                            }}
-                            className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                          >
-                            <Heart className="w-4 h-4 text-green-400 fill-current" />
-                          </motion.div>
-                        )}
-                      </button>
-                    </div>
-
-                    {/* Back Button for Selected Product */}
-                    {isSelected && !isMobile && (
-                      <div className="absolute top-4 left-4 z-10">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            setSelectedProduct(null)
-                          }}
-                          className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 backdrop-blur-sm ${
-                            theme === 'dark'
-                              ? 'bg-zinc-800/70 text-zinc-200 hover:bg-zinc-700/80 border border-zinc-600/50'
-                              : 'bg-white/70 text-zinc-900 hover:bg-zinc-100/80 border border-zinc-300/50'
-                          }`}
-                        >
-                          <ChevronLeft className="w-4 h-4 mr-1.5" />
-                          Back
-                        </button>
-                      </div>
-                    )}
-                  </div>
+                    </motion.button>
+                  ))}
                 </div>
-              </motion.div>
-            )
-                                  })}
-          </div>
+              </div>
+            </div>
 
-          {/* Selected Product Overlay */}
-          {selectedProduct && !isMobile && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 z-40 flex items-center justify-center min-h-screen"
-              onClick={(e) => {
-                if (e.target === e.currentTarget) {
-                  setSelectedProduct(null)
-                }
-              }}
-            >
-              {(() => {
-                const product = products.find(p => p.id === selectedProduct)
-                if (!product) return null
+            {/* Center Product Display */}
+            <div className="flex-1 min-w-0">
+              {selectedProduct ? (
+                (() => {
+                  const product = products.find(p => p.id === selectedProduct)
+                  if (!product) return null
 
-                return (
-                  <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.8, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="relative"
-                  >
-                    <div className={`relative rounded-xl overflow-hidden border transition-all duration-300 w-[49.5vw] max-w-4xl ${
-                      theme === 'dark'
-                        ? 'bg-zinc-800 border-zinc-700'
-                        : 'bg-zinc-50 border-zinc-200'
-                    }`}>
-                      {/* Product Image */}
-                      <div className={`relative overflow-hidden transition-all duration-500 h-[400px] w-full`}>
-                        <Image
-                          src={getCurrentImage(product)}
-                          alt={product.name}
-                          fill
-                          className="object-contain transition-all duration-700 ease-in-out p-6"
-                          key={`${product.id}-modal-${productSizes[product.id] || 'Single'}-${hoveredProductImage[product.id] ? 'hover' : 'normal'}-${imageUpdateTrigger}`}
-                        />
+                  return (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                      className="h-full flex items-center justify-center"
+                    >
+                      <div className="max-w-2xl w-full">
+                        {/* Product Image */}
+                        <div className="relative h-96 mb-8 rounded-xl overflow-hidden border border-white/20 bg-white/5 backdrop-blur-sm">
+                          <Image
+                            src={getCurrentImage(product)}
+                            alt={product.name}
+                            fill
+                            className="object-contain p-8 transition-all duration-700 ease-in-out"
+                            key={`${product.id}-${productSizes[product.id] || 'Single'}-${hoveredProductImage[product.id] ? 'hover' : 'normal'}-${imageUpdateTrigger}`}
+                          />
 
-                        {/* Image Toggle for Selected Product */}
-                        {product.hoverImage && (
-                          <div className="absolute top-4 right-4 flex space-x-2 z-10">
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                handleProductHover(product.id, false)
-                              }}
-                              className={`px-3 py-1 text-xs rounded-full transition-all duration-200 ${
-                                !hoveredProductImage[product.id]
-                                  ? 'bg-zinc-900 text-white'
-                                  : 'bg-zinc-700 text-zinc-300 hover:bg-zinc-600'
-                              }`}
-                            >
-                              Full
-                            </button>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                handleProductHover(product.id, true)
-                              }}
-                              className={`px-3 py-1 text-xs rounded-full transition-all duration-200 ${
-                                hoveredProductImage[product.id]
-                                  ? 'bg-zinc-900 text-white'
-                                  : 'bg-zinc-700 text-zinc-300 hover:bg-zinc-600'
-                              }`}
-                            >
-                              Close-up
-                            </button>
+                          {/* Image Toggle */}
+                          {product.hoverImage && (
+                            <div className="absolute top-4 right-4 flex space-x-2">
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  handleProductHover(product.id, false)
+                                }}
+                                className={`px-3 py-1 text-xs rounded-full transition-all duration-200 ${
+                                  !hoveredProductImage[product.id]
+                                    ? 'bg-white/20 text-white border border-white/30'
+                                    : 'bg-white/10 text-blue-200 hover:bg-white/15 border border-white/20'
+                                }`}
+                              >
+                                Full
+                              </button>
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  handleProductHover(product.id, true)
+                                }}
+                                className={`px-3 py-1 text-xs rounded-full transition-all duration-200 ${
+                                  hoveredProductImage[product.id]
+                                    ? 'bg-white/20 text-white border border-white/30'
+                                    : 'bg-white/10 text-blue-200 hover:bg-white/15 border border-white/20'
+                                }`}
+                              >
+                                Detail
+                              </button>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Product Info */}
+                        <div className="text-center space-y-6">
+                          <div>
+                            <h1 className="text-4xl font-light text-white mb-2 tracking-wide">
+                              {product.name}
+                            </h1>
+                            <p className="text-2xl font-medium text-amber-400">
+                              {product.price}
+                            </p>
                           </div>
-                        )}
 
-                        {/* Back Button for Selected Product */}
-                        <div className="absolute top-4 left-4 z-10">
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              setSelectedProduct(null)
-                            }}
-                            className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 backdrop-blur-sm ${
-                              theme === 'dark'
-                                ? 'bg-zinc-800/70 text-zinc-200 hover:bg-zinc-700/80 border border-zinc-600/50'
-                                : 'bg-white/70 text-zinc-900 hover:bg-zinc-100/80 border border-zinc-300/50'
-                            }`}
-                          >
-                            <ChevronLeft className="w-4 h-4 mr-1.5" />
-                            Back
-                          </button>
-                        </div>
-                      </div>
+                          <p className="text-lg text-blue-100 leading-relaxed max-w-xl mx-auto font-light">
+                            {product.description}
+                          </p>
 
-                      {/* Product Info */}
-                      <div className="p-6">
-                        <div className="flex items-center justify-between mb-2">
-                          <h3 className={`text-2xl font-light transition-colors duration-300 ${
-                            theme === 'dark' ? 'text-zinc-100' : 'text-zinc-900'
-                          }`}>
-                            {product.name}
-                          </h3>
-                          <span className={`text-xl font-medium transition-colors duration-300 ${
-                            theme === 'dark' ? 'text-zinc-300' : 'text-zinc-700'
-                          }`}>
-                            {product.price}
-                          </span>
-                        </div>
-
-                        {/* Pack Size Selector */}
-                        <div className="mb-6">
-                          <div className="flex space-x-2">
+                          {/* Pack Size Selector */}
+                          <div className="flex justify-center space-x-3">
                             {['Single', 'Pack of 5', 'Box of 20'].map((size) => (
                               <button
                                 key={size}
-                                onClick={(e) => {
-                                  e.stopPropagation()
-                                  selectSize(product.id, size)
-                                }}
-                                className={`px-3 py-2 text-sm font-medium rounded-md border transition-all duration-200 ${
+                                onClick={() => selectSize(product.id, size)}
+                                className={`px-4 py-2 text-sm font-medium rounded-full border transition-all duration-300 ${
                                   productSizes[product.id] === size
-                                    ? theme === 'dark'
-                                      ? 'border-zinc-300 bg-zinc-700 text-zinc-100'
-                                      : 'border-zinc-400 bg-zinc-200 text-zinc-900'
-                                    : theme === 'dark'
-                                      ? 'border-zinc-600 text-zinc-400 hover:border-zinc-500'
-                                      : 'border-zinc-300 text-zinc-600 hover:border-zinc-400'
+                                    ? 'border-amber-400 bg-amber-400/10 text-amber-200'
+                                    : 'border-white/20 bg-white/5 text-blue-200 hover:border-white/40 hover:bg-white/10 hover:text-white'
                                 }`}
                               >
                                 {size}
                               </button>
                             ))}
                           </div>
-                        </div>
 
-                        {/* Action Buttons */}
-                        <div className="flex space-x-3">
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              addToCart(product)
-                            }}
-                            className={`flex-1 flex items-center justify-center border font-medium py-3 px-6 rounded-full text-sm transition-all duration-300 ${
-                              theme === 'dark'
-                                ? 'border-zinc-600 text-zinc-200 hover:bg-zinc-700'
-                                : 'border-zinc-300 text-zinc-900 hover:bg-zinc-50'
-                            }`}
-                          >
-                            <ShoppingCart className="w-4 h-4 mr-2" />
-                            Order
-                          </button>
+                          {/* Action Buttons */}
+                          <div className="flex justify-center space-x-4 pt-4">
+                            <button
+                              onClick={() => addToCart(product)}
+                              className="flex items-center gap-2 bg-amber-400 text-blue-900 px-8 py-3 rounded-full text-sm font-medium hover:bg-amber-300 transition-all duration-300"
+                            >
+                              <ShoppingCart className="w-4 h-4" />
+                              Add to Cart
+                            </button>
 
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              toggleLike(product.id)
-                            }}
-                            className={`relative p-3 rounded-full border transition-all duration-300 ${
-                              likedProducts.has(product.id)
-                                ? 'border-green-500 text-green-400 bg-green-500/10'
-                                : theme === 'dark'
-                                  ? 'border-zinc-600 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200'
-                                  : 'border-zinc-300 text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900'
-                            }`}
-                          >
-                            <Heart
-                              className={`w-4 h-4 transition-all duration-300 ${
-                                likedProducts.has(product.id) ? 'fill-current scale-110' : ''
+                            <button
+                              onClick={() => toggleLike(product.id)}
+                              className={`p-3 rounded-full border transition-all duration-300 ${
+                                likedProducts.has(product.id)
+                                  ? 'border-green-400 text-green-400 bg-green-400/10'
+                                  : 'border-white/20 text-blue-200 hover:border-white/40 hover:bg-white/10 hover:text-white'
                               }`}
-                            />
-
-                            {/* Flying heart animation */}
-                            {likedProducts.has(product.id) && (
-                              <motion.div
-                                initial={{ scale: 1, opacity: 1, y: 0 }}
-                                animate={{
-                                  scale: [1, 1.5, 0.5],
-                                  opacity: [1, 0.8, 0],
-                                  y: [-20, -60, -100],
-                                  x: [0, 10, 20]
-                                }}
-                                transition={{
-                                  duration: 1,
-                                  ease: "easeOut"
-                                }}
-                                className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                              >
-                                <Heart className="w-4 h-4 text-green-400 fill-current" />
-                              </motion.div>
-                            )}
-                          </button>
+                            >
+                              <Heart
+                                className={`w-5 h-5 transition-all duration-300 ${
+                                  likedProducts.has(product.id) ? 'fill-current scale-110' : ''
+                                }`}
+                              />
+                            </button>
+                          </div>
                         </div>
                       </div>
+                    </motion.div>
+                  )
+                })()
+              ) : (
+                <div className="h-full flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-24 h-24 mx-auto mb-6 rounded-full border-2 border-amber-400/30 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full border border-amber-400/50"></div>
                     </div>
-                  </motion.div>
-                )
-              })()}
-            </motion.div>
-          )}
+                    <h3 className="text-2xl font-light text-blue-200 mb-2">Select a Cigar</h3>
+                    <p className="text-blue-300 font-light">Choose from our collection on the left</p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
 
-          {/* Footer Text - Hidden when product is selected */}
-          {!selectedProduct && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className={`text-center mt-16 pt-8 border-t transition-colors duration-300 ${
-                theme === 'dark' ? 'border-zinc-800' : 'border-zinc-200'
-              }`}
-            >
-              <p className={`text-sm transition-colors duration-300 ${
-                theme === 'dark' ? 'text-zinc-500' : 'text-zinc-500'
-              }`}>
-                Premium cigars handcrafted with tradition. Worldwide shipping available.
-              </p>
-            </motion.div>
-          )}
+
         </div>
       </section>
 
