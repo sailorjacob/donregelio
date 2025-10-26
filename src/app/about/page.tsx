@@ -31,7 +31,7 @@ export default function AboutPage() {
               <div>
                 <h2 className="text-3xl font-light mb-4 text-blue-100">The Legacy</h2>
                 <p className="text-blue-200 leading-relaxed">
-                  Don Regelio was founded on the principles of traditional cigar craftsmanship.
+                  Don Rogelio was founded on the principles of traditional cigar craftsmanship.
                   Our master rollers have dedicated their lives to perfecting the art of cigar making,
                   ensuring every piece that leaves our workshop meets the highest standards of quality.
                 </p>

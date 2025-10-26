@@ -289,7 +289,7 @@ export default function ShopPage() {
                 <div className="w-8 h-8 rounded-full overflow-hidden border border-amber-600">
                   <Image
                     src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
-                    alt="Don Regelio"
+                    alt="Don Rogelio"
                     width={32}
                     height={32}
                     className="w-full h-full object-cover"

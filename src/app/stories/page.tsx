@@ -6,7 +6,7 @@ const stories = [
   {
     id: 1,
     title: "The Art of Cigar Rolling",
-    excerpt: "Discover the centuries-old techniques that go into creating each Don Regelio cigar, passed down through generations of master rollers.",
+    excerpt: "Discover the centuries-old techniques that go into creating each Don Rogelio cigar, passed down through generations of master rollers.",
     date: "March 15, 2024",
     author: "Maria Rodriguez",
     image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png"

@@ -6,8 +6,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Don Regelio - Premium Cigars",
-  description: "Discover the finest collection of premium cigars from Don Regelio. Handcrafted with tradition and excellence.",
+  title: "Don Rogelio - Premium Cigars",
+  description: "Discover the finest collection of premium cigars from Don Rogelio. Handcrafted with tradition and excellence.",
 }
 
 export default function RootLayout({

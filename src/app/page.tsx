@@ -12,14 +12,14 @@ export default function Home() {
             <div className="inline-flex items-center justify-center w-32 h-32 rounded-full mb-8 overflow-hidden border-2 border-amber-600">
               <Image
                 src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
-                alt="Don Regelio Logo"
+                alt="Don Rogelio Logo"
                 width={128}
                 height={128}
                 className="w-full h-full object-cover"
               />
             </div>
             <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-6">
-              Don Regelio
+              Don Rogelio
             </h1>
           </div>
 
