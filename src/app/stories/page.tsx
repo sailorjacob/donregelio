@@ -57,7 +57,7 @@ export default function StoriesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {stories.map((story) => (
               <article key={story.id} className="group cursor-pointer">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-amber-500/30 hover:border-amber-400/60 transition-all duration-300">
                   {/* Story Image */}
                   <div className="relative h-48 overflow-hidden">
                     <Image
@@ -72,7 +72,7 @@ export default function StoriesPage() {
 
                   {/* Story Content */}
                   <div className="p-6">
-                    <div className="flex items-center gap-4 text-sm text-blue-200 mb-3">
+                    <div className="flex items-center gap-4 text-sm text-amber-200 mb-3">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         {story.date}
@@ -83,11 +83,11 @@ export default function StoriesPage() {
                       </div>
                     </div>
 
-                    <h2 className="text-xl font-light text-white mb-3 group-hover:text-blue-200 transition-colors">
+                    <h2 className="text-xl font-light text-white mb-3 group-hover:text-amber-200 transition-colors font-display">
                       {story.title}
                     </h2>
 
-                    <p className="text-blue-200 leading-relaxed text-sm">
+                    <p className="text-amber-200 leading-relaxed text-sm">
                       {story.excerpt}
                     </p>
                   </div>
@@ -97,11 +97,11 @@ export default function StoriesPage() {
           </div>
 
           {/* Newsletter Section */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 p-8 text-center">
-            <h2 className="text-3xl font-light text-white mb-4">
+          <div className="bg-white/10 backdrop-blur-sm rounded-xl border border-amber-500/30 p-8 text-center">
+            <h2 className="text-3xl font-light text-white mb-4 font-display">
               Stay Connected
             </h2>
-            <p className="text-blue-200 mb-6 max-w-2xl mx-auto">
+            <p className="text-amber-200 mb-6 max-w-2xl mx-auto">
               Subscribe to our newsletter for exclusive stories, new releases, and insights
               into the world of premium cigars.
             </p>

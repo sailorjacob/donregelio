@@ -14,7 +14,7 @@ export default function Home() {
         <div className="text-center max-w-4xl mx-auto">
           {/* Logo/Brand */}
           <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-32 h-32 rounded-full mb-8 overflow-hidden border-2 border-amber-600">
+            <div className="inline-flex items-center justify-center w-32 h-32 rounded-full mb-8 overflow-hidden border-2 border-amber-400">
               <Image
                 src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                 alt="Don Rogelio Logo"
@@ -23,7 +23,7 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-6">
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-6 font-display">
               Don Rogelio
             </h1>
           </div>
