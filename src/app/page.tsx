@@ -1,6 +1,4 @@
-import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
 
 export default function Home() {
   return (
@@ -18,9 +16,6 @@ export default function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-6 font-display">
-              Don Rogelio
-            </h1>
           </div>
 
           {/* Product Showcase - All Cigar Collection */}
@@ -112,13 +107,9 @@ export default function Home() {
 
           {/* CTA Section */}
           <div className="mt-8">
-            <Link
-              href="/shop"
-              className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors duration-300 group"
-            >
-              <span className="text-sm font-light tracking-wide">Explore Collection</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
+            <div className="inline-flex items-center gap-2 text-blue-200 transition-colors duration-300">
+              <span className="text-sm font-light tracking-wide">Coming Soon</span>
+            </div>
           </div>
         </div>
       </div>
