@@ -4,19 +4,9 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import { ShoppingCart, Heart, ChevronDown, Sun, Moon, Menu, X } from "lucide-react"
+import { ChevronDown, Sun, Moon, Menu, X } from "lucide-react"
 import { useTheme } from "next-themes"
 import ProcessDropdown from "@/components/ProcessDropdown"
-
-interface CartItem {
-  id: string
-  name: string
-  image: string
-  price: string
-  cartItemId: string
-  size: string
-  quantity: number
-}
 
 interface Product {
   id: string

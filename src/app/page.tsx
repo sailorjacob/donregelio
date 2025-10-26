@@ -7,7 +7,8 @@ import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
 
 export default function Home() {
-  const [heritageOpen, setHeritageOpen] = useState(false);
+  const [heritageOpen, setHeritageOpen] = useState(false)
+  const [videoOpen, setVideoOpen] = useState(true) // Auto-open on page load
 
   return (
     <div>
