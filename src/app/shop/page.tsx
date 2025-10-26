@@ -518,7 +518,8 @@ export default function ShopPage() {
                       src={getCurrentImage(product)}
                       alt={product.name}
                       fill
-                      className="object-contain transition-all duration-500 p-4"
+                      className="object-contain transition-all duration-700 ease-in-out p-4"
+                      key={`${product.id}-${productSizes[product.id] || 'Single'}-${hoveredProductImage[product.id] ? 'hover' : 'normal'}`}
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
 
@@ -702,7 +703,8 @@ export default function ShopPage() {
                           src={getCurrentImage(product)}
                           alt={product.name}
                           fill
-                          className="object-contain p-6"
+                          className="object-contain transition-all duration-700 ease-in-out p-6"
+                          key={`${product.id}-modal-${productSizes[product.id] || 'Single'}-${hoveredProductImage[product.id] ? 'hover' : 'normal'}`}
                         />
 
                         {/* Image Toggle for Selected Product */}

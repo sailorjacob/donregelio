@@ -1,8 +1,13 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ArrowRight, X } from "lucide-react"
 
 export default function Home() {
+  const [selectedDocument, setSelectedDocument] = useState<string | null>(null)
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white flex items-center justify-center">
       <div className="container mx-auto px-6 py-16">
@@ -81,39 +86,97 @@ export default function Home() {
       </div>
 
       {/* Scattered Document Papers */}
-      <div className="fixed bottom-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+      <div className="fixed bottom-0 left-0 w-full h-full overflow-hidden">
         {/* Bottom Left Document - Peeking from left edge */}
-        <div className="absolute -bottom-8 -left-6 transform -rotate-15 opacity-70 hover:opacity-90 transition-all duration-500 hover:-rotate-12">
+        <motion.div 
+          className="absolute -bottom-6 -left-4 transform -rotate-20 opacity-85 hover:opacity-100 transition-all duration-500 hover:-rotate-15 cursor-pointer pointer-events-auto"
+          onClick={() => setSelectedDocument('document1')}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           <div className="relative">
             <Image
               src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/infopack1.png"
               alt="Product Information Document"
-              width={160}
-              height={220}
+              width={200}
+              height={280}
               className="object-contain drop-shadow-2xl"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/10 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/15 via-transparent to-black/5" />
             {/* Paper edge effect */}
-            <div className="absolute top-2 left-2 right-2 bottom-2 border border-white/20 rounded-sm pointer-events-none" />
+            <div className="absolute top-2 left-2 right-2 bottom-2 border border-white/30 rounded-sm" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Right Document - Peeking from right edge */}
-        <div className="absolute -bottom-12 -right-8 transform rotate-8 opacity-70 hover:opacity-90 transition-all duration-500 hover:rotate-5">
+        <motion.div 
+          className="absolute -bottom-8 -right-6 transform rotate-12 opacity-85 hover:opacity-100 transition-all duration-500 hover:rotate-8 cursor-pointer pointer-events-auto"
+          onClick={() => setSelectedDocument('document2')}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           <div className="relative">
             <Image
               src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/infobackbackside.png"
               alt="Product Details Document"
-              width={140}
-              height={190}
+              width={180}
+              height={240}
               className="object-contain drop-shadow-2xl"
             />
-            <div className="absolute inset-0 bg-gradient-to-tl from-white/20 via-transparent to-black/10 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tl from-white/15 via-transparent to-black/5" />
             {/* Paper edge effect */}
-            <div className="absolute top-2 left-2 right-2 bottom-2 border border-white/20 rounded-sm pointer-events-none" />
+            <div className="absolute top-2 left-2 right-2 bottom-2 border border-white/30 rounded-sm" />
           </div>
-        </div>
+        </motion.div>
       </div>
+
+      {/* Document Modal */}
+      <AnimatePresence>
+        {selectedDocument && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            onClick={(e) => {
+              if (e.target === e.currentTarget) {
+                setSelectedDocument(null)
+              }
+            }}
+          >
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0, rotate: selectedDocument === 'document1' ? -20 : 12 }}
+              animate={{ scale: 1, opacity: 1, rotate: 0 }}
+              exit={{ scale: 0.5, opacity: 0, rotate: selectedDocument === 'document1' ? -20 : 12 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-4xl max-h-[90vh] p-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedDocument(null)}
+                className="absolute top-2 right-2 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+              
+              {/* Document Image */}
+              <div className="relative bg-white rounded-lg shadow-2xl overflow-hidden">
+                <Image
+                  src={selectedDocument === 'document1' 
+                    ? "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/infopack1.png"
+                    : "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/infobackbackside.png"
+                  }
+                  alt={selectedDocument === 'document1' ? "Product Information Document" : "Product Details Document"}
+                  width={800}
+                  height={1000}
+                  className="w-full h-auto object-contain max-h-[85vh]"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   )
 }
