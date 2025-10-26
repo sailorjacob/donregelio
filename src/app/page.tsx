@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { ShoppingBag, ArrowRight } from "lucide-react"
+import Image from "next/image"
+import { ArrowRight } from "lucide-react"
 
 export default function Home() {
   return (
@@ -9,9 +10,11 @@ export default function Home() {
           {/* Logo/Brand */}
           <div className="mb-8">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 overflow-hidden border-2 border-amber-600">
-              <img
+              <Image
                 src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                 alt="Don Regelio Logo"
+                width={80}
+                height={80}
                 className="w-full h-full object-cover"
               />
             </div>

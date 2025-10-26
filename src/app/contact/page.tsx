@@ -21,7 +21,7 @@ export default function ContactPage() {
               Contact Us
             </h1>
             <p className="text-xl md:text-2xl text-blue-200 font-light max-w-3xl mx-auto">
-              We're here to help you discover the perfect cigar for your collection
+              We&apos;re here to help you discover the perfect cigar for your collection
             </p>
           </div>
 
@@ -180,7 +180,7 @@ export default function ContactPage() {
                 <p className="text-blue-200">Yes, we ship worldwide with reliable carriers and full tracking.</p>
               </div>
               <div>
-                <h3 className="text-lg font-medium text-blue-100 mb-2">What's your return policy?</h3>
+                <h3 className="text-lg font-medium text-blue-100 mb-2">What&apos;s your return policy?</h3>
                 <p className="text-blue-200">We offer a 30-day return policy on unopened products in original condition.</p>
               </div>
               <div>

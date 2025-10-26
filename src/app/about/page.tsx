@@ -64,12 +64,12 @@ export default function AboutPage() {
               <div>
                 <h2 className="text-3xl font-light mb-4 text-blue-100">Our Philosophy</h2>
                 <p className="text-blue-200 leading-relaxed mb-6">
-                  We believe that a great cigar is more than just tobacco—it's a moment of reflection,
+                  We believe that a great cigar is more than just tobacco—it&apos;s a moment of reflection,
                   a celebration of craftsmanship, and a connection to tradition. Every cigar we create
                   tells a story of dedication and passion for the art form.
                 </p>
                 <blockquote className="text-2xl font-light italic text-blue-100 border-l-4 border-blue-400 pl-6">
-                  "A cigar is not just smoked, it is experienced."
+                  &ldquo;A cigar is not just smoked, it is experienced.&rdquo;
                 </blockquote>
               </div>
 

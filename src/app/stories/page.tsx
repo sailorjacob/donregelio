@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft, Calendar, User } from "lucide-react"
 
 const stories = [
@@ -59,9 +60,11 @@ export default function StoriesPage() {
                 <div className="bg-white/10 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300">
                   {/* Story Image */}
                   <div className="relative h-48 overflow-hidden">
-                    <img
+                    <Image
                       src={story.image}
                       alt={story.title}
+                      width={400}
+                      height={192}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

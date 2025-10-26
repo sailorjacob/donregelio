@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import { ShoppingCart, Heart, Hexagon, Code, ChevronDown, Sun, Moon, Menu, X, ChevronLeft } from "lucide-react"
+import { ShoppingCart, Heart, ChevronDown, Sun, Moon, Menu, X, ChevronLeft } from "lucide-react"
 import { useTheme } from "next-themes"
 import ProcessDropdown from "@/components/ProcessDropdown"
 
@@ -271,9 +271,11 @@ export default function ShopPage() {
             <div className="flex items-center space-x-8">
               <Link href="/" className="flex items-center">
                 <div className="w-8 h-8 rounded-full overflow-hidden border border-amber-600">
-                  <img
+                  <Image
                     src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                     alt="Don Regelio"
+                    width={32}
+                    height={32}
                     className="w-full h-full object-cover"
                   />
                 </div>
