@@ -10,19 +10,10 @@ html {
 body {
   background-color: black;
   color: white;
-  font-family: var(--font-crimson), serif;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-}
-
-/* Fancy font classes */
-.font-display {
-  font-family: var(--font-playfair), serif;
-}
-
-.font-body {
-  font-family: var(--font-crimson), serif;
 }
 
 /* Custom smooth scroll behavior */

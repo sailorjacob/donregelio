@@ -345,14 +345,14 @@ export default function ShopPage() {
       {/* Header */}
       <header onMouseLeave={()=>setProcessOpen(false)} className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b relative transition-all duration-300 delay-100 ${
         processOpen
-          ? 'bg-blue-900/95 border-amber-600/50'
-          : 'bg-blue-900/80 border-amber-600/30'
+          ? 'bg-blue-900/95 border-blue-700'
+          : 'bg-blue-900/80 border-blue-700'
       }`}>
-                <div className="w-full px-4 sm:px-6 py-2">
-                  <nav className="flex items-center justify-between">
-                    <div className="flex items-center space-x-8">
-                      <Link href="/" className="flex items-center">
-                        <div className="w-8 h-8 rounded-full overflow-hidden border border-amber-400">
+        <div className="w-full px-4 sm:px-6 py-2">
+          <nav className="flex items-center justify-between">
+            <div className="flex items-center space-x-8">
+              <Link href="/" className="flex items-center">
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-amber-600">
                   <Image
                     src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                     alt="Don Rogelio"
@@ -514,7 +514,7 @@ export default function ShopPage() {
                   onMouseEnter={() => handleProductHover(product.id, true)}
                   onMouseLeave={() => handleProductHover(product.id, false)}
                 >
-                  <div className="relative rounded-xl overflow-hidden border transition-all duration-300 w-full bg-white/10 backdrop-blur-sm border-amber-500/30 hover:border-amber-400/60">
+                  <div className="relative rounded-xl overflow-hidden border transition-all duration-300 w-full bg-white/10 backdrop-blur-sm border-white/20 hover:border-white/40">
                   {/* Product Image */}
                   <div className={`relative overflow-hidden transition-all duration-500 ${
                     isSelected && !isMobile ? 'h-[400px]' : 'h-64'
@@ -564,10 +564,10 @@ export default function ShopPage() {
                   {/* Product Info */}
                   <div className="p-6">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-2xl font-light transition-colors duration-300 text-white font-display">
+                      <h3 className="text-2xl font-light transition-colors duration-300 text-white">
                         {product.name}
                       </h3>
-                      <span className="text-xl font-medium transition-colors duration-300 text-amber-200">
+                      <span className="text-xl font-medium transition-colors duration-300 text-blue-200">
                         {product.price}
                       </span>
                     </div>
@@ -584,8 +584,8 @@ export default function ShopPage() {
                             }}
                             className={`px-3 py-2 text-sm font-medium rounded-md border transition-all duration-200 ${
                               productSizes[product.id] === size
-                                ? 'border-amber-400 bg-amber-400 text-blue-900 shadow-lg'
-                                : 'border-amber-600/50 text-amber-200 hover:border-amber-400 hover:bg-amber-400/10'
+                                ? 'border-white bg-white text-blue-900 shadow-lg'
+                                : 'border-blue-400 text-blue-200 hover:border-white hover:bg-white/10'
                             }`}
                           >
                             {size}
@@ -601,7 +601,7 @@ export default function ShopPage() {
                           e.stopPropagation()
                           addToCart(product)
                         }}
-                        className="flex-1 flex items-center justify-center border font-medium py-3 px-6 rounded-full text-sm transition-all duration-300 border-amber-600/50 text-amber-200 hover:bg-amber-800 hover:border-amber-400"
+                        className="flex-1 flex items-center justify-center border font-medium py-3 px-6 rounded-full text-sm transition-all duration-300 border-blue-400 text-blue-200 hover:bg-blue-800 hover:border-white"
                       >
                         <ShoppingCart className="w-4 h-4 mr-2" />
                         Order
@@ -615,7 +615,7 @@ export default function ShopPage() {
                         className={`relative p-3 rounded-full border transition-all duration-300 ${
                           likedProducts.has(product.id)
                             ? 'border-green-500 text-green-400 bg-green-500/10'
-                            : 'border-amber-600/50 text-amber-200 hover:bg-amber-800 hover:border-amber-400'
+                            : 'border-blue-400 text-blue-200 hover:bg-blue-800 hover:border-white'
                         }`}
                       >
                         <Heart
@@ -699,8 +699,8 @@ export default function ShopPage() {
                   >
                     <div className={`relative rounded-xl overflow-hidden border transition-all duration-300 w-[49.5vw] max-w-4xl ${
                       theme === 'dark'
-                        ? 'bg-zinc-800 border-amber-600/50'
-                        : 'bg-zinc-50 border-amber-300/50'
+                        ? 'bg-zinc-800 border-zinc-700'
+                        : 'bg-zinc-50 border-zinc-200'
                     }`}>
                       {/* Product Image */}
                       <div className={`relative overflow-hidden transition-all duration-500 h-[400px] w-full`}>
@@ -766,13 +766,13 @@ export default function ShopPage() {
                       {/* Product Info */}
                       <div className="p-6">
                         <div className="flex items-center justify-between mb-2">
-                          <h3 className={`text-2xl font-light transition-colors duration-300 font-display ${
+                          <h3 className={`text-2xl font-light transition-colors duration-300 ${
                             theme === 'dark' ? 'text-zinc-100' : 'text-zinc-900'
                           }`}>
                             {product.name}
                           </h3>
                           <span className={`text-xl font-medium transition-colors duration-300 ${
-                            theme === 'dark' ? 'text-amber-200' : 'text-amber-200'
+                            theme === 'dark' ? 'text-zinc-300' : 'text-zinc-700'
                           }`}>
                             {product.price}
                           </span>
@@ -791,11 +791,11 @@ export default function ShopPage() {
                                 className={`px-3 py-2 text-sm font-medium rounded-md border transition-all duration-200 ${
                                   productSizes[product.id] === size
                                     ? theme === 'dark'
-                                      ? 'border-amber-400 bg-amber-400 text-zinc-900'
-                                      : 'border-amber-400 bg-amber-400 text-zinc-900'
+                                      ? 'border-zinc-300 bg-zinc-700 text-zinc-100'
+                                      : 'border-zinc-400 bg-zinc-200 text-zinc-900'
                                     : theme === 'dark'
-                                      ? 'border-amber-600/50 text-amber-200 hover:border-amber-400'
-                                      : 'border-amber-600/50 text-amber-200 hover:border-amber-400'
+                                      ? 'border-zinc-600 text-zinc-400 hover:border-zinc-500'
+                                      : 'border-zinc-300 text-zinc-600 hover:border-zinc-400'
                                 }`}
                               >
                                 {size}
@@ -813,8 +813,8 @@ export default function ShopPage() {
                             }}
                             className={`flex-1 flex items-center justify-center border font-medium py-3 px-6 rounded-full text-sm transition-all duration-300 ${
                               theme === 'dark'
-                                ? 'border-amber-600/50 text-amber-200 hover:bg-amber-800 hover:border-amber-400'
-                                : 'border-amber-600/50 text-amber-200 hover:bg-amber-800 hover:border-amber-400'
+                                ? 'border-zinc-600 text-zinc-200 hover:bg-zinc-700'
+                                : 'border-zinc-300 text-zinc-900 hover:bg-zinc-50'
                             }`}
                           >
                             <ShoppingCart className="w-4 h-4 mr-2" />
@@ -830,8 +830,8 @@ export default function ShopPage() {
                               likedProducts.has(product.id)
                                 ? 'border-green-500 text-green-400 bg-green-500/10'
                                 : theme === 'dark'
-                                  ? 'border-amber-600/50 text-amber-200 hover:bg-amber-800 hover:border-amber-400'
-                                  : 'border-amber-600/50 text-amber-200 hover:bg-amber-800 hover:border-amber-400'
+                                  ? 'border-zinc-600 text-zinc-400 hover:bg-zinc-700 hover:text-zinc-200'
+                                  : 'border-zinc-300 text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900'
                             }`}
                           >
                             <Heart
@@ -875,7 +875,9 @@ export default function ShopPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className={`text-center mt-16 pt-8 border-t transition-colors duration-300 border-amber-600/30`}
+              className={`text-center mt-16 pt-8 border-t transition-colors duration-300 ${
+                theme === 'dark' ? 'border-zinc-800' : 'border-zinc-200'
+              }`}
             >
               <p className={`text-sm transition-colors duration-300 ${
                 theme === 'dark' ? 'text-zinc-500' : 'text-zinc-500'
@@ -942,15 +944,15 @@ export default function ShopPage() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 right-0 h-full w-full max-w-md z-50 bg-blue-900 border-l border-amber-600/50"
+              className="fixed top-0 right-0 h-full w-full max-w-md z-50 bg-blue-900 border-l border-blue-700"
             >
               <div className="flex flex-col h-full">
                 {/* Cart Header */}
-                <div className="flex items-center justify-between p-6 border-b border-amber-600/50">
-                  <h2 className="text-xl font-light text-white font-display">Cart</h2>
+                <div className="flex items-center justify-between p-6 border-b border-blue-700">
+                  <h2 className="text-xl font-light text-white">Cart</h2>
                   <button
                     onClick={() => setIsCartOpen(false)}
-                    className="p-2 hover:bg-amber-800 rounded-full transition-colors text-amber-200"
+                    className="p-2 hover:bg-blue-800 rounded-full transition-colors text-blue-200"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -966,7 +968,7 @@ export default function ShopPage() {
                   ) : (
                     <div className="space-y-4">
                       {cartItems.map((item) => (
-                        <div key={item.cartItemId} className="flex items-center space-x-4 p-4 border border-amber-600/30 rounded-lg">
+                        <div key={item.cartItemId} className="flex items-center space-x-4 p-4 border border-zinc-200 dark:border-zinc-700 rounded-lg">
                           <Image
                             src={item.image}
                             alt={item.name}
@@ -982,14 +984,14 @@ export default function ShopPage() {
                           <div className="flex items-center space-x-2">
                             <button
                               onClick={() => updateQuantity(item.cartItemId, item.quantity - 1)}
-                              className="w-8 h-8 rounded-full border border-amber-600/50 flex items-center justify-center hover:bg-amber-800"
+                              className="w-8 h-8 rounded-full border border-zinc-300 dark:border-zinc-600 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800"
                             >
                               -
                             </button>
                             <span className="w-8 text-center">{item.quantity}</span>
                             <button
                               onClick={() => updateQuantity(item.cartItemId, item.quantity + 1)}
-                              className="w-8 h-8 rounded-full border border-amber-600/50 flex items-center justify-center hover:bg-amber-800"
+                              className="w-8 h-8 rounded-full border border-zinc-300 dark:border-zinc-600 flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-zinc-800"
                             >
                               +
                             </button>
@@ -1008,14 +1010,14 @@ export default function ShopPage() {
 
                 {/* Cart Footer */}
                 {cartItems.length > 0 && (
-                  <div className="p-6 border-t border-amber-600/50">
+                  <div className="p-6 border-t border-zinc-200 dark:border-zinc-700">
                     <div className="flex items-center justify-between mb-4">
                       <span className="text-lg font-medium">Total:</span>
                       <span className="text-lg font-medium">${cartTotal.toFixed(2)}</span>
                     </div>
                     <button
                       onClick={handleCheckout}
-                      className="w-full bg-amber-600 text-zinc-900 py-3 px-6 rounded-full font-medium hover:bg-amber-500 transition-colors font-display"
+                      className="w-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 py-3 px-6 rounded-full font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
                     >
                       Checkout
                     </button>
