@@ -201,65 +201,63 @@ export default function ShopPage() {
   // 🎨 CUSTOMIZE YOUR PRODUCTS HERE
   const products: Product[] = [
     {
-      id: "doubletoro",
-      name: "Doubletoro",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/doubletoro.png",
-      description: "Premium doubletoro cigar with rich, complex flavors. Perfect for extended smoking sessions.",
+      id: "robusto-closed",
+      name: "Robusto Closed",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
+      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      description: "Premium robusto cigar in closed presentation. Rich, complex flavors with perfect construction.",
       price: "$12.50",
+      paymentLink: "https://your-payment-link.com/robusto"
+    },
+    {
+      id: "robusto-open",
+      name: "Robusto Open",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
+      description: "Premium robusto cigar in open presentation. Elegant smoking experience with exceptional draw.",
+      price: "$12.50",
+      paymentLink: "https://your-payment-link.com/robusto"
+    },
+    {
+      id: "doubletoro",
+      name: "Double Toro",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
+      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      description: "Extended robusto cigar with rich, complex flavors. Perfect for extended smoking sessions.",
+      price: "$14.00",
       paymentLink: "https://your-payment-link.com/doubletoro"
     },
     {
       id: "lancero",
       name: "Lancero",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero.png",
-      description: "Elegant lancero cigar offering a refined smoking experience with exceptional draw.",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
+      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
+      description: "Elegant lancero-style cigar offering a refined smoking experience with exceptional draw.",
       price: "$15.00",
       paymentLink: "https://your-payment-link.com/lancero"
     },
     {
       id: "perfecto",
       name: "Perfecto",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
+      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
       description: "Classic perfecto shape delivering concentrated flavors and perfect construction.",
-      price: "$14.00",
+      price: "$13.50",
       paymentLink: "https://your-payment-link.com/perfecto"
-    },
-    {
-      id: "salamon",
-      name: "Salamon",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/salamon.png",
-      description: "Artisan salamon cigar with a unique shape that enhances flavor development.",
-      price: "$16.50",
-      paymentLink: "https://your-payment-link.com/salamon"
-    },
-    {
-      id: "taco",
-      name: "Taco",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/taco.png",
-      description: "Distinctive taco-shaped cigar offering a bold and memorable smoking experience.",
-      price: "$13.00",
-      paymentLink: "https://your-payment-link.com/taco"
-    },
-    {
-      id: "toro",
-      name: "Toro",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png",
-      description: "Classic toro cigar with perfect balance of size and smoking time.",
-      price: "$11.00",
-      paymentLink: "https://your-payment-link.com/toro"
     },
     {
       id: "torpedo",
       name: "Torpedo",
-      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/torpedo.png",
+      image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
+      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png",
       description: "Sophisticated torpedo cigar with a tapered head for enhanced flavor concentration.",
-      price: "$13.50",
+      price: "$16.00",
       paymentLink: "https://your-payment-link.com/torpedo"
     }
   ]
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white">
       {/* Header */}
       <header onMouseLeave={()=>setProcessOpen(false)} className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b relative transition-all duration-300 delay-100 ${
         processOpen
@@ -435,13 +433,13 @@ export default function ShopPage() {
                   <div className="relative rounded-xl overflow-hidden border transition-all duration-300 w-full bg-white/10 backdrop-blur-sm border-white/20 hover:border-white/40">
                   {/* Product Image */}
                   <div className={`relative overflow-hidden transition-all duration-500 ${
-                    isSelected && !isMobile ? 'h-[600px]' : 'h-96'
+                    isSelected && !isMobile ? 'h-[400px]' : 'h-64'
                   }`}>
                     <Image
                       src={getCurrentImage(product)}
                       alt={product.name}
                       fill
-                      className="object-cover transition-all duration-500 group-hover:scale-105"
+                      className="object-contain transition-all duration-500 p-4"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
 
@@ -620,12 +618,12 @@ export default function ShopPage() {
                         : 'bg-zinc-50 border-zinc-200'
                     }`}>
                       {/* Product Image */}
-                      <div className={`relative overflow-hidden transition-all duration-500 h-[495px] w-full`}>
+                      <div className={`relative overflow-hidden transition-all duration-500 h-[400px] w-full`}>
                         <Image
                           src={getCurrentImage(product)}
                           alt={product.name}
                           fill
-                          className="object-contain"
+                          className="object-contain p-6"
                         />
 
                         {/* Image Toggle for Selected Product */}
