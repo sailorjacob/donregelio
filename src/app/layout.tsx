@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Don Rogelio - Premium Cigars",
   description: "Discover the finest collection of premium cigars from Don Rogelio. Handcrafted with tradition and excellence.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 }
 
 export default function RootLayout({
