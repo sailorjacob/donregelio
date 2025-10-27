@@ -148,12 +148,6 @@ export default function ShopPage() {
             </div>
 
             <div className="flex items-center space-x-4">
-              <Link href="/stories" className="hidden md:inline text-sm font-light text-blue-300 hover:text-white transition-colors duration-300">
-                stories
-              </Link>
-              <Link href="/contact" className="hidden md:inline-flex items-center border border-blue-400 hover:bg-blue-800 text-white font-medium py-2 px-6 transition-all duration-300 text-sm">
-                contact
-              </Link>
 
               {/* Theme Toggle */}
               <button
@@ -189,9 +183,6 @@ export default function ShopPage() {
                 className="md:hidden border-b border-blue-700 bg-blue-900"
             >
               <div className="container mx-auto px-6 py-4 space-y-3">
-                <Link href="/stories" className="block text-sm text-blue-200 hover:text-white transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
-                  Stories
-                </Link>
                 <Link href="/" className="block text-sm text-blue-200 hover:text-white transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
                   Home
                 </Link>

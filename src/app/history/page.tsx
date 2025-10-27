@@ -33,12 +33,6 @@ export default function HistoryPage() {
                 <Link href="/shop" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
                   cigars
                 </Link>
-                <Link href="/stories" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                  stories
-                </Link>
-                <Link href="/contact" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                  contact
-                </Link>
               </div>
             </div>
           </nav>
