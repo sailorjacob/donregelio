@@ -17,7 +17,7 @@ interface Product {
 
 export default function ShopPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null)
+  const [selectedProduct, setSelectedProduct] = useState<string | null>("robusto")
   const [hoveredProductImage, setHoveredProductImage] = useState<Record<string, boolean>>({})
   const { theme, setTheme } = useTheme()
 
@@ -139,10 +139,10 @@ export default function ShopPage() {
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-6">
                 <Link href="/history" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                  heritage
+                  Heritage
                   </Link>
                 <Link href="/shop" className="text-sm font-light text-blue-300 hover:text-white transition-colors duration-300">
-                  cigars
+                  Cigars
                 </Link>
               </div>
             </div>

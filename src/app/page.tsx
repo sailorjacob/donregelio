@@ -112,7 +112,7 @@ export default function Home() {
                   href="/history"
                   className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300"
                 >
-                  heritage
+                  Heritage
                 </Link>
               </div>
             </div>
