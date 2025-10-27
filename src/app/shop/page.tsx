@@ -173,23 +173,15 @@ export default function ShopPage() {
           </nav>
 
         {/* Mobile Menu */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-                className="md:hidden border-b border-blue-700 bg-blue-900"
-            >
-              <div className="container mx-auto px-6 py-4 space-y-3">
-                <Link href="/" className="block text-sm text-blue-200 hover:text-white transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
-                  Home
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {mobileMenuOpen && (
+          <div className="md:hidden border-b border-blue-700 bg-blue-900">
+            <div className="container mx-auto px-6 py-4 space-y-3">
+              <Link href="/" className="block text-sm text-blue-200 hover:text-white transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
+                Home
+              </Link>
+            </div>
+          </div>
+        )}
         </div>
       </header>
 

@@ -6,68 +6,7 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 
 export default function Home() {
-  const [hoveredProduct, setHoveredProduct] = useState<string | null>(null)
-  const [videoOpen, setVideoOpen] = useState(true)
-
-  // Product data with closed box (default) and individual cigar (hover) images
-  const products = [
-    {
-      id: "robusto",
-      name: "Robusto",
-      closedImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20closed.png",
-      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png"
-    },
-    {
-      id: "doubletoro",
-      name: "Double Toro",
-      closedImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/doubletoro.png",
-      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png"
-    },
-    {
-      id: "lancero",
-      name: "Lancero",
-      closedImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero.png",
-      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png"
-    },
-    {
-      id: "perfecto",
-      name: "Perfecto",
-      closedImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png",
-      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png"
-    },
-    {
-      id: "salamon",
-      name: "Salamon",
-      closedImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/salamon.png",
-      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png"
-    },
-    {
-      id: "toro",
-      name: "Toro",
-      closedImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png",
-      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png"
-    },
-    {
-      id: "torpedo",
-      name: "Torpedo",
-      closedImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/torpedo.png",
-      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png"
-    },
-    {
-      id: "taco",
-      name: "Taco",
-      closedImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/taco.png",
-      hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto%20open.png"
-    }
-  ]
-
-  // Get current image based on hover state
-  const getCurrentImage = (productId: string) => {
-    const product = products.find(p => p.id === productId)
-    if (!product) return ""
-
-    return hoveredProduct === productId ? product.hoverImage : product.closedImage
-  }
+  const [videoOpen, setVideoOpen] = useState(true) // Auto-open on page load
 
   return (
     <div>
