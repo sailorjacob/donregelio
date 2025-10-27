@@ -21,9 +21,10 @@ export default function ShopPage() {
   const [hoveredProductImage, setHoveredProductImage] = useState<Record<string, boolean>>({})
   const { theme, setTheme } = useTheme()
 
-  // Prevent body scroll when product is selected
+  // Prevent body scroll when product is selected (desktop only)
   useEffect(() => {
-    if (selectedProduct) {
+    // Only lock scroll on desktop to avoid mobile browser issues
+    if (selectedProduct && window.innerWidth >= 768) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'unset'
@@ -152,7 +153,7 @@ export default function ShopPage() {
               {/* Theme Toggle */}
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="hidden p-2 hover:bg-blue-800 transition-colors duration-200"
+                className="p-2 hover:bg-blue-800 transition-colors duration-200 rounded-lg"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? (
@@ -165,7 +166,8 @@ export default function ShopPage() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2"
+                className="md:hidden p-2 hover:bg-blue-800 transition-colors duration-200 rounded-lg"
+                aria-label="Toggle mobile menu"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5 text-blue-200" /> : <Menu className="w-5 h-5 text-blue-200" />}
               </button>
@@ -176,8 +178,11 @@ export default function ShopPage() {
         {mobileMenuOpen && (
           <div className="md:hidden border-b border-blue-700 bg-blue-900">
             <div className="container mx-auto px-6 py-4 space-y-3">
-              <Link href="/" className="block text-sm text-blue-200 hover:text-white transition-colors tracking-wider uppercase" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
                 Home
+              </Link>
+              <Link href="/history" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
+                Heritage
               </Link>
             </div>
           </div>
@@ -186,12 +191,34 @@ export default function ShopPage() {
       </header>
 
       {/* Main Content */}
-      <section className="pt-20 px-6 pb-12 min-h-screen">
+      <section className="pt-16 sm:pt-20 px-4 sm:px-6 pb-12 min-h-screen">
         <div className="container max-w-7xl mx-auto">
-          {/* Product Navigation and Display */}
-          <div className="flex gap-8 min-h-[calc(100vh-8rem)]">
-            {/* Left Navigation Sidebar */}
-            <div className="w-80 flex-shrink-0">
+          {/* Mobile Navigation Tabs */}
+          <div className="md:hidden mb-6 -mx-4 px-4">
+            <div className="flex overflow-x-auto gap-3 pb-3 scrollbar-hide">
+              {products.map((product, index) => (
+                <motion.button
+                  key={`mobile-nav-${product.id}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  onClick={() => selectProduct(product.id)}
+                  className={`flex-shrink-0 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-light min-w-[100px] text-center ${
+                    selectedProduct === product.id
+                      ? 'bg-white/20 text-white border border-white/30 shadow-lg'
+                      : 'bg-white/5 text-blue-200 hover:text-white hover:bg-white/10 border border-white/10 active:bg-white/15'
+                  }`}
+                >
+                  {product.name}
+                </motion.button>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop and Mobile Layout */}
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8 min-h-[calc(100vh-10rem)]">
+            {/* Desktop Navigation Sidebar */}
+            <div className="hidden md:block w-80 flex-shrink-0">
               <div className="sticky top-24">
                 <div className="space-y-2">
                   {products.map((product, index) => (
@@ -201,12 +228,16 @@ export default function ShopPage() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
                   onClick={() => selectProduct(product.id)}
-                  onMouseEnter={() => handleProductHover(product.id, true)}
-                  onMouseLeave={() => handleProductHover(product.id, false)}
-                      className={`w-full text-left px-4 py-3 transition-all duration-300 ${
+                  onMouseEnter={() => {
+                    if (window.innerWidth >= 768) handleProductHover(product.id, true)
+                  }}
+                  onMouseLeave={() => {
+                    if (window.innerWidth >= 768) handleProductHover(product.id, false)
+                  }}
+                      className={`w-full text-left px-4 py-3 transition-all duration-300 rounded-lg ${
                         selectedProduct === product.id
-                          ? 'text-white'
-                          : 'text-blue-200 hover:text-white'
+                          ? 'text-white bg-white/10 border border-white/20'
+                          : 'text-blue-200 hover:text-white hover:bg-white/5 active:bg-white/10 border border-transparent'
                       }`}
                     >
                         <span className="font-light tracking-wide">{product.name}</span>
@@ -216,7 +247,7 @@ export default function ShopPage() {
                     </div>
                     </div>
 
-            {/* Center Product Display */}
+            {/* Product Display */}
             <div className="flex-1 min-w-0">
               {selectedProduct ? (
                 (() => {
@@ -230,26 +261,26 @@ export default function ShopPage() {
                       transition={{ duration: 0.5, ease: "easeOut" }}
                       className="h-full flex items-center justify-center"
                     >
-                      <div className="max-w-2xl w-full">
+                      <div className="max-w-2xl w-full mx-auto">
                       {/* Product Image */}
-                        <div className="relative h-96 mb-8 overflow-hidden border border-white/20 bg-white/5 backdrop-blur-sm">
+                        <div className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8 overflow-hidden border border-white/20 bg-white/5 backdrop-blur-sm">
                         <Image
                           src={getCurrentImage(product)}
                           alt={product.name}
                           fill
-                            className="object-contain p-8 transition-all duration-700 ease-in-out"
+                            className="object-contain p-4 sm:p-6 md:p-8 transition-all duration-700 ease-in-out"
                             key={`${product.id}-${hoveredProductImage[product.id] ? 'hover' : 'normal'}`}
                         />
 
                           {/* Image Toggle */}
                         {product.hoverImage && (
-                            <div className="absolute top-4 right-4 flex space-x-2">
+                            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex space-x-1 sm:space-x-2">
                             <button
                               onClick={(e) => {
                                 e.stopPropagation()
                                 handleProductHover(product.id, false)
                               }}
-                                className={`px-3 py-1 text-xs transition-all duration-200 ${
+                                className={`px-2 py-1 sm:px-3 sm:py-1 text-xs transition-all duration-200 rounded ${
                                 !hoveredProductImage[product.id]
                                     ? 'bg-white/20 text-white border border-white/30'
                                     : 'bg-white/10 text-blue-200 hover:bg-white/15 border border-white/20'
@@ -262,7 +293,7 @@ export default function ShopPage() {
                                 e.stopPropagation()
                                 handleProductHover(product.id, true)
                               }}
-                                className={`px-3 py-1 text-xs transition-all duration-200 ${
+                                className={`px-2 py-1 sm:px-3 sm:py-1 text-xs transition-all duration-200 rounded ${
                                 hoveredProductImage[product.id]
                                     ? 'bg-white/20 text-white border border-white/30'
                                     : 'bg-white/10 text-blue-200 hover:bg-white/15 border border-white/20'
@@ -275,32 +306,32 @@ export default function ShopPage() {
                       </div>
 
                       {/* Product Info */}
-                        <div className="text-center space-y-6">
+                        <div className="text-center space-y-4 md:space-y-6">
                           <div>
-                            <h1 className="text-4xl font-light text-white mb-6 tracking-wide">
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-4 md:mb-6 tracking-wide">
                             {product.name}
                             </h1>
-                        </div>
+                          </div>
 
-                          <p className="text-lg text-blue-100 leading-relaxed max-w-xl mx-auto font-light">
+                          <p className="text-base sm:text-lg text-blue-100 leading-relaxed max-w-xl mx-auto font-light px-4">
                             {product.description}
                           </p>
-                      </div>
+                        </div>
                     </div>
                   </motion.div>
                 )
                 })()
               ) : (
                 <div className="h-full flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-6 border-2 border-white/20 flex items-center justify-center">
-                      <div className="w-12 h-12 border border-white/30"></div>
+                  <div className="text-center px-4">
+                    <div className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-6 border-2 border-white/20 flex items-center justify-center rounded-full">
+                      <div className="w-8 h-8 sm:w-12 sm:h-12 border border-white/30 rounded-full"></div>
                     </div>
-                    <h3 className="text-2xl font-light text-blue-200 mb-2">Select a Cigar</h3>
-                    <p className="text-blue-300 font-light">Choose from our collection on the left</p>
-                        </div>
-                    </div>
-                  )}
+                    <h3 className="text-xl sm:text-2xl font-light text-blue-200 mb-2">Select a Cigar</h3>
+                    <p className="text-sm sm:text-base text-blue-300 font-light">Choose from the tabs above</p>
+                  </div>
+                </div>
+              )}
                 </div>
                     </div>
                   </div>
