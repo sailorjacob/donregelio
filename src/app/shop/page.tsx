@@ -193,7 +193,6 @@ export default function ShopPage() {
             {/* Left Navigation Sidebar */}
             <div className="w-80 flex-shrink-0">
               <div className="sticky top-24">
-                <h2 className="text-xl font-light text-white mb-6 tracking-wide">Our Collection</h2>
                 <div className="space-y-2">
                   {products.map((product, index) => (
                     <motion.button
@@ -204,10 +203,10 @@ export default function ShopPage() {
                   onClick={() => selectProduct(product.id)}
                   onMouseEnter={() => handleProductHover(product.id, true)}
                   onMouseLeave={() => handleProductHover(product.id, false)}
-                      className={`w-full text-left px-4 py-3 transition-all duration-300 border ${
+                      className={`w-full text-left px-4 py-3 transition-all duration-300 ${
                         selectedProduct === product.id
-                          ? 'border-white/30 bg-white/10 text-white'
-                          : 'border-white/10 bg-white/5 text-blue-200 hover:border-white/20 hover:bg-white/10 hover:text-white'
+                          ? 'text-white'
+                          : 'text-blue-200 hover:text-white'
                       }`}
                     >
                         <span className="font-light tracking-wide">{product.name}</span>
