@@ -165,7 +165,7 @@ export default function HistoryPage() {
           {/* Closing Quote */}
           <section className="pt-8 border-t border-gray-200">
             <blockquote className="text-lg font-light italic text-gray-600 text-center">
-              "Every cigar tells a story of dedication, tradition, and the pursuit of perfection."
+              &ldquo;Every cigar tells a story of dedication, tradition, and the pursuit of perfection.&rdquo;
             </blockquote>
             <p className="text-gray-500 mt-2 text-center text-sm">— The Don Rogelio Legacy</p>
           </section>
