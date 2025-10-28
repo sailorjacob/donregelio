@@ -74,7 +74,7 @@ export default function HistoryPage() {
                   Rogelio Martinez was born in 1924 in Puerto Plata, Dominican Republic, in a small town of approximately 1,500 inhabitants called Rio Grande. In his villages and neighboring villages, he was a young man well known for his courtesy, the horses he owned, his love of music and, of course, his exquisite rolled cigarettes.
                 </p>
                 <p className="text-base">
-                  Dressed in fine suits and a skillful horseman, it's no rumor that he's also a charmer. In search of a better life, Rogelio left Rio Grande to the great city of Santo Domingo and never returned. In 1940 he had joined the army and in the 1960s he remarried for the fourth and last time to Thelma Fernández, with whom he had 2 children; his youngest of five children.
+                  Dressed in fine suits and a skillful horseman, it&apos;s no rumor that he&apos;s also a charmer. In search of a better life, Rogelio left Rio Grande to the great city of Santo Domingo and never returned. In 1940 he had joined the army and in the 1960s he remarried for the fourth and last time to Thelma Fernández, with whom he had 2 children; his youngest of five children.
                 </p>
                 <p className="text-base">
                   When the 80s hit, they went to New York, where he retired. He and Thelma later moved with their children, who were married by then, to South Florida. After a life full of adventure, love and joy, he passed away in 2013, he was 89 years old at the moment.
