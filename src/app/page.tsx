@@ -224,7 +224,6 @@ export default function Home() {
                 {/* Video Overlay Info */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                   <div className="text-center">
-                    <h3 className="text-xl font-light text-white mb-1">Don Rogelio Experience</h3>
                     <p className="text-sm text-blue-200 font-light">Click to close or wait for video to end</p>
                   </div>
                 </div>
