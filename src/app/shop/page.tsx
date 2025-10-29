@@ -140,7 +140,7 @@ export default function ShopPage() {
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-6">
                 <Link href="/history" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                  Heritage
+                  History
                   </Link>
                 <Link href="/shop" className="text-sm font-light text-blue-300 hover:text-white transition-colors duration-300">
                   Cigars
@@ -182,7 +182,7 @@ export default function ShopPage() {
                 Home
               </Link>
               <Link href="/history" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
-                Heritage
+                History
               </Link>
             </div>
           </div>
