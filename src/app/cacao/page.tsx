@@ -44,7 +44,7 @@ export default function CacaoPage() {
 
       {/* Coming Soon Content */}
       <div className="text-center">
-        <h1 className="text-5xl md:text-7xl font-light tracking-tight mb-6">
+        <h1 className="text-sm font-light text-blue-300">
           Coming Soon
         </h1>
       </div>
