@@ -128,11 +128,7 @@ export default function HistoryPage() {
                 <p className="text-base text-blue-100 leading-relaxed mb-3">
                   We started with the United States, Italy and Hong Kong. Right now, we have a cigar export capacity of 50,000 handcrafted units monthly.
                 </p>
-                <div className="grid grid-cols-3 gap-2">
-                  <div className="text-center p-3 border border-blue-300">
-                    <p className="text-lg font-light text-white">50K</p>
-                    <p className="text-xs text-blue-200 uppercase tracking-wide">Monthly</p>
-                  </div>
+                <div className="grid grid-cols-2 gap-2">
                   <div className="text-center p-3 border border-blue-300">
                     <p className="text-lg font-light text-white">2014</p>
                     <p className="text-xs text-blue-200 uppercase tracking-wide">Founded</p>
