@@ -186,6 +186,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm"
             onClick={() => setVideoOpen(false)}
           >
@@ -193,7 +194,7 @@ export default function Home() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              transition={{ duration: 0.3 }}
               className="relative max-w-4xl max-h-[90vh] w-full mx-4"
               onClick={(e) => e.stopPropagation()}
             >
