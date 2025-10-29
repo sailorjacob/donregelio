@@ -1,7 +1,13 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
+import { X } from "lucide-react"
 
 export default function HistoryPage() {
+  const [videoOpen, setVideoOpen] = useState(false)
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white">
       {/* Simple Header */}
@@ -150,7 +156,10 @@ export default function HistoryPage() {
                 <p className="text-blue-100 mb-3 text-sm">
                   info@donrogelio.com
                 </p>
-                <button className="bg-blue-700 text-white px-3 py-2 text-xs font-light hover:bg-blue-600 transition-colors rounded">
+                <button 
+                  onClick={() => setVideoOpen(true)}
+                  className="bg-blue-700 text-white px-3 py-2 text-xs font-light hover:bg-blue-600 transition-colors rounded cursor-pointer"
+                >
                   Watch Our Story
                 </button>
               </div>
@@ -166,6 +175,60 @@ export default function HistoryPage() {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      <AnimatePresence>
+        {videoOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+            onClick={() => setVideoOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-4xl max-h-[90vh] w-full mx-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setVideoOpen(false)}
+                className="absolute -top-12 right-0 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              {/* Video Player */}
+              <div className="relative bg-black rounded-xl overflow-hidden border border-white/20 shadow-2xl">
+                <video
+                  autoPlay
+                  muted
+                  playsInline
+                  className="w-full h-auto max-h-[80vh] object-contain"
+                  onEnded={() => setVideoOpen(false)}
+                >
+                  <source
+                    src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/enlishsubcorrected.MP4"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+
+                {/* Video Overlay Info */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                  <div className="text-center">
+                    <p className="text-sm text-blue-200 font-light">Click to close or wait for video to end</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   )
 }
