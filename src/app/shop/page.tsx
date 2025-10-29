@@ -208,9 +208,9 @@ export default function ShopPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
                   onClick={() => selectProduct(product.id)}
-                  className="flex-shrink-0 relative py-2 transition-colors duration-300"
+                  className="flex-shrink-0 relative py-2 px-3 transition-colors duration-300"
                 >
-                  <span className={`text-sm font-light tracking-wide ${
+                  <span className={`text-sm font-light whitespace-nowrap ${
                     selectedProduct === product.id ? 'text-white' : 'text-blue-200'
                   }`}>
                     {product.name}
@@ -240,11 +240,11 @@ export default function ShopPage() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
                       onClick={() => selectProduct(product.id)}
-                      className="relative text-left py-2 transition-colors duration-300 group"
+                      className="relative block w-full text-left py-1.5 transition-colors duration-300 group"
                     >
-                      <span className={`font-light tracking-wide ${
+                      <span className={`block font-light text-sm ${
                         selectedProduct === product.id ? 'text-white' : 'text-blue-200'
-                      } group-hover:text-white transition-colors duration-300`}>
+                      } group-hover:text-white transition-colors duration-300 whitespace-nowrap`}>
                         {product.name}
                       </span>
                       {/* Animated golden line */}
