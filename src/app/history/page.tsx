@@ -25,16 +25,19 @@ export default function HistoryPage() {
                 />
               </div>
             </Link>
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-2">
               <Link href="/shop" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
                 Cigars
               </Link>
+              <span className="text-blue-200/50">•</span>
               <Link href="/rum" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
                 Rum
               </Link>
+              <span className="text-blue-200/50">•</span>
               <Link href="/cacao" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
                 Cacao
               </Link>
+              <span className="text-blue-200/50">•</span>
               <Link href="/coffee" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
                 Coffee
               </Link>

@@ -4,7 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, X } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 interface Product {
   id: string
@@ -197,14 +197,6 @@ export default function Home() {
               className="relative max-w-4xl max-h-[90vh] w-full mx-4"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setVideoOpen(false)}
-                className="absolute -top-12 right-0 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
-
               {/* Video Player */}
               <div className="bg-black rounded-xl overflow-hidden border border-white/20 shadow-2xl">
                 <video
