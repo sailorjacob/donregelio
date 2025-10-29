@@ -4,8 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Sun, Moon, Menu, X } from "lucide-react"
-import { useTheme } from "next-themes"
+import { Menu, X } from "lucide-react"
 
 interface Product {
   id: string
@@ -19,7 +18,6 @@ export default function ShopPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<string | null>("robusto")
   const [hoveredProductImage, setHoveredProductImage] = useState<Record<string, boolean>>({})
-  const { theme, setTheme } = useTheme()
 
   // Prevent body scroll when product is selected (desktop only)
   useEffect(() => {
@@ -50,11 +48,11 @@ export default function ShopPage() {
 
   // Get current image for product (hover state)
   const getCurrentImage = (product: Product) => {
-    // Check for hover state
-    if (hoveredProductImage[product.id] && product.hoverImage) {
+    // Default to hover image (individual cigar) when selected
+    if (product.hoverImage) {
       return product.hoverImage
     }
-    // Default to main image
+    // Fallback to main image
     return product.image
   }
 
@@ -126,7 +124,7 @@ export default function ShopPage() {
           <nav className="flex items-center justify-between">
             <div className="flex items-center space-x-8">
               <Link href="/" className="flex items-center">
-                <div className="w-8 h-8 overflow-hidden border border-white/30">
+                <div className="w-8 h-8 rounded-full overflow-hidden">
                   <Image
                     src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                     alt="Don Rogelio"
@@ -141,28 +139,23 @@ export default function ShopPage() {
               <div className="hidden md:flex items-center space-x-6">
                 <Link href="/history" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
                   History
-                  </Link>
+                </Link>
                 <Link href="/shop" className="text-sm font-light text-blue-300 hover:text-white transition-colors duration-300">
                   Cigars
+                </Link>
+                <Link href="/rum" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                  Rum
+                </Link>
+                <Link href="/cacao" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                  Cacao
+                </Link>
+                <Link href="/coffee" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                  Coffee
                 </Link>
               </div>
             </div>
 
             <div className="flex items-center space-x-4">
-
-              {/* Theme Toggle */}
-              <button
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 hover:bg-blue-800 transition-colors duration-200 rounded-lg"
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? (
-                  <Sun className="w-5 h-5 text-blue-200" />
-                ) : (
-                  <Moon className="w-5 h-5 text-blue-200" />
-                )}
-              </button>
-
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -184,6 +177,18 @@ export default function ShopPage() {
               <Link href="/history" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
                 History
               </Link>
+              <Link href="/shop" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
+                Cigars
+              </Link>
+              <Link href="/rum" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
+                Rum
+              </Link>
+              <Link href="/cacao" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
+                Cacao
+              </Link>
+              <Link href="/coffee" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
+                Coffee
+              </Link>
             </div>
           </div>
         )}
@@ -195,7 +200,7 @@ export default function ShopPage() {
         <div className="container max-w-7xl mx-auto">
           {/* Mobile Navigation Tabs */}
           <div className="md:hidden mb-6 -mx-4 px-4">
-            <div className="flex overflow-x-auto gap-3 pb-3 scrollbar-hide">
+            <div className="flex overflow-x-auto gap-6 pb-3 scrollbar-hide">
               {products.map((product, index) => (
                 <motion.button
                   key={`mobile-nav-${product.id}`}
@@ -203,13 +208,20 @@ export default function ShopPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
                   onClick={() => selectProduct(product.id)}
-                  className={`flex-shrink-0 px-4 py-3 rounded-lg transition-all duration-300 text-sm font-light min-w-[100px] text-center ${
-                    selectedProduct === product.id
-                      ? 'bg-white/20 text-white border border-white/30 shadow-lg'
-                      : 'bg-white/5 text-blue-200 hover:text-white hover:bg-white/10 border border-white/10 active:bg-white/15'
-                  }`}
+                  className="flex-shrink-0 relative py-2 transition-colors duration-300"
                 >
-                  {product.name}
+                  <span className={`text-sm font-light tracking-wide ${
+                    selectedProduct === product.id ? 'text-white' : 'text-blue-200'
+                  }`}>
+                    {product.name}
+                  </span>
+                  {/* Animated golden line */}
+                  <motion.div
+                    className="absolute left-0 right-0 bottom-0 h-px bg-amber-400"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: selectedProduct === product.id ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </motion.button>
               ))}
             </div>
@@ -218,34 +230,36 @@ export default function ShopPage() {
           {/* Desktop and Mobile Layout */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-8 min-h-[calc(100vh-10rem)]">
             {/* Desktop Navigation Sidebar */}
-            <div className="hidden md:block w-80 flex-shrink-0">
+            <div className="hidden md:block w-56 flex-shrink-0">
               <div className="sticky top-24">
-                <div className="space-y-2">
+                <div className="space-y-1">
                   {products.map((product, index) => (
                     <motion.button
                       key={`nav-${product.id}`}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
-                  onClick={() => selectProduct(product.id)}
-                  onMouseEnter={() => {
-                    if (window.innerWidth >= 768) handleProductHover(product.id, true)
-                  }}
-                  onMouseLeave={() => {
-                    if (window.innerWidth >= 768) handleProductHover(product.id, false)
-                  }}
-                      className={`w-full text-left px-4 py-3 transition-all duration-300 rounded-lg ${
-                        selectedProduct === product.id
-                          ? 'text-white bg-white/10 border border-white/20'
-                          : 'text-blue-200 hover:text-white hover:bg-white/5 active:bg-white/10 border border-transparent'
-                      }`}
+                      onClick={() => selectProduct(product.id)}
+                      className="relative text-left py-2 transition-colors duration-300 group"
                     >
-                        <span className="font-light tracking-wide">{product.name}</span>
+                      <span className={`font-light tracking-wide ${
+                        selectedProduct === product.id ? 'text-white' : 'text-blue-200'
+                      } group-hover:text-white transition-colors duration-300`}>
+                        {product.name}
+                      </span>
+                      {/* Animated golden line */}
+                      <motion.div
+                        className="absolute left-0 bottom-0 h-px bg-amber-400 origin-left"
+                        initial={{ scaleX: 0 }}
+                        whileHover={{ scaleX: 1 }}
+                        animate={{ scaleX: selectedProduct === product.id ? 1 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      />
                     </motion.button>
-                        ))}
-                      </div>
-                    </div>
-                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             {/* Product Display */}
             <div className="flex-1 min-w-0">
@@ -263,57 +277,22 @@ export default function ShopPage() {
                     >
                       <div className="max-w-2xl w-full mx-auto">
                       {/* Product Image */}
-                        <div className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8 overflow-hidden border border-white/20 bg-white/5 backdrop-blur-sm">
+                        <div className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8">
                         <Image
                           src={getCurrentImage(product)}
                           alt={product.name}
                           fill
-                            className="object-contain p-4 sm:p-6 md:p-8 transition-all duration-700 ease-in-out"
-                            key={`${product.id}-${hoveredProductImage[product.id] ? 'hover' : 'normal'}`}
+                          className="object-contain p-4 sm:p-6 md:p-8 transition-all duration-700 ease-in-out"
                         />
-
-                          {/* Image Toggle */}
-                        {product.hoverImage && (
-                            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex space-x-1 sm:space-x-2">
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                handleProductHover(product.id, false)
-                              }}
-                                className={`px-2 py-1 sm:px-3 sm:py-1 text-xs transition-all duration-200 rounded ${
-                                !hoveredProductImage[product.id]
-                                    ? 'bg-white/20 text-white border border-white/30'
-                                    : 'bg-white/10 text-blue-200 hover:bg-white/15 border border-white/20'
-                              }`}
-                            >
-                              Full
-                            </button>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                handleProductHover(product.id, true)
-                              }}
-                                className={`px-2 py-1 sm:px-3 sm:py-1 text-xs transition-all duration-200 rounded ${
-                                hoveredProductImage[product.id]
-                                    ? 'bg-white/20 text-white border border-white/30'
-                                    : 'bg-white/10 text-blue-200 hover:bg-white/15 border border-white/20'
-                              }`}
-                            >
-                                Detail
-                            </button>
-                          </div>
-                        )}
                       </div>
 
                       {/* Product Info */}
-                        <div className="text-center space-y-4 md:space-y-6">
-                          <div>
-                            <h1 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-4 md:mb-6 tracking-wide">
+                        <div className="space-y-3">
+                          <h1 className="text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-wide">
                             {product.name}
-                            </h1>
-                          </div>
+                          </h1>
 
-                          <p className="text-base sm:text-lg text-blue-100 leading-relaxed max-w-xl mx-auto font-light px-4">
+                          <p className="text-xs sm:text-sm text-blue-300 leading-relaxed max-w-xl font-extralight">
                             {product.description}
                           </p>
                         </div>
