@@ -202,7 +202,6 @@ export default function Home() {
               <div className="bg-black rounded-xl overflow-hidden border border-white/20 shadow-2xl">
                 <video
                   autoPlay
-                  muted
                   playsInline
                   className="w-full h-auto max-h-[80vh] object-contain"
                   onEnded={() => setVideoOpen(false)}
