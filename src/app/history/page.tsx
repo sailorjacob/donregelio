@@ -141,14 +141,14 @@ export default function HistoryPage() {
               <div>
                 <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">Phone</h3>
                 <p className="text-blue-100 text-sm">
-                  +1 718 675-2636<br />
+                  +1 809 299-9188<br />
                   +1 829 648-6430
                 </p>
               </div>
               <div>
                 <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">Email</h3>
                 <p className="text-blue-100 mb-3 text-sm">
-                  Cigarsdonrogelio@gmail.com
+                  info@donrogelio.com
                 </p>
                 <button className="bg-blue-700 text-white px-3 py-2 text-xs font-light hover:bg-blue-600 transition-colors rounded">
                   Watch Our Story
