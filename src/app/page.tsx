@@ -206,7 +206,7 @@ export default function Home() {
               </button>
 
               {/* Video Player */}
-              <div className="relative bg-black rounded-xl overflow-hidden border border-white/20 shadow-2xl">
+              <div className="bg-black rounded-xl overflow-hidden border border-white/20 shadow-2xl">
                 <video
                   autoPlay
                   muted
@@ -220,13 +220,11 @@ export default function Home() {
                   />
                   Your browser does not support the video tag.
                 </video>
+              </div>
 
-                {/* Video Overlay Info */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                  <div className="text-center">
-                    <p className="text-sm text-blue-200 font-light">Click to close or wait for video to end</p>
-                  </div>
-                </div>
+              {/* Video Info Text */}
+              <div className="text-center mt-4">
+                <p className="text-sm text-blue-200 font-light">Click to close or wait for video to end</p>
               </div>
             </motion.div>
           </motion.div>
