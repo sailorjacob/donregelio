@@ -143,15 +143,6 @@ export default function ShopPage() {
                 <Link href="/shop" className="text-sm font-light text-blue-300 hover:text-white transition-colors duration-300">
                   Cigars
                 </Link>
-                <Link href="/rum" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                  Rum
-                </Link>
-                <Link href="/cacao" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                  Cacao
-                </Link>
-                <Link href="/coffee" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                  Coffee
-                </Link>
               </div>
             </div>
 
@@ -179,15 +170,6 @@ export default function ShopPage() {
               </Link>
               <Link href="/shop" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
                 Cigars
-              </Link>
-              <Link href="/rum" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
-                Rum
-              </Link>
-              <Link href="/cacao" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
-                Cacao
-              </Link>
-              <Link href="/coffee" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
-                Coffee
               </Link>
             </div>
           </div>
