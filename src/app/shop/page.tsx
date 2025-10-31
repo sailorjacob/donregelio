@@ -119,12 +119,6 @@ export default function ShopPage() {
 
   return (
     <main className={`min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative ${playfair.className}`}>
-      {/* Crown Molding Corners - Elegant Gold Frames */}
-      <div className="fixed top-0 left-0 w-32 h-32 border-t-4 border-l-4 border-amber-500/60 pointer-events-none z-50 shadow-[0_0_25px_rgba(217,119,6,0.4)]"></div>
-      <div className="fixed top-0 right-0 w-32 h-32 border-t-4 border-r-4 border-amber-500/60 pointer-events-none z-50 shadow-[0_0_25px_rgba(217,119,6,0.4)]"></div>
-      <div className="fixed bottom-0 left-0 w-32 h-32 border-b-4 border-l-4 border-amber-500/60 pointer-events-none z-50 shadow-[0_0_25px_rgba(217,119,6,0.4)]"></div>
-      <div className="fixed bottom-0 right-0 w-32 h-32 border-b-4 border-r-4 border-amber-500/60 pointer-events-none z-50 shadow-[0_0_25px_rgba(217,119,6,0.4)]"></div>
-      
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-blue-700/50 bg-blue-900/90">
         <div className="w-full px-4 sm:px-6 py-2">
