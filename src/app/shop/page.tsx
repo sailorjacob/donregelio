@@ -11,6 +11,7 @@ interface Product {
   name: string
   image: string
   hoverImage?: string
+  openBoxImage?: string
   description: string
 }
 
@@ -18,6 +19,8 @@ export default function ShopPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<string | null>("robusto")
   const [hoveredProductImage, setHoveredProductImage] = useState<Record<string, boolean>>({})
+  const [isProductHovered, setIsProductHovered] = useState(false)
+  const [selectedQuantity, setSelectedQuantity] = useState<"single" | "5pack" | "box">("single")
 
   // Prevent body scroll when product is selected (desktop only)
   useEffect(() => {
@@ -63,6 +66,7 @@ export default function ShopPage() {
       name: "Robusto",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto closed.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto.png",
+      openBoxImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto open.png",
       description: "ROBUSTO SIZE: 52 X 5 • Premium Dominican tobacco aged for nearly a year in special English spiced rum barrels. Features exquisite aroma with natural tobacco flavor. Available in Habano, Maduro, and Connecticut wrappers. Capote: Corojo • Tripa: pilotomejorado, criollo98corojo • Capas: habano, maduro, Connecticut."
     },
     {
@@ -257,26 +261,97 @@ export default function ShopPage() {
                       transition={{ duration: 0.5, ease: "easeOut" }}
                       className="h-full flex items-center justify-center"
                     >
-                      <div className="max-w-2xl w-full mx-auto">
-                      {/* Product Image */}
-                        <div className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8">
-                        <Image
-                          src={getCurrentImage(product)}
-                          alt={product.name}
-                          fill
-                          className="object-contain p-4 sm:p-6 md:p-8 transition-all duration-700 ease-in-out"
-                        />
-                      </div>
+                      <div className="max-w-4xl w-full mx-auto">
+                        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center">
+                          {/* Left side - Product Image */}
+                          <div className="flex-1 w-full">
+                            <div 
+                              className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8"
+                              onMouseEnter={() => setIsProductHovered(true)}
+                              onMouseLeave={() => setIsProductHovered(false)}
+                            >
+                              <Image
+                                src={getCurrentImage(product)}
+                                alt={product.name}
+                                fill
+                                className="object-contain p-4 sm:p-6 md:p-8 transition-all duration-700 ease-in-out"
+                              />
+                            </div>
 
-                      {/* Product Info */}
-                        <div className="space-y-3">
-                          <h1 className="text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-wide">
-                            {product.name}
-                          </h1>
+                            {/* Product Info */}
+                            <div className="space-y-3">
+                              <h1 className="text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-wide">
+                                {product.name}
+                              </h1>
 
-                          <p className="text-xs sm:text-sm text-blue-300 leading-relaxed max-w-xl font-extralight">
-                            {product.description}
-                          </p>
+                              <p className="text-xs sm:text-sm text-blue-300 leading-relaxed max-w-xl font-extralight">
+                                {product.description}
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* Right side - Purchase Options (shown on hover) */}
+                          {isProductHovered && product.openBoxImage && (
+                            <motion.div
+                              initial={{ opacity: 0, x: 20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: 20 }}
+                              transition={{ duration: 0.3 }}
+                              className="hidden lg:block w-72 flex-shrink-0"
+                            >
+                              {/* Open Box Image */}
+                              <div className="relative h-48 mb-4">
+                                <Image
+                                  src={product.openBoxImage}
+                                  alt={`${product.name} Open Box`}
+                                  fill
+                                  className="object-contain"
+                                />
+                              </div>
+
+                              {/* Purchase Options */}
+                              <div className="bg-blue-800/30 backdrop-blur-sm border border-blue-700/50 rounded-lg p-4">
+                                <h3 className="text-lg font-light text-white mb-3">Order Options</h3>
+                                <div className="space-y-2">
+                                  <button
+                                    onClick={() => setSelectedQuantity("single")}
+                                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                                      selectedQuantity === "single"
+                                        ? "bg-amber-500/20 border-2 border-amber-400 text-white"
+                                        : "bg-blue-900/30 border border-blue-600/50 text-blue-200 hover:bg-blue-800/40"
+                                    }`}
+                                  >
+                                    <div className="font-light">Single Cigar</div>
+                                    <div className="text-xs text-blue-300 mt-1">Individual purchase</div>
+                                  </button>
+
+                                  <button
+                                    onClick={() => setSelectedQuantity("5pack")}
+                                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                                      selectedQuantity === "5pack"
+                                        ? "bg-amber-500/20 border-2 border-amber-400 text-white"
+                                        : "bg-blue-900/30 border border-blue-600/50 text-blue-200 hover:bg-blue-800/40"
+                                    }`}
+                                  >
+                                    <div className="font-light">5 Pack</div>
+                                    <div className="text-xs text-blue-300 mt-1">Five cigars</div>
+                                  </button>
+
+                                  <button
+                                    onClick={() => setSelectedQuantity("box")}
+                                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                                      selectedQuantity === "box"
+                                        ? "bg-amber-500/20 border-2 border-amber-400 text-white"
+                                        : "bg-blue-900/30 border border-blue-600/50 text-blue-200 hover:bg-blue-800/40"
+                                    }`}
+                                  >
+                                    <div className="font-light">Full Box</div>
+                                    <div className="text-xs text-blue-300 mt-1">Complete collection</div>
+                                  </button>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
                         </div>
                     </div>
                   </motion.div>

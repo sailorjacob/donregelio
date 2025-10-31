@@ -55,7 +55,10 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-medium text-white mb-1">Phone</h3>
-                    <p className="text-blue-200">+1 (555) 123-4567</p>
+                    <p className="text-blue-200">
+                      +1.718.675.2636<br />
+                      +1.809.299.9188
+                    </p>
                     <p className="text-sm text-blue-300">Mon-Fri 9AM-6PM EST</p>
                   </div>
                 </div>

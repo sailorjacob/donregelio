@@ -157,8 +157,8 @@ export default function HistoryPage() {
               <div>
                 <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">Phone</h3>
                 <p className="text-blue-100 text-sm">
-                  +1 809 299-9188<br />
-                  +1 829 648-6430
+                  +1.718.675.2636<br />
+                  +1.809.299.9188
                 </p>
               </div>
               <div>
