@@ -25,8 +25,6 @@ interface Product {
 export default function ShopPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<string | null>("robusto")
-  const [hoveredProductImage, setHoveredProductImage] = useState<Record<string, boolean>>({})
-  const [isProductHovered, setIsProductHovered] = useState(false)
   const [selectedQuantity, setSelectedQuantity] = useState<"single" | "5pack" | "box">("single")
 
   // Prevent body scroll when product is selected (desktop only)
@@ -48,15 +46,7 @@ export default function ShopPage() {
     setSelectedProduct(productId === selectedProduct ? null : productId)
   };
 
-  // Image hover functions
-  const handleProductHover = (productId: string, isHovering: boolean) => {
-    setHoveredProductImage(prev => ({
-      ...prev,
-      [productId]: isHovering
-    }))
-  };
-
-  // Get current image for product (hover state)
+  // Get current image for product (show individual cigar when selected)
   const getCurrentImage = (product: Product) => {
     // Default to hover image (individual cigar) when selected
     if (product.hoverImage) {
@@ -279,12 +269,10 @@ export default function ShopPage() {
                           {/* Left side - Product Image */}
                           <div className="flex-1 w-full">
                             <div 
-                              className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8 rounded-lg border-4 border-amber-500/50 shadow-[0_0_40px_rgba(217,119,6,0.4),inset_0_0_40px_rgba(217,119,6,0.1)] bg-gradient-to-br from-zinc-900/30 to-neutral-950/30 p-2"
+                              className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8 rounded-lg border-4 border-amber-500/50 shadow-[0_0_40px_rgba(217,119,6,0.4),inset_0_0_40px_rgba(217,119,6,0.1)] bg-gradient-to-br from-blue-900/20 to-blue-950/30 p-2"
                               style={{
                                 boxShadow: '0 0 40px rgba(217,119,6,0.4), inset 0 0 40px rgba(217,119,6,0.1), 0 0 0 1px rgba(217,119,6,0.2) inset, 0 0 0 8px rgba(0,0,0,0.3) inset'
                               }}
-                              onMouseEnter={() => setIsProductHovered(true)}
-                              onMouseLeave={() => setIsProductHovered(false)}
                             >
                               {/* Inner frame for embossing effect */}
                               <div className="absolute inset-2 border border-amber-400/20 rounded pointer-events-none"></div>
@@ -308,17 +296,17 @@ export default function ShopPage() {
                             </div>
                           </div>
 
-                          {/* Right side - Purchase Options (shown on hover) */}
-                          {isProductHovered && product.openBoxImage && (
+                          {/* Right side - Purchase Options (always shown when product selected) */}
+                          {product.openBoxImage && (
                             <motion.div
                               initial={{ opacity: 0, x: 20 }}
                               animate={{ opacity: 1, x: 0 }}
                               exit={{ opacity: 0, x: 20 }}
                               transition={{ duration: 0.3 }}
-                              className="hidden lg:block w-72 flex-shrink-0"
+                              className="w-full lg:w-72 flex-shrink-0"
                             >
                               {/* Open Box Image */}
-                              <div className="relative h-48 mb-4 rounded-lg border-4 border-amber-500/50 shadow-[0_0_40px_rgba(217,119,6,0.4),inset_0_0_40px_rgba(217,119,6,0.1)] bg-gradient-to-br from-zinc-900/30 to-neutral-950/30 p-2"
+                              <div className="relative h-48 mb-4 rounded-lg border-4 border-amber-500/50 shadow-[0_0_40px_rgba(217,119,6,0.4),inset_0_0_40px_rgba(217,119,6,0.1)] bg-gradient-to-br from-blue-900/20 to-blue-950/30 p-2"
                                 style={{
                                   boxShadow: '0 0 40px rgba(217,119,6,0.4), inset 0 0 40px rgba(217,119,6,0.1), 0 0 0 1px rgba(217,119,6,0.2) inset, 0 0 0 8px rgba(0,0,0,0.3) inset'
                                 }}
