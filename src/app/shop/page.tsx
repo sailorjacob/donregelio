@@ -71,6 +71,7 @@ export default function ShopPage() {
       name: "Double Toro",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto closed.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/doubletoro.png",
+      openBoxImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto open.png",
       description: "DOUBLE TORO SIZE: 60 X 6 • Premium Dominican tobacco aged for nearly a year in special English spiced rum barrels. Features exquisite aroma with natural tobacco flavor. Available in Habano, Maduro, and Connecticut wrappers. Capote: Corojo • Tripa: pilotomejorado, criollo98corojo • Capas: habano, maduro, Connecticut."
     },
     {
@@ -78,6 +79,7 @@ export default function ShopPage() {
       name: "Lancero",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto closed.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/lancero%20clear2.png",
+      openBoxImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto open.png",
       description: "LANCERO SIZE: 40 X 7/2 • Premium Dominican tobacco aged for nearly a year in special English spiced rum barrels. Features exquisite aroma with natural tobacco flavor. Available in Habano, Maduro, and Connecticut wrappers. Capote: Corojo • Tripa: pilotomejorado, criollo98corojo • Capas: habano, maduro, Connecticut."
     },
     {
@@ -85,6 +87,7 @@ export default function ShopPage() {
       name: "Perfecto",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto closed.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/perfecto.png",
+      openBoxImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto open.png",
       description: "SOLOMON SIZE: 57 x 7/4 • Premium Dominican tobacco aged for nearly a year in special English spiced rum barrels. Features exquisite aroma with natural tobacco flavor. Available in Habano, Maduro, and Connecticut wrappers. Capote: Corojo • Tripa: pilotomejorado, criollo98corojo • Capas: habano, maduro, Connecticut."
     },
     {
@@ -92,6 +95,7 @@ export default function ShopPage() {
       name: "Salamon",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto closed.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/salamon.png",
+      openBoxImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto open.png",
       description: "SOLOMON SIZE: 57 x 7/4 • Premium Dominican tobacco aged for nearly a year in special English spiced rum barrels. Features exquisite aroma with natural tobacco flavor. Available in Habano, Maduro, and Connecticut wrappers. Capote: Corojo • Tripa: pilotomejorado, criollo98corojo • Capas: habano, maduro, Connecticut."
     },
     {
@@ -99,6 +103,7 @@ export default function ShopPage() {
       name: "Toro",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto closed.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/toro.png",
+      openBoxImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto open.png",
       description: "Premium handcrafted Toro cigar from the Dominican Republic. Features Corojo capote, piloto mejorado and criollo 98 corojo tripa, available in Habano, Maduro, and Connecticut wrapper layers. Perfect balance of size and smoking time."
     },
     {
@@ -106,6 +111,7 @@ export default function ShopPage() {
       name: "Torpedo",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto closed.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/torpedo.png",
+      openBoxImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto open.png",
       description: "Premium handcrafted Torpedo cigar from the Dominican Republic. Features Corojo capote, piloto mejorado and criollo 98 corojo tripa, available in Habano, Maduro, and Connecticut wrapper layers. Sophisticated tapered head for enhanced flavor concentration."
     },
     {
@@ -113,6 +119,7 @@ export default function ShopPage() {
       name: "Taco",
       image: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto closed.png",
       hoverImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/taco.png",
+      openBoxImage: "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/robusto open.png",
       description: "TACO SIZE: 54 X 4/2 • Premium Dominican tobacco aged for nearly a year in special English spiced rum barrels. Features exquisite aroma with natural tobacco flavor. Available in Habano, Maduro, and Connecticut wrappers. Capote: Corojo • Tripa: pilotomejorado, criollo98corojo • Capas: habano, maduro, Connecticut."
     }
   ]
@@ -263,13 +270,8 @@ export default function ShopPage() {
                           {/* Left side - Product Image */}
                           <div className="flex-1 w-full">
                             <div 
-                              className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8 rounded-lg border-4 border-amber-500/50 shadow-[0_0_40px_rgba(217,119,6,0.4),inset_0_0_40px_rgba(217,119,6,0.1)] bg-gradient-to-br from-blue-900/20 to-blue-950/30 p-2"
-                              style={{
-                                boxShadow: '0 0 40px rgba(217,119,6,0.4), inset 0 0 40px rgba(217,119,6,0.1), 0 0 0 1px rgba(217,119,6,0.2) inset, 0 0 0 8px rgba(0,0,0,0.3) inset'
-                              }}
+                              className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8 rounded-lg border border-white/20 p-2"
                             >
-                              {/* Inner frame for embossing effect */}
-                              <div className="absolute inset-2 border border-amber-400/20 rounded pointer-events-none"></div>
                               <Image
                                 src={getCurrentImage(product)}
                                 alt={product.name}
@@ -300,12 +302,7 @@ export default function ShopPage() {
                               className="w-full lg:w-72 flex-shrink-0"
                             >
                               {/* Open Box Image */}
-                              <div className="relative h-48 mb-4 rounded-lg border-4 border-amber-500/50 shadow-[0_0_40px_rgba(217,119,6,0.4),inset_0_0_40px_rgba(217,119,6,0.1)] bg-gradient-to-br from-blue-900/20 to-blue-950/30 p-2"
-                                style={{
-                                  boxShadow: '0 0 40px rgba(217,119,6,0.4), inset 0 0 40px rgba(217,119,6,0.1), 0 0 0 1px rgba(217,119,6,0.2) inset, 0 0 0 8px rgba(0,0,0,0.3) inset'
-                                }}
-                              >
-                                <div className="absolute inset-2 border border-amber-400/20 rounded pointer-events-none"></div>
+                              <div className="relative h-48 mb-4 rounded-lg border border-white/20 p-2">
                                 <Image
                                   src={product.openBoxImage}
                                   alt={`${product.name} Open Box`}
@@ -320,38 +317,35 @@ export default function ShopPage() {
                                 <div className="space-y-2">
                                   <button
                                     onClick={() => setSelectedQuantity("single")}
-                                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 border ${
                                       selectedQuantity === "single"
-                                        ? "bg-amber-500/20 border-2 border-amber-400 text-white"
-                                        : "bg-blue-900/30 border border-blue-600/50 text-blue-200 hover:bg-blue-800/40"
+                                        ? "border-white text-white"
+                                        : "border-blue-600/50 text-blue-200 hover:border-blue-500/70"
                                     }`}
                                   >
                                     <div className="font-light">Single Cigar</div>
-                                    <div className="text-xs text-blue-300 mt-1">Individual purchase</div>
                                   </button>
 
                                   <button
                                     onClick={() => setSelectedQuantity("5pack")}
-                                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 border ${
                                       selectedQuantity === "5pack"
-                                        ? "bg-amber-500/20 border-2 border-amber-400 text-white"
-                                        : "bg-blue-900/30 border border-blue-600/50 text-blue-200 hover:bg-blue-800/40"
+                                        ? "border-white text-white"
+                                        : "border-blue-600/50 text-blue-200 hover:border-blue-500/70"
                                     }`}
                                   >
                                     <div className="font-light">5 Pack</div>
-                                    <div className="text-xs text-blue-300 mt-1">Five cigars</div>
                                   </button>
 
                                   <button
                                     onClick={() => setSelectedQuantity("box")}
-                                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 border ${
                                       selectedQuantity === "box"
-                                        ? "bg-amber-500/20 border-2 border-amber-400 text-white"
-                                        : "bg-blue-900/30 border border-blue-600/50 text-blue-200 hover:bg-blue-800/40"
+                                        ? "border-white text-white"
+                                        : "border-blue-600/50 text-blue-200 hover:border-blue-500/70"
                                     }`}
                                   >
                                     <div className="font-light">Full Box</div>
-                                    <div className="text-xs text-blue-300 mt-1">Complete collection</div>
                                   </button>
                                 </div>
                               </div>
