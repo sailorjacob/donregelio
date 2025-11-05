@@ -132,6 +132,28 @@ export const translations: Translations = {
   termsLastUpdated: {
     en: "Last Updated",
     es: "Última actualización"
+  },
+
+  // History Page
+  backToHome: {
+    en: "Back to Home",
+    es: "Volver al Inicio"
+  },
+  historyTitle: {
+    en: "Our History",
+    es: "Nuestra Historia"
+  },
+  historySubtitle: {
+    en: "A legacy of craftsmanship, tradition, and excellence",
+    es: "Un legado de artesanía, tradición y excelencia"
+  },
+  historyQuote: {
+    en: "Every cigar tells a story of dedication, tradition, and the pursuit of perfection.",
+    es: "Cada cigarro cuenta una historia de dedicación, tradición y la búsqueda de la perfección."
+  },
+  historyQuoteAuthor: {
+    en: "The Don Rogelio Legacy",
+    es: "El Legado de Don Rogelio"
   }
 }
 

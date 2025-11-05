@@ -104,11 +104,18 @@ export default function AgeVerification({ onVerified }: { onVerified: () => void
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="mb-12"
+          className="mb-12 flex flex-col items-center"
         >
-          <h1 className="text-7xl md:text-8xl font-bold tracking-wider mb-4">
-            DON ROGELIO
-          </h1>
+          <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-amber-400 mb-6 shadow-2xl">
+            <Image
+              src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
+              alt="Don Rogelio Logo"
+              width={256}
+              height={256}
+              className="w-full h-full object-cover"
+              priority
+            />
+          </div>
           <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent w-64 mx-auto" />
         </motion.div>
 

@@ -5,8 +5,12 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
+import LanguageSwitcher from "@/components/LanguageSwitcher"
+import Footer from "@/components/Footer"
 
 export default function HistoryPage() {
+  const { t } = useLanguage()
   const [videoOpen, setVideoOpen] = useState(false)
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white">
@@ -25,22 +29,17 @@ export default function HistoryPage() {
                 />
               </div>
             </Link>
-            <div className="flex items-center space-x-2">
-              <Link href="/shop" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                Cigars
-              </Link>
-              <span className="text-blue-200/50">•</span>
-              <Link href="/rum" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                Rum
-              </Link>
-              <span className="text-blue-200/50">•</span>
-              <Link href="/cacao" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                Cacao
-              </Link>
-              <span className="text-blue-200/50">•</span>
-              <Link href="/coffee" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                Coffee
-              </Link>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center space-x-2">
+                <Link href="/shop" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                  {t("shop")}
+                </Link>
+                <span className="text-blue-200/50">•</span>
+                <Link href="/contact" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                  {t("contact")}
+                </Link>
+              </div>
+              <LanguageSwitcher />
             </div>
           </nav>
         </div>
@@ -53,17 +52,17 @@ export default function HistoryPage() {
           href="/"
           className="inline-block text-blue-200 hover:text-white mb-6 text-sm font-light transition-colors duration-300"
         >
-          ← Back to Home
+          ← {t("backToHome")}
         </Link>
 
         {/* Letter Header */}
         <div className="mb-6">
           <h1 className="text-4xl font-light tracking-tight text-white mb-2">
-            Our History
+            {t("historyTitle")}
           </h1>
           <div className="w-16 h-px bg-blue-400 mb-2"></div>
           <p className="text-lg text-blue-100 font-light leading-tight">
-            A legacy of craftsmanship, tradition, and excellence
+            {t("historySubtitle")}
           </p>
         </div>
 
@@ -179,12 +178,14 @@ export default function HistoryPage() {
           {/* Closing Quote */}
           <div className="pt-4 border-t border-blue-700 mt-6">
             <blockquote className="text-base font-light italic text-blue-100 text-center">
-              &ldquo;Every cigar tells a story of dedication, tradition, and the pursuit of perfection.&rdquo;
+              &ldquo;{t("historyQuote")}&rdquo;
             </blockquote>
-            <p className="text-blue-300 mt-2 text-center text-xs">— The Don Rogelio Legacy</p>
+            <p className="text-blue-300 mt-2 text-center text-xs">— {t("historyQuoteAuthor")}</p>
           </div>
         </div>
       </div>
+
+      <Footer />
 
       {/* Video Modal */}
       <AnimatePresence>
