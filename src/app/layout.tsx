@@ -1,25 +1,53 @@
-import type { Metadata } from "next"
+"use client"
+
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import { LanguageProvider } from "@/contexts/LanguageContext"
+import AgeVerification from "@/components/AgeVerification"
+import { useState, useEffect } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
-
-export const metadata: Metadata = {
-  title: "Don Rogelio - Premium Cigars",
-  description: "Discover the finest collection of premium cigars from Don Rogelio. Handcrafted with tradition and excellence.",
-  icons: {
-    icon: "/favicon.svg",
-  },
-}
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const [isVerified, setIsVerified] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Check if user has already verified age
+    const verifiedTime = localStorage.getItem("ageVerified")
+    if (verifiedTime) {
+      const expiryTime = parseInt(verifiedTime)
+      const currentTime = new Date().getTime()
+      
+      if (currentTime < expiryTime) {
+        setIsVerified(true)
+      } else {
+        // Verification expired, remove it
+        localStorage.removeItem("ageVerified")
+      }
+    }
+    setIsLoading(false)
+  }, [])
+
+  const handleVerified = () => {
+    setIsVerified(true)
+  }
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <title>Don Rogelio - Premium Cigars</title>
+        <meta
+          name="description"
+          content="Discover the finest collection of premium cigars from Don Rogelio. Handcrafted with tradition and excellence."
+        />
+        <link rel="icon" href="/favicon.svg" />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
@@ -27,7 +55,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <LanguageProvider>
+            {!isLoading && (
+              <>
+                {!isVerified && <AgeVerification onVerified={handleVerified} />}
+                {isVerified && children}
+              </>
+            )}
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

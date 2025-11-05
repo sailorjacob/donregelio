@@ -5,6 +5,9 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
+import Footer from "@/components/Footer"
+import LanguageSwitcher from "@/components/LanguageSwitcher"
 
 interface Product {
   id: string
@@ -16,6 +19,7 @@ interface Product {
 }
 
 export default function Home() {
+  const { t } = useLanguage()
   const [videoOpen, setVideoOpen] = useState(true) // Auto-open on page load
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null)
 
@@ -114,10 +118,25 @@ export default function Home() {
                   href="/history"
                   className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300"
                 >
-                  History
+                  {t("history")}
+                </Link>
+                <Link
+                  href="/shop"
+                  className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300"
+                >
+                  {t("shop")}
+                </Link>
+                <Link
+                  href="/contact"
+                  className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300"
+                >
+                  {t("contact")}
                 </Link>
               </div>
             </div>
+
+            {/* Language Switcher */}
+            <LanguageSwitcher />
           </nav>
         </div>
       </header>
@@ -173,13 +192,15 @@ export default function Home() {
                 href="/shop"
                 className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors duration-300 group"
               >
-                <span className="text-sm font-light tracking-wide">Explore Collection</span>
+                <span className="text-sm font-light tracking-wide">{t("exploreCollection")}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
             </div>
           </div>
         </div>
       </main>
+
+      <Footer />
 
       {/* Video Modal */}
       <AnimatePresence>
