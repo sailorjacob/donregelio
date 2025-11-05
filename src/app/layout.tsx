@@ -5,7 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/contexts/LanguageContext"
 import AgeVerification from "@/components/AgeVerification"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -32,11 +32,6 @@ export default function RootLayout({
     }
     return false
   })
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    setIsLoading(false)
-  }, [])
 
   const handleVerified = () => {
     setIsVerified(true)
@@ -60,12 +55,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LanguageProvider>
-            {!isLoading && (
-              <>
-                {!isVerified && <AgeVerification onVerified={handleVerified} />}
-                {isVerified && children}
-              </>
-            )}
+            {!isVerified && <AgeVerification onVerified={handleVerified} />}
+            {isVerified && children}
           </LanguageProvider>
         </ThemeProvider>
       </body>
