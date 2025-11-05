@@ -14,23 +14,27 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const [isVerified, setIsVerified] = useState(false)
+  const [isVerified, setIsVerified] = useState(() => {
+    // Initialize state from localStorage
+    if (typeof window !== 'undefined') {
+      const verifiedTime = localStorage.getItem("ageVerified")
+      if (verifiedTime) {
+        const expiryTime = parseInt(verifiedTime)
+        const currentTime = new Date().getTime()
+        
+        if (currentTime < expiryTime) {
+          return true
+        } else {
+          // Verification expired, remove it
+          localStorage.removeItem("ageVerified")
+        }
+      }
+    }
+    return false
+  })
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Check if user has already verified age
-    const verifiedTime = localStorage.getItem("ageVerified")
-    if (verifiedTime) {
-      const expiryTime = parseInt(verifiedTime)
-      const currentTime = new Date().getTime()
-      
-      if (currentTime < expiryTime) {
-        setIsVerified(true)
-      } else {
-        // Verification expired, remove it
-        localStorage.removeItem("ageVerified")
-      }
-    }
     setIsLoading(false)
   }, [])
 
