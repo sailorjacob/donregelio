@@ -106,7 +106,7 @@ export default function AgeVerification({ onVerified }: { onVerified: () => void
           transition={{ delay: 0.2, duration: 0.5 }}
           className="mb-12 flex flex-col items-center"
         >
-          <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-amber-400 mb-6 shadow-2xl">
+          <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-blue-400 mb-6 shadow-2xl">
             <Image
               src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
               alt="Don Rogelio Logo"
@@ -116,7 +116,7 @@ export default function AgeVerification({ onVerified }: { onVerified: () => void
               priority
             />
           </div>
-          <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent w-64 mx-auto" />
+          <div className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent w-64 mx-auto" />
         </motion.div>
 
         {/* Age Question */}
@@ -135,7 +135,7 @@ export default function AgeVerification({ onVerified }: { onVerified: () => void
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleYes}
-              className="px-16 py-4 text-xl font-light tracking-widest border-2 border-amber-400 bg-transparent text-white hover:bg-amber-400 hover:text-black transition-all duration-300 rounded-sm"
+              className="px-16 py-4 text-xl font-light tracking-widest border-2 border-blue-400 bg-blue-400/10 text-white hover:bg-blue-400 hover:text-black transition-all duration-300 rounded-sm"
             >
               {t("ageGateYes")}
             </motion.button>
@@ -162,14 +162,14 @@ export default function AgeVerification({ onVerified }: { onVerified: () => void
               {t("ageGateTerms")}{" "}
               <Link
                 href="/terms"
-                className="text-amber-400 hover:text-amber-300 underline transition-colors"
+                className="text-blue-300 hover:text-white underline transition-colors"
               >
                 {t("termsOfUse")}
               </Link>{" "}
               {t("ageGateAnd")}{" "}
               <Link
                 href="/privacy"
-                className="text-amber-400 hover:text-amber-300 underline transition-colors"
+                className="text-blue-300 hover:text-white underline transition-colors"
               >
                 {t("privacyPolicy")}
               </Link>

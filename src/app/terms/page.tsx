@@ -372,16 +372,16 @@ Responderemos a su consulta dentro de un plazo razonable.`
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {currentContent.sections.map((section, index) => (
               <div
                 key={index}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 md:p-8"
+                className="border-l-2 border-blue-400 pl-6"
               >
-                <h2 className="text-xl md:text-2xl font-semibold mb-4 text-amber-400">
+                <h2 className="text-xl md:text-2xl font-semibold mb-3 text-white">
                   {section.title}
                 </h2>
-                <div className="text-blue-100 leading-relaxed whitespace-pre-line">
+                <div className="text-blue-200 leading-relaxed whitespace-pre-line text-sm">
                   {section.content}
                 </div>
               </div>
