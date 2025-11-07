@@ -57,22 +57,6 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/stories"
-                  className="text-sm text-blue-300 hover:text-white transition-colors duration-300"
-                >
-                  {t("stories")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-sm text-blue-300 hover:text-white transition-colors duration-300"
-                >
-                  {t("about")}
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/contact"
                   className="text-sm text-blue-300 hover:text-white transition-colors duration-300"
                 >
