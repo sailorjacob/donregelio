@@ -142,15 +142,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Warning Banner */}
-      <div className="bg-black/50 border-t border-blue-700/30 py-3">
-        <div className="container mx-auto px-6">
-          <p className="text-xs text-blue-300/80 text-center">
-            {t("footerWarningShort")}
-          </p>
-        </div>
-      </div>
-
       {/* Bottom Bar */}
       <div className="bg-black py-3">
         <div className="container mx-auto px-6">
