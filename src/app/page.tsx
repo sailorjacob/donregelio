@@ -126,6 +126,12 @@ export default function Home() {
                 >
                   {t("shop")}
                 </Link>
+                <Link
+                  href="/gallery"
+                  className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300"
+                >
+                  Gallery
+                </Link>
               </div>
             </div>
 

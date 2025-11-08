@@ -35,6 +35,10 @@ export default function HistoryPage() {
                   {t("shop")}
                 </Link>
                 <span className="text-blue-200/50">•</span>
+                <Link href="/gallery" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                  Gallery
+                </Link>
+                <span className="text-blue-200/50">•</span>
                 <Link href="/contact" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
                   {t("contact")}
                 </Link>

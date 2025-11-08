@@ -159,6 +159,9 @@ export default function ShopPage() {
                 <Link href="/shop" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
                   Cigars
                 </Link>
+                <Link href="/gallery" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                  Gallery
+                </Link>
               </div>
             </div>
 
@@ -186,6 +189,9 @@ export default function ShopPage() {
               </Link>
               <Link href="/shop" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
                 Cigars
+              </Link>
+              <Link href="/gallery" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
+                Gallery
               </Link>
             </div>
           </div>

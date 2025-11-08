@@ -510,7 +510,7 @@ export default function GalleryPage() {
       >
         <div className="text-center z-10 px-4 w-full max-w-7xl mx-auto">
           <motion.div
-            className="mb-8 flex justify-center"
+            className="flex justify-center"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, ease: 'easeOut' }}
@@ -526,19 +526,11 @@ export default function GalleryPage() {
               />
             </div>
           </motion.div>
-          <motion.p
-            className="text-lg md:text-2xl text-amber-200 font-light tracking-widest"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-          >
-            OUR STORY IN MOTION
-          </motion.p>
           <motion.div
             className="mt-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8, repeat: Infinity, repeatType: 'reverse' }}
+            transition={{ duration: 1, delay: 0.5, repeat: Infinity, repeatType: 'reverse' }}
           >
             <svg
               className="w-8 h-8 mx-auto text-amber-200"
@@ -666,6 +658,14 @@ export default function GalleryPage() {
                     className="text-sm text-blue-200 hover:text-amber-400 transition-colors duration-300"
                   >
                     {t("shop")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/gallery"
+                    className="text-sm text-blue-200 hover:text-amber-400 transition-colors duration-300"
+                  >
+                    Gallery
                   </Link>
                 </li>
                 <li>
