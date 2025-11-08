@@ -504,6 +504,53 @@ export default function GalleryPage() {
 
   return (
     <main ref={containerRef} className="relative bg-black overflow-x-hidden">
+      {/* Header Navigation */}
+      <header className="fixed top-0 left-0 right-0 z-[60] backdrop-blur-xl border-b border-amber-900/20 bg-black/80">
+        <div className="w-full px-4 sm:px-6 py-3">
+          <nav className="flex items-center justify-between max-w-7xl mx-auto">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-amber-400/50 group-hover:border-amber-400 transition-colors">
+                <Image
+                  src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
+                  alt="Don Rogelio"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <span className="text-white font-light text-lg hidden sm:inline">DON ROGELIO</span>
+            </Link>
+
+            <div className="flex items-center gap-6">
+              <Link
+                href="/history"
+                className="text-sm font-light text-blue-200 hover:text-amber-400 transition-colors duration-300"
+              >
+                {t("history")}
+              </Link>
+              <Link
+                href="/shop"
+                className="text-sm font-light text-blue-200 hover:text-amber-400 transition-colors duration-300"
+              >
+                {t("shop")}
+              </Link>
+              <Link
+                href="/gallery"
+                className="text-sm font-light text-amber-400 transition-colors duration-300"
+              >
+                Gallery
+              </Link>
+              <Link
+                href="/contact"
+                className="text-sm font-light text-blue-200 hover:text-amber-400 transition-colors duration-300"
+              >
+                {t("contact")}
+              </Link>
+            </div>
+          </nav>
+        </div>
+      </header>
+
       {/* Hero Section */}
       <motion.section
         className="h-screen flex items-center justify-center sticky top-0 overflow-hidden w-full"
