@@ -67,12 +67,12 @@ const mediaFiles: MediaFile[] = [
     name: 'fevfbgn (1).jpg', 
     type: 'image',
     content: {
-      title: 'Double Toro Excellence',
-      subtitle: '60 X 6',
-      description: 'For those who appreciate a longer smoke, our Double Toro delivers a complex flavor profile with the same premium Dominican tobacco blend, aged to perfection in rum barrels.',
+      title: 'Handcrafted Excellence',
+      subtitle: 'Quality & Prestige',
+      description: 'Every cigar is carefully selected by hand with a long-term cultivation process. Our commitment to quality has established Don Rogelio as a mark of prestige in the premium cigar market.',
       link: {
-        text: 'View Collection',
-        href: '/shop'
+        text: 'Our Process',
+        href: '/history'
       }
     }
   },
@@ -80,12 +80,12 @@ const mediaFiles: MediaFile[] = [
     name: 'fevfbgn.jpg', 
     type: 'image',
     content: {
-      title: 'Handcrafted Excellence',
-      subtitle: 'Quality & Prestige',
-      description: 'Every cigar is carefully selected by hand with a long-term cultivation process. Our commitment to quality has established Don Rogelio as a mark of prestige in the premium cigar market.',
+      title: 'Double Toro',
+      subtitle: '60 X 6',
+      description: 'For those who appreciate a longer smoke, our Double Toro delivers a complex flavor profile with the same premium Dominican tobacco blend, aged to perfection in rum barrels.',
       link: {
-        text: 'Our Process',
-        href: '/history'
+        text: 'View Collection',
+        href: '/shop'
       }
     }
   },
@@ -111,7 +111,7 @@ const mediaFiles: MediaFile[] = [
     name: 'get (1).jpeg', 
     type: 'image',
     content: {
-      title: 'Lancero Elegance',
+      title: 'Lancero',
       subtitle: '40 X 7½',
       description: 'The sophisticated Lancero offers a refined smoking experience. Its slender profile concentrates the flavors of our carefully aged tobacco for the true connoisseur.',
       link: {
@@ -133,7 +133,7 @@ const mediaFiles: MediaFile[] = [
     name: 'grdrgrgr.jpg', 
     type: 'image',
     content: {
-      title: 'Perfecto Craftsmanship',
+      title: 'Perfecto',
       subtitle: 'Solomon Size: 57 x 7¼',
       description: 'The distinctive Perfecto shape showcases our rollers\' expertise. Each cigar is a work of art, delivering a unique smoking experience from first light to final puff.',
       link: {
@@ -173,7 +173,7 @@ const mediaFiles: MediaFile[] = [
     name: 'mhgnvcbfxv.jpg', 
     type: 'image',
     content: {
-      title: 'Salamon Supreme',
+      title: 'Salamon',
       subtitle: 'Solomon Size: 57 x 7¼',
       description: 'The majestic Salamon represents the pinnacle of our collection. A cigar for special occasions, offering an extended smoking experience with complex flavor development.',
       link: {
@@ -195,7 +195,7 @@ const mediaFiles: MediaFile[] = [
     name: 'ngcbfrfxbf.jpg', 
     type: 'image',
     content: {
-      title: 'Toro Classic',
+      title: 'Toro',
       subtitle: 'Balanced Perfection',
       description: 'The Toro strikes the perfect balance between size and smoking time. A versatile choice that delivers the full Don Rogelio experience in a timeless format.',
       link: {
@@ -221,7 +221,7 @@ const mediaFiles: MediaFile[] = [
     name: 'get.jpeg', 
     type: 'image',
     content: {
-      title: 'Torpedo Precision',
+      title: 'Torpedo',
       subtitle: 'Tapered Excellence',
       description: 'The sophisticated tapered head of our Torpedo concentrates flavors for enhanced intensity. A favorite among experienced cigar enthusiasts who appreciate refined construction.',
       link: {
@@ -243,7 +243,7 @@ const mediaFiles: MediaFile[] = [
     name: 'ngnvfb.jpg', 
     type: 'image',
     content: {
-      title: 'Taco Delight',
+      title: 'Taco',
       subtitle: '54 X 4½',
       description: 'The Taco size offers a shorter smoke time without sacrificing flavor. Perfect for those moments when you want the Don Rogelio experience in a more compact format.',
       link: {
