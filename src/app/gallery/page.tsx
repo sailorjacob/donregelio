@@ -77,19 +77,6 @@ const mediaFiles: MediaFile[] = [
     }
   },
   { 
-    name: 'fevfbgn.jpg', 
-    type: 'image',
-    content: {
-      title: 'Double Toro',
-      subtitle: '60 X 6',
-      description: 'For those who appreciate a longer smoke, our Double Toro delivers a complex flavor profile with the same premium Dominican tobacco blend, aged to perfection in rum barrels.',
-      link: {
-        text: 'View Collection',
-        href: '/shop'
-      }
-    }
-  },
-  { 
     name: 'fjeklsfe.mp4', 
     type: 'video',
     content: {
@@ -108,38 +95,12 @@ const mediaFiles: MediaFile[] = [
     }
   },
   { 
-    name: 'get (1).jpeg', 
-    type: 'image',
-    content: {
-      title: 'Lancero',
-      subtitle: '40 X 7½',
-      description: 'The sophisticated Lancero offers a refined smoking experience. Its slender profile concentrates the flavors of our carefully aged tobacco for the true connoisseur.',
-      link: {
-        text: 'Shop Lancero',
-        href: '/shop'
-      }
-    }
-  },
-  { 
     name: 'wdecvf.jpg', 
     type: 'image',
     content: {
       title: 'Dominican Terroir',
       subtitle: 'From Our Land',
       description: 'The Dominican Republic holds an important position in the global tobacco market. Our tobacco is cultivated in the rich soils that have made our country famous for premium cigars.',
-    }
-  },
-  { 
-    name: 'grdrgrgr.jpg', 
-    type: 'image',
-    content: {
-      title: 'Perfecto',
-      subtitle: 'Solomon Size: 57 x 7¼',
-      description: 'The distinctive Perfecto shape showcases our rollers\' expertise. Each cigar is a work of art, delivering a unique smoking experience from first light to final puff.',
-      link: {
-        text: 'Discover Perfecto',
-        href: '/shop'
-      }
     }
   },
   { 
@@ -170,38 +131,12 @@ const mediaFiles: MediaFile[] = [
     }
   },
   { 
-    name: 'mhgnvcbfxv.jpg', 
-    type: 'image',
-    content: {
-      title: 'Salamon',
-      subtitle: 'Solomon Size: 57 x 7¼',
-      description: 'The majestic Salamon represents the pinnacle of our collection. A cigar for special occasions, offering an extended smoking experience with complex flavor development.',
-      link: {
-        text: 'Shop Salamon',
-        href: '/shop'
-      }
-    }
-  },
-  { 
     name: 'nfgbfvscdvx.jpg', 
     type: 'image',
     content: {
       title: 'Three Premium Wrappers',
       subtitle: 'Habano • Maduro • Connecticut',
       description: 'Choose from three distinctive wrapper options, each offering its own character while showcasing our core blend of piloto mejorado and criollo 98 corojo tripa with Corojo capote.',
-    }
-  },
-  { 
-    name: 'ngcbfrfxbf.jpg', 
-    type: 'image',
-    content: {
-      title: 'Toro',
-      subtitle: 'Balanced Perfection',
-      description: 'The Toro strikes the perfect balance between size and smoking time. A versatile choice that delivers the full Don Rogelio experience in a timeless format.',
-      link: {
-        text: 'View Toro',
-        href: '/shop'
-      }
     }
   },
   { 
@@ -218,38 +153,12 @@ const mediaFiles: MediaFile[] = [
     }
   },
   { 
-    name: 'get.jpeg', 
-    type: 'image',
-    content: {
-      title: 'Torpedo',
-      subtitle: 'Tapered Excellence',
-      description: 'The sophisticated tapered head of our Torpedo concentrates flavors for enhanced intensity. A favorite among experienced cigar enthusiasts who appreciate refined construction.',
-      link: {
-        text: 'Explore Torpedo',
-        href: '/shop'
-      }
-    }
-  },
-  { 
     name: 'ngcnbvbfx.jpg', 
     type: 'image',
     content: {
       title: 'Quality Control',
       subtitle: 'Every Single Cigar',
       description: 'Each Don Rogelio cigar undergoes rigorous quality inspection. We never compromise on the standards that have built our reputation for excellence.',
-    }
-  },
-  { 
-    name: 'ngnvfb.jpg', 
-    type: 'image',
-    content: {
-      title: 'Taco',
-      subtitle: '54 X 4½',
-      description: 'The Taco size offers a shorter smoke time without sacrificing flavor. Perfect for those moments when you want the Don Rogelio experience in a more compact format.',
-      link: {
-        text: 'Shop Taco',
-        href: '/shop'
-      }
     }
   },
   { 
@@ -319,6 +228,98 @@ const mediaFiles: MediaFile[] = [
       description: 'From the compact Taco to the majestic Salamon, our range offers something for every preference and occasion. Discover your perfect Don Rogelio cigar.',
       link: {
         text: 'View All Cigars',
+        href: '/shop'
+      }
+    }
+  },
+  // Individual Cigar Products
+  { 
+    name: 'fevfbgn.jpg', 
+    type: 'image',
+    content: {
+      title: 'Double Toro',
+      subtitle: '60 X 6',
+      description: 'For those who appreciate a longer smoke, our Double Toro delivers a complex flavor profile with the same premium Dominican tobacco blend, aged to perfection in rum barrels.',
+      link: {
+        text: 'View Collection',
+        href: '/shop'
+      }
+    }
+  },
+  { 
+    name: 'get (1).jpeg', 
+    type: 'image',
+    content: {
+      title: 'Lancero',
+      subtitle: '40 X 7½',
+      description: 'The sophisticated Lancero offers a refined smoking experience. Its slender profile concentrates the flavors of our carefully aged tobacco for the true connoisseur.',
+      link: {
+        text: 'Shop Lancero',
+        href: '/shop'
+      }
+    }
+  },
+  { 
+    name: 'grdrgrgr.jpg', 
+    type: 'image',
+    content: {
+      title: 'Perfecto',
+      subtitle: 'Solomon Size: 57 x 7¼',
+      description: 'The distinctive Perfecto shape showcases our rollers\' expertise. Each cigar is a work of art, delivering a unique smoking experience from first light to final puff.',
+      link: {
+        text: 'Discover Perfecto',
+        href: '/shop'
+      }
+    }
+  },
+  { 
+    name: 'mhgnvcbfxv.jpg', 
+    type: 'image',
+    content: {
+      title: 'Salamon',
+      subtitle: 'Solomon Size: 57 x 7¼',
+      description: 'The majestic Salamon represents the pinnacle of our collection. A cigar for special occasions, offering an extended smoking experience with complex flavor development.',
+      link: {
+        text: 'Shop Salamon',
+        href: '/shop'
+      }
+    }
+  },
+  { 
+    name: 'ngcbfrfxbf.jpg', 
+    type: 'image',
+    content: {
+      title: 'Toro',
+      subtitle: 'Balanced Perfection',
+      description: 'The Toro strikes the perfect balance between size and smoking time. A versatile choice that delivers the full Don Rogelio experience in a timeless format.',
+      link: {
+        text: 'View Toro',
+        href: '/shop'
+      }
+    }
+  },
+  { 
+    name: 'get.jpeg', 
+    type: 'image',
+    content: {
+      title: 'Torpedo',
+      subtitle: 'Tapered Excellence',
+      description: 'The sophisticated tapered head of our Torpedo concentrates flavors for enhanced intensity. A favorite among experienced cigar enthusiasts who appreciate refined construction.',
+      link: {
+        text: 'Explore Torpedo',
+        href: '/shop'
+      }
+    }
+  },
+  { 
+    name: 'ngnvfb.jpg', 
+    type: 'image',
+    content: {
+      title: 'Taco',
+      subtitle: '54 X 4½',
+      description: 'The Taco size offers a shorter smoke time without sacrificing flavor. Perfect for those moments when you want the Don Rogelio experience in a more compact format.',
+      link: {
+        text: 'Shop Taco',
         href: '/shop'
       }
     }
