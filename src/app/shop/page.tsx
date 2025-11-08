@@ -25,7 +25,7 @@ interface Product {
 export default function ShopPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<string | null>("robusto")
-  const [selectedQuantity, setSelectedQuantity] = useState<"single" | "5pack" | "box">("single")
+  const [selectedQuantity, setSelectedQuantity] = useState<"single" | "3pack" | "5pack" | "10pack" | "box">("single")
 
   // Prevent body scroll when product is selected (desktop only)
   useEffect(() => {
@@ -55,13 +55,45 @@ export default function ShopPage() {
       // Show single cigar for single selection
       return product.hoverImage || product.image
     }
-    // For 5pack, return the single cigar image (will be rendered as 5 copies)
+    // For 3pack, 5pack, or 10pack, return the single cigar image (will be rendered as multiple copies)
     return product.hoverImage || product.image
   }
 
-  // Check if we should render 5 pack layout
-  const shouldRender5Pack = (product: Product) => {
-    return selectedQuantity === "5pack" && product.hoverImage
+  // Check if we should render multiple cigars layout
+  const shouldRenderMultipleCigars = (product: Product) => {
+    return (selectedQuantity === "3pack" || selectedQuantity === "5pack" || selectedQuantity === "10pack") && product.hoverImage
+  }
+
+  // Get number of cigars to display
+  const getCigarCount = () => {
+    switch (selectedQuantity) {
+      case "3pack":
+        return 3
+      case "5pack":
+        return 5
+      case "10pack":
+        return 10
+      default:
+        return 1
+    }
+  }
+
+  // Get preview image based on selected quantity
+  const getPreviewImage = () => {
+    switch (selectedQuantity) {
+      case "single":
+        return "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/single.png"
+      case "3pack":
+        return "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/3pack.png"
+      case "5pack":
+        return "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/single.png"
+      case "10pack":
+        return "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/10pack.png"
+      case "box":
+        return null // Will use product.openBoxImage for full box
+      default:
+        return null
+    }
   }
 
   // 🎨 CUSTOMIZE YOUR PRODUCTS HERE
@@ -286,10 +318,10 @@ export default function ShopPage() {
                             <div 
                               className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8 rounded-lg border border-white/20 p-2"
                             >
-                              {shouldRender5Pack(product) ? (
-                                // Render 5 small cigars side by side for 5 pack
+                              {shouldRenderMultipleCigars(product) ? (
+                                // Render multiple small cigars side by side for packs
                                 <div className="flex items-center justify-center gap-1 sm:gap-2 h-full p-2 sm:p-4">
-                                  {[...Array(5)].map((_, index) => (
+                                  {[...Array(getCigarCount())].map((_, index) => (
                                     <div key={index} className="relative flex-1 h-full">
                                       <Image
                                         src={product.hoverImage!}
@@ -332,11 +364,11 @@ export default function ShopPage() {
                               transition={{ duration: 0.3 }}
                               className="w-full lg:w-72 flex-shrink-0"
                             >
-                              {/* Open Box Image */}
+                              {/* Preview Image */}
                               <div className="relative h-48 mb-4 rounded-lg border border-white/20 p-2">
                                 <Image
-                                  src={product.openBoxImage}
-                                  alt={`${product.name} Open Box`}
+                                  src={getPreviewImage() || product.openBoxImage}
+                                  alt={`${product.name} ${selectedQuantity}`}
                                   fill
                                   className="object-contain p-4"
                                 />
@@ -358,6 +390,17 @@ export default function ShopPage() {
                                   </button>
 
                                   <button
+                                    onClick={() => setSelectedQuantity("3pack")}
+                                    className={`w-full text-left px-4 py-3 transition-colors duration-200 ${
+                                      selectedQuantity === "3pack"
+                                        ? "bg-blue-500 text-white"
+                                        : "bg-white/5 text-blue-200 hover:bg-white/10"
+                                    }`}
+                                  >
+                                    <div className="font-light text-sm">3 Pack</div>
+                                  </button>
+
+                                  <button
                                     onClick={() => setSelectedQuantity("5pack")}
                                     className={`w-full text-left px-4 py-3 transition-colors duration-200 ${
                                       selectedQuantity === "5pack"
@@ -366,6 +409,17 @@ export default function ShopPage() {
                                     }`}
                                   >
                                     <div className="font-light text-sm">5 Pack</div>
+                                  </button>
+
+                                  <button
+                                    onClick={() => setSelectedQuantity("10pack")}
+                                    className={`w-full text-left px-4 py-3 transition-colors duration-200 ${
+                                      selectedQuantity === "10pack"
+                                        ? "bg-blue-500 text-white"
+                                        : "bg-white/5 text-blue-200 hover:bg-white/10"
+                                    }`}
+                                  >
+                                    <div className="font-light text-sm">10 Pack</div>
                                   </button>
 
                                   <button
