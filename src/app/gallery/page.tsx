@@ -508,7 +508,7 @@ export default function GalleryPage() {
       <header className="fixed top-0 left-0 right-0 z-[60] backdrop-blur-xl border-b border-amber-900/20 bg-black/80">
         <div className="w-full px-4 sm:px-6 py-3">
           <nav className="flex items-center justify-between max-w-7xl mx-auto">
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center group">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-amber-400/50 group-hover:border-amber-400 transition-colors">
                 <Image
                   src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
@@ -518,7 +518,6 @@ export default function GalleryPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-white font-light text-lg hidden sm:inline">DON ROGELIO</span>
             </Link>
 
             <div className="flex items-center gap-6">
