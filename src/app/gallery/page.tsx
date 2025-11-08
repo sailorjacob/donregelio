@@ -519,20 +519,29 @@ export default function GalleryPage() {
     <main ref={containerRef} className="relative bg-black">
       {/* Hero Section */}
       <motion.section
-        className="h-screen flex items-center justify-center sticky top-0"
+        className="h-screen flex items-center justify-center sticky top-0 overflow-hidden"
         style={{ opacity, scale }}
       >
-        <div className="text-center z-10 px-4">
-          <motion.h1
-            className="text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+        <div className="text-center z-10 px-4 w-full max-w-7xl mx-auto">
+          <motion.div
+            className="mb-8 flex justify-center"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, ease: 'easeOut' }}
           >
-            Don Regelio
-          </motion.h1>
+            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-amber-400/50 shadow-2xl">
+              <Image
+                src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
+                alt="Don Rogelio Logo"
+                width={192}
+                height={192}
+                className="w-full h-full object-cover"
+                priority
+              />
+            </div>
+          </motion.div>
           <motion.p
-            className="text-xl md:text-2xl text-amber-200 font-light tracking-widest"
+            className="text-lg md:text-2xl text-amber-200 font-light tracking-widest"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
