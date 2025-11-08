@@ -3,7 +3,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
+import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BASE_URL = 'https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/socialsite/';
 
@@ -507,6 +509,8 @@ export default function GalleryPage() {
   const { scrollYProgress } = useScroll({
     target: containerRef,
   });
+  const { t } = useLanguage();
+  const currentYear = new Date().getFullYear();
 
   const opacity = useTransform(scrollYProgress, [0, 0.1], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.1], [1, 0.95]);
@@ -622,6 +626,133 @@ export default function GalleryPage() {
           </motion.div>
         </div>
       </motion.section>
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-b from-black to-blue-950/30 border-t border-amber-900/20">
+        {/* Main Footer Content */}
+        <div className="container mx-auto px-6 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {/* Brand Section */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-400/50">
+                  <Image
+                    src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
+                    alt="Don Rogelio"
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold text-white">DON ROGELIO</h3>
+              </div>
+              <p className="text-sm text-blue-200 font-light leading-relaxed">
+                {t("footerAboutText")}
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-4">
+                {t("footerQuickLinks")}
+              </h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/history"
+                    className="text-sm text-blue-200 hover:text-amber-400 transition-colors duration-300"
+                  >
+                    {t("history")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/shop"
+                    className="text-sm text-blue-200 hover:text-amber-400 transition-colors duration-300"
+                  >
+                    {t("shop")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-sm text-blue-200 hover:text-amber-400 transition-colors duration-300"
+                  >
+                    {t("contact")}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-4">
+                {t("footerLegal")}
+              </h4>
+              <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/privacy"
+                    className="text-sm text-blue-200 hover:text-amber-400 transition-colors duration-300"
+                  >
+                    {t("privacyPolicy")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/terms"
+                    className="text-sm text-blue-200 hover:text-amber-400 transition-colors duration-300"
+                  >
+                    {t("termsOfUse")}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h4 className="text-lg font-semibold text-white mb-4">
+                {t("footerContactUs")}
+              </h4>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <Mail className="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
+                  <a
+                    href="mailto:info@donrogelio.com"
+                    className="text-sm text-blue-200 hover:text-amber-400 transition-colors duration-300 break-all"
+                  >
+                    info@donrogelio.com
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Phone className="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
+                  <a
+                    href="tel:+18095551234"
+                    className="text-sm text-blue-200 hover:text-amber-400 transition-colors duration-300"
+                  >
+                    +1 (809) 555-1234
+                  </a>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 text-amber-400 mt-1 flex-shrink-0" />
+                  <span className="text-sm text-blue-200">
+                    Dominican Republic
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="bg-black/50 py-3 border-t border-amber-900/20">
+          <div className="container mx-auto px-6">
+            <p className="text-xs text-blue-300/60 text-center">
+              © {currentYear} Don Rogelio. {t("footerRights")}
+            </p>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

@@ -79,7 +79,7 @@ export const translations: Translations = {
   },
   footerAboutText: {
     en: "Premium handcrafted cigars from the Dominican Republic. Each cigar is aged to perfection in special English spiced rum barrels.",
-    es: "Cigarros premium hechos a mano de la República Dominicana. Cada cigarro envejece a la perfección en barricas especiales de ron especiado inglés."
+    es: "Cigarros premium hechos a mano en la República Dominicana. Cada cigarro envejece a la perfección en barricas especiales de ron especiado inglés."
   },
   footerQuickLinks: {
     en: "Quick Links",
