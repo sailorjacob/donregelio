@@ -78,21 +78,29 @@ export default function ShopPage() {
     }
   }
 
-  // Get preview image based on selected quantity
+  // Get pack image URL for main display
+  const getPackImage = () => {
+    switch (selectedQuantity) {
+      case "3pack":
+        return "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/3pack.png"
+      case "5pack":
+        return "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/5pack.png"
+      case "10pack":
+        return "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/10pack.png"
+      default:
+        return null
+    }
+  }
+
+  // Get preview image based on selected quantity (for right side preview)
   const getPreviewImage = () => {
     switch (selectedQuantity) {
       case "single":
         return "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/single.png"
-      case "3pack":
-        return "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/3pack.png"
-      case "5pack":
-        return "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/single.png"
-      case "10pack":
-        return "https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/10pack.png"
       case "box":
         return null // Will use product.openBoxImage for full box
       default:
-        return null
+        return null // For packs, will show multiple cigars
     }
   }
 
@@ -318,20 +326,14 @@ export default function ShopPage() {
                             <div 
                               className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8 rounded-lg border border-white/20 p-2"
                             >
-                              {shouldRenderMultipleCigars(product) ? (
-                                // Render multiple small cigars side by side for packs
-                                <div className="flex items-center justify-center gap-1 sm:gap-2 h-full p-2 sm:p-4">
-                                  {[...Array(getCigarCount())].map((_, index) => (
-                                    <div key={index} className="relative flex-1 h-full">
-                                      <Image
-                                        src={product.hoverImage!}
-                                        alt={`${product.name} ${index + 1}`}
-                                        fill
-                                        className="object-contain transition-all duration-700 ease-in-out"
-                                      />
-                                    </div>
-                                  ))}
-                                </div>
+                              {getPackImage() ? (
+                                // Render pack image for 3pack, 5pack, or 10pack
+                                <Image
+                                  src={getPackImage()!}
+                                  alt={`${product.name} ${selectedQuantity}`}
+                                  fill
+                                  className="object-contain p-6 sm:p-8 md:p-10 transition-all duration-700 ease-in-out"
+                                />
                               ) : (
                                 // Render single image for single or box
                                 <Image
@@ -366,12 +368,29 @@ export default function ShopPage() {
                             >
                               {/* Preview Image */}
                               <div className="relative h-48 mb-4 rounded-lg border border-white/20 p-2">
-                                <Image
-                                  src={getPreviewImage() || product.openBoxImage}
-                                  alt={`${product.name} ${selectedQuantity}`}
-                                  fill
-                                  className="object-contain p-4"
-                                />
+                                {shouldRenderMultipleCigars(product) ? (
+                                  // Render multiple small cigars side by side for pack preview
+                                  <div className="flex items-center justify-center gap-1 h-full p-2">
+                                    {[...Array(getCigarCount())].map((_, index) => (
+                                      <div key={index} className="relative flex-1 h-full">
+                                        <Image
+                                          src={product.hoverImage!}
+                                          alt={`${product.name} ${index + 1}`}
+                                          fill
+                                          className="object-contain transition-all duration-700 ease-in-out"
+                                        />
+                                      </div>
+                                    ))}
+                                  </div>
+                                ) : (
+                                  // Render single preview image for single or box
+                                  <Image
+                                    src={getPreviewImage() || product.openBoxImage}
+                                    alt={`${product.name} ${selectedQuantity}`}
+                                    fill
+                                    className="object-contain p-4"
+                                  />
+                                )}
                               </div>
 
                               {/* Purchase Options */}
