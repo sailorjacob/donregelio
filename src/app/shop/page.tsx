@@ -46,14 +46,22 @@ export default function ShopPage() {
     setSelectedProduct(productId === selectedProduct ? null : productId)
   };
 
-  // Get current image for product (show individual cigar when selected)
+  // Get current image for product based on selected quantity
   const getCurrentImage = (product: Product) => {
-    // Default to hover image (individual cigar) when selected
-    if (product.hoverImage) {
-      return product.hoverImage
+    if (selectedQuantity === "box") {
+      // Show closed box image for full box
+      return product.image
+    } else if (selectedQuantity === "single") {
+      // Show single cigar for single selection
+      return product.hoverImage || product.image
     }
-    // Fallback to main image
-    return product.image
+    // For 5pack, return the single cigar image (will be rendered as 5 copies)
+    return product.hoverImage || product.image
+  }
+
+  // Check if we should render 5 pack layout
+  const shouldRender5Pack = (product: Product) => {
+    return selectedQuantity === "5pack" && product.hoverImage
   }
 
   // 🎨 CUSTOMIZE YOUR PRODUCTS HERE
@@ -272,12 +280,29 @@ export default function ShopPage() {
                             <div 
                               className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8 rounded-lg border border-white/20 p-2"
                             >
-                              <Image
-                                src={getCurrentImage(product)}
-                                alt={product.name}
-                                fill
-                                className="object-contain p-6 sm:p-8 md:p-10 transition-all duration-700 ease-in-out"
-                              />
+                              {shouldRender5Pack(product) ? (
+                                // Render 5 small cigars side by side for 5 pack
+                                <div className="flex items-center justify-center gap-1 sm:gap-2 h-full p-2 sm:p-4">
+                                  {[...Array(5)].map((_, index) => (
+                                    <div key={index} className="relative flex-1 h-full">
+                                      <Image
+                                        src={product.hoverImage!}
+                                        alt={`${product.name} ${index + 1}`}
+                                        fill
+                                        className="object-contain transition-all duration-700 ease-in-out"
+                                      />
+                                    </div>
+                                  ))}
+                                </div>
+                              ) : (
+                                // Render single image for single or box
+                                <Image
+                                  src={getCurrentImage(product)}
+                                  alt={product.name}
+                                  fill
+                                  className="object-contain p-6 sm:p-8 md:p-10 transition-all duration-700 ease-in-out"
+                                />
+                              )}
                             </div>
 
                             {/* Product Info */}
