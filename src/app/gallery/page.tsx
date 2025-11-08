@@ -25,7 +25,7 @@ interface MediaFile {
 
 const mediaFiles: MediaFile[] = [
   { 
-    name: '1234e.jpg', 
+    name: '21234e.jpg', 
     type: 'image',
     content: {
       title: 'A Legacy Born in 2014',
