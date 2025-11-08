@@ -154,8 +154,9 @@ export default function Home() {
             {/* Product Showcase - All Cigar Collection */}
             <div className="mt-12 mb-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 opacity-90">
               {products.map((product) => (
-                <div
+                <Link
                   key={product.id}
+                  href="/shop"
                   className="relative group cursor-pointer"
                   onMouseEnter={() => setHoveredProduct(product.id)}
                   onMouseLeave={() => setHoveredProduct(null)}
@@ -176,7 +177,7 @@ export default function Home() {
                   <p className="text-xs text-blue-200 text-center mt-2 font-light transition-colors duration-300 group-hover:text-white">
                     {product.name}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
 

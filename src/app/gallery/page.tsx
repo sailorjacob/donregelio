@@ -444,7 +444,7 @@ function MediaItem({ file, index }: MediaItemProps) {
             <div className="space-y-3">
               {file.content.subtitle && (
                 <motion.p
-                  className="text-amber-400 text-sm md:text-base font-light tracking-widest uppercase"
+                  className="text-blue-400 text-sm md:text-base font-light tracking-widest uppercase"
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ delay: 0.5 }}
@@ -463,7 +463,7 @@ function MediaItem({ file, index }: MediaItemProps) {
               </motion.h2>
               
               <motion.div
-                className="w-20 h-0.5 bg-gradient-to-r from-amber-600 to-amber-400"
+                className="w-20 h-0.5 bg-gradient-to-r from-blue-500 to-amber-400"
                 initial={{ scaleX: 0 }}
                 animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
                 transition={{ delay: 0.7, duration: 0.6 }}
@@ -472,7 +472,7 @@ function MediaItem({ file, index }: MediaItemProps) {
             </div>
 
             <motion.p
-              className="text-blue-100 text-base md:text-lg leading-relaxed font-light"
+              className="text-blue-200 text-base md:text-lg leading-relaxed font-light"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.8 }}
@@ -488,7 +488,7 @@ function MediaItem({ file, index }: MediaItemProps) {
               >
                 <Link
                   href={file.content.link.href}
-                  className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 transition-colors duration-300 group"
+                  className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 transition-colors duration-300 group"
                 >
                   <span className="text-sm md:text-base font-light tracking-wide">
                     {file.content.link.text}
