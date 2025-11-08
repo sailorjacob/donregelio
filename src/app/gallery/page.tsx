@@ -39,11 +39,11 @@ const mediaFiles: MediaFile[] = [
     name: 'efsfsgfrg.jpg', 
     type: 'image',
     content: {
-      title: 'Premium Robusto',
-      subtitle: '52 X 5',
-      description: 'Our signature Robusto features premium Dominican tobacco aged for nearly a year in special English spiced rum barrels. An exquisite aroma with natural tobacco flavor, available in Habano, Maduro, and Connecticut wrappers.',
+      title: 'Premium Products',
+      subtitle: 'Crafted with Excellence',
+      description: 'From our signature handcrafted cigars to premium coffee, artisanal rum, and rich cacao products. Each offering reflects our commitment to quality and the heritage of the Dominican Republic. Discover the complete Don Rogelio experience.',
       link: {
-        text: 'Explore Cigars',
+        text: 'Explore Collection',
         href: '/shop'
       }
     }
@@ -92,8 +92,8 @@ const mediaFiles: MediaFile[] = [
     type: 'video',
     content: {
       title: 'Global Presence',
-      subtitle: '50,000 Units Monthly',
-      description: 'From our roots in the Dominican Republic, we now serve discerning cigar enthusiasts in the United States, Italy, and Hong Kong. Our export capacity continues to grow while maintaining our artisanal standards.',
+      subtitle: 'Worldwide Distribution',
+      description: 'From our roots in the Dominican Republic, we now serve discerning enthusiasts in the United States, Italy, and Hong Kong. Our capacity continues to grow while maintaining our artisanal standards.',
     }
   },
   { 
@@ -580,94 +580,45 @@ export default function GalleryPage() {
 
       {/* Footer Section with Shop CTA */}
       <motion.section
-        className="min-h-screen flex items-center justify-center bg-gradient-to-t from-amber-950/50 to-black py-20"
+        className="min-h-screen flex items-center justify-center bg-black py-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        <div className="text-center px-4 max-w-4xl mx-auto">
+        <div className="text-center px-4 max-w-3xl mx-auto">
           <motion.h2
-            className="text-5xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-tight"
+            className="text-5xl md:text-7xl font-light text-white mb-8 tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Crafted with Passion
+            Explore Our Collection
           </motion.h2>
-          
-          <motion.div
-            className="w-32 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mb-8"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            viewport={{ once: true }}
-          />
 
           <motion.p
-            className="text-xl md:text-2xl text-blue-100 font-light mb-12 leading-relaxed"
+            className="text-lg md:text-xl text-blue-200 font-light mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Experience the essence of Don Rogelio.<br />
-            From our family to yours, a legacy of excellence in every cigar.
+            Experience the essence of Don Rogelio
           </motion.p>
 
           <motion.div
-            className="space-y-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
             <Link
               href="/shop"
-              className="inline-block bg-gradient-to-r from-amber-600 to-amber-500 text-white px-12 py-5 rounded-lg text-lg md:text-xl font-light tracking-wide hover:from-amber-500 hover:to-amber-400 transition-all duration-300 shadow-lg hover:shadow-amber-500/50 hover:scale-105 transform"
+              className="inline-block border border-white text-white px-10 py-4 text-base font-light tracking-wider hover:bg-white hover:text-black transition-colors duration-300"
             >
-              Explore Our Collection
+              SHOP NOW
             </Link>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-blue-200">
-              <Link
-                href="/history"
-                className="inline-flex items-center gap-2 hover:text-amber-400 transition-colors duration-300 group"
-              >
-                <span className="text-sm md:text-base font-light tracking-wide">
-                  Learn Our Story
-                </span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-              
-              <span className="hidden sm:inline text-blue-700">•</span>
-              
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 hover:text-amber-400 transition-colors duration-300 group"
-              >
-                <span className="text-sm md:text-base font-light tracking-wide">
-                  Get in Touch
-                </span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-            </div>
-          </motion.div>
-
-          <motion.div
-            className="mt-16 pt-8 border-t border-blue-700/30"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-sm text-blue-300 font-light">
-              Dominican Republic • United States • Italy • Hong Kong
-            </p>
-            <p className="text-xs text-blue-400 font-light mt-2">
-              50,000 Handcrafted Cigars Monthly
-            </p>
           </motion.div>
         </div>
       </motion.section>
