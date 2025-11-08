@@ -149,13 +149,6 @@ export default function AgeVerification({ onVerified }: { onVerified: () => void
             </motion.button>
           </div>
 
-          {/* Warning Box */}
-          <div className="max-w-2xl mx-auto mb-8 p-6 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg">
-            <p className="text-xs font-semibold text-white/90 leading-relaxed">
-              {t("ageGateWarning")}
-            </p>
-          </div>
-
           {/* Terms and Privacy */}
           <div className="text-sm text-white/70 font-light">
             <p>
