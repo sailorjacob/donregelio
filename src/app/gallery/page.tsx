@@ -121,7 +121,7 @@ const mediaFiles: MediaFile[] = [
     }
   },
   { 
-    name: 'get.jpeg', 
+    name: 'wdecvf.jpg', 
     type: 'image',
     content: {
       title: 'Dominican Terroir',
@@ -218,7 +218,7 @@ const mediaFiles: MediaFile[] = [
     }
   },
   { 
-    name: 'ngcnbfxvdc.jpg', 
+    name: 'get.jpeg', 
     type: 'image',
     content: {
       title: 'Torpedo Precision',
@@ -284,7 +284,7 @@ const mediaFiles: MediaFile[] = [
     }
   },
   { 
-    name: 'wdecvf.jpg', 
+    name: 'ngcnbfxvdc.jpg', 
     type: 'image',
     content: {
       title: 'Box Selection',
@@ -371,7 +371,7 @@ function MediaItem({ file, index }: MediaItemProps) {
   return (
     <motion.div
       ref={ref}
-      className="min-h-screen flex items-center justify-center px-4 md:px-8 lg:px-16 py-12"
+      className="min-h-screen flex items-center justify-center px-4 md:px-8 lg:px-16 py-12 w-full overflow-x-hidden"
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{
@@ -379,7 +379,7 @@ function MediaItem({ file, index }: MediaItemProps) {
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
     >
-      <div className={`w-full max-w-7xl mx-auto flex flex-col ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 lg:gap-16 items-center`}>
+      <div className={`w-full max-w-7xl mx-auto flex flex-col ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 lg:gap-16 items-center overflow-x-hidden`}>
         {/* Media Side */}
         <motion.div
           className="w-full md:w-1/2 relative overflow-hidden rounded-2xl shadow-2xl"
@@ -412,20 +412,6 @@ function MediaItem({ file, index }: MediaItemProps) {
                 playsInline
               />
             )}
-            
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <motion.p
-                  className="text-white text-lg font-light tracking-wide"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  Don Rogelio
-                </motion.p>
-              </div>
-            </div>
           </div>
         </motion.div>
 
@@ -516,10 +502,10 @@ export default function GalleryPage() {
   const scale = useTransform(scrollYProgress, [0, 0.1], [1, 0.95]);
 
   return (
-    <main ref={containerRef} className="relative bg-black">
+    <main ref={containerRef} className="relative bg-black overflow-x-hidden">
       {/* Hero Section */}
       <motion.section
-        className="h-screen flex items-center justify-center sticky top-0 overflow-hidden"
+        className="h-screen flex items-center justify-center sticky top-0 overflow-hidden w-full"
         style={{ opacity, scale }}
       >
         <div className="text-center z-10 px-4 w-full max-w-7xl mx-auto">
@@ -585,7 +571,7 @@ export default function GalleryPage() {
       </motion.section>
 
       {/* Gallery Section */}
-      <div className="relative z-10 bg-black pt-20">
+      <div className="relative z-10 bg-black pt-20 w-full overflow-x-hidden">
         {mediaFiles.map((file, index) => (
           <MediaItem key={`${file.name}-${index}`} file={file} index={index} />
         ))}
