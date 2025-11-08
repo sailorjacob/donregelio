@@ -505,7 +505,7 @@ export default function GalleryPage() {
   return (
     <main ref={containerRef} className="relative bg-black overflow-x-hidden">
       {/* Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-[60] backdrop-blur-xl border-b border-amber-900/20 bg-black/80">
+      <header className="fixed top-0 left-0 right-0 z-[60] backdrop-blur-xl bg-transparent">
         <div className="w-full px-4 sm:px-6 py-3">
           <nav className="flex items-center justify-between max-w-7xl mx-auto">
             <Link href="/" className="flex items-center group">
