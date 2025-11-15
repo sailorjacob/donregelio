@@ -14,13 +14,13 @@ export default function HistoryPage() {
   const { t } = useLanguage()
   const [videoOpen, setVideoOpen] = useState(false)
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white">
+    <main className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white text-gray-900">
       {/* Simple Header */}
-      <header className="border-b border-blue-700 bg-blue-900/80 backdrop-blur-xl">
+      <header className="border-b border-gray-200 bg-white/80 backdrop-blur-xl">
         <div className="max-w-4xl mx-auto px-6 py-4">
           <nav className="flex items-center justify-between">
             <Link href="/" className="flex items-center">
-              <div className="w-8 h-8 rounded-full overflow-hidden border border-blue-300">
+              <div className="w-8 h-8 rounded-lg overflow-hidden shadow-sm">
                 <Image
                   src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                   alt="Don Rogelio"
@@ -32,15 +32,15 @@ export default function HistoryPage() {
             </Link>
             <div className="flex items-center gap-4">
               <div className="flex items-center space-x-2">
-                <Link href="/shop" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                <Link href="/shop" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
                   {t("shop")}
                 </Link>
-                <span className="text-blue-200/50">•</span>
-                <Link href="/gallery" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                <span className="text-gray-300">•</span>
+                <Link href="/gallery" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
                   {t("gallery")}
                 </Link>
-                <span className="text-blue-200/50">•</span>
-                <Link href="/contact" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                <span className="text-gray-300">•</span>
+                <Link href="/contact" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
                   {t("contact")}
                 </Link>
               </div>
@@ -55,18 +55,18 @@ export default function HistoryPage() {
         {/* Back Navigation */}
         <Link
           href="/"
-          className="inline-block text-blue-200 hover:text-white mb-6 text-sm font-light transition-colors duration-300"
+          className="inline-block text-gray-700 hover:text-amber-600 mb-6 text-sm font-medium transition-colors duration-300"
         >
           ← {t("backToHome")}
         </Link>
 
         {/* Letter Header */}
         <div className="mb-6">
-          <h1 className="text-4xl font-light tracking-tight text-white mb-2">
+          <h1 className="text-4xl font-light tracking-tight text-gray-900 mb-2">
             {t("historyTitle")}
           </h1>
-          <div className="w-16 h-px bg-blue-400 mb-2"></div>
-          <p className="text-lg text-blue-100 font-light leading-tight">
+          <div className="w-16 h-px bg-amber-600 mb-2"></div>
+          <p className="text-lg text-gray-700 font-light leading-tight">
             {t("historySubtitle")}
           </p>
         </div>
@@ -75,8 +75,8 @@ export default function HistoryPage() {
         <div className="space-y-5">
           {/* The Beginning */}
           <div>
-            <h2 className="text-2xl font-light text-white mb-2">{t("theBeginning")}</h2>
-            <div className="space-y-2 text-blue-100 leading-relaxed">
+            <h2 className="text-2xl font-light text-gray-900 mb-2">{t("theBeginning")}</h2>
+            <div className="space-y-2 text-gray-700 leading-relaxed">
               <p className="text-base">
                 {t("historyBeginningP1")}
               </p>
@@ -88,9 +88,9 @@ export default function HistoryPage() {
 
           {/* Rogelio Martinez */}
           <div>
-            <h2 className="text-2xl font-light text-white mb-2">{t("rogelioMartinezTitle")}</h2>
+            <h2 className="text-2xl font-light text-gray-900 mb-2">{t("rogelioMartinezTitle")}</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-start">
-              <div className="lg:col-span-2 space-y-2 text-blue-100 leading-relaxed">
+              <div className="lg:col-span-2 space-y-2 text-gray-700 leading-relaxed">
                 <p className="text-base">
                   {t("rogelioMartinezP1")}
                 </p>
@@ -107,7 +107,7 @@ export default function HistoryPage() {
                   alt="Rogelio Martínez"
                   width={250}
                   height={350}
-                  className="rounded-lg shadow-xl object-cover border border-blue-300/30"
+                  className="rounded-lg shadow-xl object-cover border border-gray-200"
                   style={{ aspectRatio: '3/4' }}
                 />
               </div>
@@ -118,25 +118,25 @@ export default function HistoryPage() {
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <h2 className="text-2xl font-light text-white mb-2">{t("qualityPrestige")}</h2>
-                <p className="text-base text-blue-100 leading-relaxed">
+                <h2 className="text-2xl font-light text-gray-900 mb-2">{t("qualityPrestige")}</h2>
+                <p className="text-base text-gray-700 leading-relaxed">
                   {t("qualityPrestigeText")}
                 </p>
               </div>
               
               <div>
-                <h2 className="text-2xl font-light text-white mb-2">{t("globalPresence")}</h2>
-                <p className="text-base text-blue-100 leading-relaxed mb-3">
+                <h2 className="text-2xl font-light text-gray-900 mb-2">{t("globalPresence")}</h2>
+                <p className="text-base text-gray-700 leading-relaxed mb-3">
                   {t("globalPresenceText")}
                 </p>
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="text-center p-3 border border-blue-300">
-                    <p className="text-lg font-light text-white">2014</p>
-                    <p className="text-xs text-blue-200 uppercase tracking-wide">{t("founded")}</p>
+                  <div className="text-center p-3 border border-gray-300">
+                    <p className="text-lg font-light text-gray-900">2014</p>
+                    <p className="text-xs text-gray-600 uppercase tracking-wide">{t("founded")}</p>
                   </div>
-                  <div className="text-center p-3 border border-blue-300">
-                    <p className="text-lg font-light text-white">Global</p>
-                    <p className="text-xs text-blue-200 uppercase tracking-wide">{t("markets")}</p>
+                  <div className="text-center p-3 border border-gray-300">
+                    <p className="text-lg font-light text-gray-900">Global</p>
+                    <p className="text-xs text-gray-600 uppercase tracking-wide">{t("markets")}</p>
                   </div>
                 </div>
               </div>
@@ -145,31 +145,31 @@ export default function HistoryPage() {
 
           {/* Contact Information */}
           <div>
-            <h2 className="text-2xl font-light text-white mb-2">{t("contactUs")}</h2>
+            <h2 className="text-2xl font-light text-gray-900 mb-2">{t("contactUs")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">{t("address")}</h3>
-                <p className="text-blue-100 leading-relaxed text-sm">
+                <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wide">{t("address")}</h3>
+                <p className="text-gray-700 leading-relaxed text-sm">
                   C. Arzobispo Meriño 217, piso 2<br />
                   Santo Domingo 10210<br />
                   República Dominicana
                 </p>
               </div>
               <div>
-                <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">{t("phone")}</h3>
-                <p className="text-blue-100 text-sm">
+                <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wide">{t("phone")}</h3>
+                <p className="text-gray-700 text-sm">
                   +1.718.675.2636<br />
                   +1.809.299.9188
                 </p>
               </div>
               <div>
-                <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">{t("email")}</h3>
-                <p className="text-blue-100 mb-3 text-sm">
+                <h3 className="text-sm font-medium text-gray-900 mb-2 uppercase tracking-wide">{t("email")}</h3>
+                <p className="text-gray-700 mb-3 text-sm">
                   info@donrogelio.com
                 </p>
                 <button 
                   onClick={() => setVideoOpen(true)}
-                  className="bg-blue-700 text-white px-3 py-2 text-xs font-light hover:bg-blue-600 transition-colors rounded cursor-pointer"
+                  className="bg-gray-300 text-gray-900 px-3 py-2 text-xs font-medium hover:bg-gray-400 transition-colors rounded cursor-pointer"
                 >
                   {t("watchOurStory")}
                 </button>
@@ -178,11 +178,11 @@ export default function HistoryPage() {
           </div>
 
           {/* Closing Quote */}
-          <div className="pt-4 border-t border-blue-700 mt-6">
-            <blockquote className="text-base font-light italic text-blue-100 text-center">
+          <div className="pt-4 border-t border-gray-300 mt-6">
+            <blockquote className="text-base font-light italic text-gray-700 text-center">
               &ldquo;{t("historyQuote")}&rdquo;
             </blockquote>
-            <p className="text-blue-300 mt-2 text-center text-xs">— {t("historyQuoteAuthor")}</p>
+            <p className="text-gray-600 mt-2 text-center text-xs">— {t("historyQuoteAuthor")}</p>
           </div>
         </div>
       </div>
@@ -236,7 +236,7 @@ export default function HistoryPage() {
 
               {/* Video Info Text */}
               <div className="text-center mt-4">
-                <p className="text-sm text-blue-200 font-light">{t("clickToClose")}</p>
+                <p className="text-sm text-gray-600 font-normal">{t("clickToClose")}</p>
               </div>
             </motion.div>
           </motion.div>

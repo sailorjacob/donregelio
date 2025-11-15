@@ -369,7 +369,7 @@ export default function ShopPage() {
                                     onClick={() => setSelectedQuantity("single")}
                                     className={`w-full text-left px-4 py-3 transition-colors duration-200 rounded ${
                                       selectedQuantity === "single"
-                                        ? "bg-amber-600 text-white"
+                                        ? "bg-gray-300 text-gray-900"
                                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >
@@ -380,7 +380,7 @@ export default function ShopPage() {
                                     onClick={() => setSelectedQuantity("3pack")}
                                     className={`w-full text-left px-4 py-3 transition-colors duration-200 rounded ${
                                       selectedQuantity === "3pack"
-                                        ? "bg-amber-600 text-white"
+                                        ? "bg-gray-300 text-gray-900"
                                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >
@@ -391,7 +391,7 @@ export default function ShopPage() {
                                     onClick={() => setSelectedQuantity("10pack")}
                                     className={`w-full text-left px-4 py-3 transition-colors duration-200 rounded ${
                                       selectedQuantity === "10pack"
-                                        ? "bg-amber-600 text-white"
+                                        ? "bg-gray-300 text-gray-900"
                                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >
@@ -402,7 +402,7 @@ export default function ShopPage() {
                                     onClick={() => setSelectedQuantity("box")}
                                     className={`w-full text-left px-4 py-3 transition-colors duration-200 rounded ${
                                       selectedQuantity === "box"
-                                        ? "bg-amber-600 text-white"
+                                        ? "bg-gray-300 text-gray-900"
                                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >

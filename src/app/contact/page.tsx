@@ -39,17 +39,17 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white">
+    <main className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white text-gray-900">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-blue-700/30 bg-blue-900/80">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-gray-200 bg-white/80">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between max-w-5xl mx-auto">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors duration-300"
+              className="inline-flex items-center gap-2 text-gray-700 hover:text-amber-600 transition-colors duration-300"
             >
               <ArrowLeft className="w-4 h-4" />
-              <span className="text-sm font-light">{t("backToHome")}</span>
+              <span className="text-sm font-medium">{t("backToHome")}</span>
             </Link>
             <LanguageSwitcher />
           </div>
@@ -60,9 +60,9 @@ export default function ContactPage() {
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="mb-16">
-            <h1 className="text-5xl font-light mb-2">{t("contact")}</h1>
-            <div className="w-16 h-px bg-blue-400 mb-4"></div>
-            <p className="text-blue-200 font-light">
+            <h1 className="text-5xl font-light mb-2 text-gray-900">{t("contact")}</h1>
+            <div className="w-16 h-px bg-amber-600 mb-4"></div>
+            <p className="text-gray-700 font-light">
               {t("contactSubtitle")}
             </p>
           </div>
@@ -73,18 +73,18 @@ export default function ContactPage() {
             <div className="space-y-6">
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <Mail className="w-4 h-4 text-blue-400" />
-                  <h3 className="text-sm font-medium text-white uppercase tracking-wide">{t("footerEmail")}</h3>
+                  <Mail className="w-4 h-4 text-amber-600" />
+                  <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide">{t("footerEmail")}</h3>
                 </div>
-                <p className="text-blue-200 text-sm">info@donrogelio.com</p>
+                <p className="text-gray-700 text-sm">info@donrogelio.com</p>
               </div>
 
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <Phone className="w-4 h-4 text-blue-400" />
-                  <h3 className="text-sm font-medium text-white uppercase tracking-wide">{t("footerPhone")}</h3>
+                  <Phone className="w-4 h-4 text-amber-600" />
+                  <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide">{t("footerPhone")}</h3>
                 </div>
-                <p className="text-blue-200 text-sm">
+                <p className="text-gray-700 text-sm">
                   +1.718.675.2636<br />
                   +1.809.299.9188
                 </p>
@@ -92,10 +92,10 @@ export default function ContactPage() {
 
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <MapPin className="w-4 h-4 text-blue-400" />
-                  <h3 className="text-sm font-medium text-white uppercase tracking-wide">{t("footerAddress")}</h3>
+                  <MapPin className="w-4 h-4 text-amber-600" />
+                  <h3 className="text-sm font-medium text-gray-900 uppercase tracking-wide">{t("footerAddress")}</h3>
                 </div>
-                <p className="text-blue-200 text-sm">
+                <p className="text-gray-700 text-sm">
                   Calle Arzobispo Meriño 217<br />
                   Zona Colonial<br />
                   Santo Domingo 10210<br />
@@ -117,7 +117,7 @@ export default function ContactPage() {
                         value={formData.firstName}
                         onChange={handleChange}
                         placeholder={t("firstName")}
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white placeholder-blue-300/50 focus:outline-none focus:border-blue-400 transition-colors text-sm"
+                        className="w-full px-4 py-3 bg-gray-100 border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-amber-600 transition-colors text-sm"
                       />
                     </div>
                     <div>
@@ -128,7 +128,7 @@ export default function ContactPage() {
                         value={formData.lastName}
                         onChange={handleChange}
                         placeholder={t("lastName")}
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 text-white placeholder-blue-300/50 focus:outline-none focus:border-blue-400 transition-colors text-sm"
+                        className="w-full px-4 py-3 bg-gray-100 border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-amber-600 transition-colors text-sm"
                       />
                     </div>
                   </div>
@@ -170,23 +170,23 @@ export default function ContactPage() {
 
                   <button
                     type="submit"
-                    className="w-full bg-blue-500 text-white py-3 px-6 font-light hover:bg-blue-400 transition-colors text-sm uppercase tracking-wider"
+                    className="w-full bg-gray-300 text-gray-900 py-3 px-6 font-medium hover:bg-gray-400 transition-colors text-sm uppercase tracking-wider"
                   >
                     {t("sendMessageButton")}
                   </button>
                 </form>
               ) : (
                 <div className="py-12 text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-500/20 mb-6">
-                    <Check className="w-6 h-6 text-blue-400" />
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-200 mb-6">
+                    <Check className="w-6 h-6 text-gray-700" />
                   </div>
-                  <h2 className="text-2xl font-light text-white mb-3">{t("thankYou")}</h2>
-                  <p className="text-blue-200 mb-8 text-sm">
+                  <h2 className="text-2xl font-light text-gray-900 mb-3">{t("thankYou")}</h2>
+                  <p className="text-gray-700 mb-8 text-sm">
                     {t("thankYouMessage")}
                   </p>
                   
                   <div className="mb-8">
-                    <p className="text-white mb-4 text-sm">{t("followUsInstagram")}</p>
+                    <p className="text-gray-900 mb-4 text-sm font-medium">{t("followUsInstagram")}</p>
                     <a
                       href="https://www.instagram.com/donregeliocigars"
                       target="_blank"
@@ -200,7 +200,7 @@ export default function ContactPage() {
 
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="text-blue-300 hover:text-white transition-colors text-sm"
+                    className="text-gray-700 hover:text-amber-600 transition-colors text-sm font-medium"
                   >
                     {t("sendAnotherMessage")}
                   </button>

@@ -349,16 +349,16 @@ Responderemos a su consulta dentro de un plazo razonable.`
   const currentContent = content[language]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-black text-white">
+    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white text-gray-900">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-blue-700 bg-blue-900/80">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-gray-200 bg-white/80">
         <div className="container mx-auto px-6 py-4">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors duration-300"
+            className="inline-flex items-center gap-2 text-gray-700 hover:text-amber-600 transition-colors duration-300"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm font-light">Back to Home</span>
+            <span className="text-sm font-medium">Back to Home</span>
           </Link>
         </div>
       </header>
@@ -367,8 +367,8 @@ Responderemos a su consulta dentro de un plazo razonable.`
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{currentContent.title}</h1>
-            <p className="text-blue-200 text-sm">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">{currentContent.title}</h1>
+            <p className="text-gray-700 text-sm">
               {t("termsLastUpdated")}: {currentContent.lastUpdated}
             </p>
           </div>
@@ -377,12 +377,12 @@ Responderemos a su consulta dentro de un plazo razonable.`
             {currentContent.sections.map((section, index) => (
               <div
                 key={index}
-                className="border-l-2 border-blue-400 pl-6"
+                className="border-l-2 border-amber-600 pl-6"
               >
-                <h2 className="text-xl md:text-2xl font-semibold mb-3 text-white">
+                <h2 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900">
                   {section.title}
                 </h2>
-                <div className="text-blue-200 leading-relaxed whitespace-pre-line text-sm">
+                <div className="text-gray-700 leading-relaxed whitespace-pre-line text-sm">
                   {section.content}
                 </div>
               </div>
