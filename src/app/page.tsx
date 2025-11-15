@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react"
 import { useLanguage } from "@/contexts/LanguageContext"
 import Footer from "@/components/Footer"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
+import WhatsAppButton from "@/components/WhatsAppButton"
 
 interface Product {
   id: string
@@ -246,6 +247,8 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <WhatsAppButton />
     </div>
   )
 }

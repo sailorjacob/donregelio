@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import WhatsAppButton from "@/components/WhatsAppButton"
 
 export default function RumPage() {
   return (
@@ -48,6 +49,8 @@ export default function RumPage() {
           Coming Soon
         </h1>
       </div>
+
+      <WhatsAppButton />
     </main>
   )
 }

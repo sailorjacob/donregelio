@@ -8,6 +8,7 @@ import { X } from "lucide-react"
 import { useLanguage } from "@/contexts/LanguageContext"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
 import Footer from "@/components/Footer"
+import WhatsAppButton from "@/components/WhatsAppButton"
 
 export default function HistoryPage() {
   const { t } = useLanguage()
@@ -187,6 +188,8 @@ export default function HistoryPage() {
       </div>
 
       <Footer />
+
+      <WhatsAppButton />
 
       {/* Video Modal */}
       <AnimatePresence>

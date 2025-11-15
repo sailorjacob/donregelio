@@ -6,6 +6,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Playfair_Display } from "next/font/google"
+import WhatsAppButton from "@/components/WhatsAppButton"
 
 const playfair = Playfair_Display({ 
   subsets: ["latin"],
@@ -431,6 +432,8 @@ export default function ShopPage() {
                     </div>
                   </div>
       </section>
+
+      <WhatsAppButton />
     </main>
   )
 }

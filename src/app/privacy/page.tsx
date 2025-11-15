@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useLanguage } from "@/contexts/LanguageContext"
 import Footer from "@/components/Footer"
+import WhatsAppButton from "@/components/WhatsAppButton"
 import { ArrowLeft } from "lucide-react"
 
 export default function PrivacyPolicy() {
@@ -231,6 +232,8 @@ Responderemos a su consulta dentro de un plazo razonable.`
       </main>
 
       <Footer />
+
+      <WhatsAppButton />
     </div>
   )
 }

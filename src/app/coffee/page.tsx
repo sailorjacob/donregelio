@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import WhatsAppButton from "@/components/WhatsAppButton"
 
 export default function CoffeePage() {
   return (
@@ -48,6 +49,8 @@ export default function CoffeePage() {
           Coming Soon
         </h1>
       </div>
+
+      <WhatsAppButton />
     </main>
   )
 }
