@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <title>Don Rogelio - Premium Cigars</title>
+        <title>Don Rogelio</title>
         <meta
           name="description"
           content="Discover the finest collection of premium cigars from Don Rogelio. Handcrafted with tradition and excellence."
