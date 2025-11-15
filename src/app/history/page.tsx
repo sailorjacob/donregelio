@@ -16,10 +16,9 @@ export default function HistoryPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white text-gray-900">
       {/* Simple Header */}
-      <header className="border-b border-gray-200 bg-white/80 backdrop-blur-xl">
+      <header className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-xl">
         <div className="w-full px-6 py-4">
-          <div className="max-w-4xl mx-auto">
-            <nav className="flex items-center justify-between">
+          <nav className="flex items-center justify-between max-w-4xl mx-auto">
             <Link href="/" className="flex items-center">
               <div className="w-8 h-8 rounded-lg overflow-hidden shadow-sm">
                 <Image
@@ -47,13 +46,12 @@ export default function HistoryPage() {
               </div>
               <LanguageSwitcher />
             </div>
-            </nav>
-          </div>
+          </nav>
         </div>
       </header>
 
       {/* Letter Content */}
-      <div className="max-w-4xl mx-auto px-6 py-8">
+      <div className="max-w-4xl mx-auto px-6 py-8 pt-24">
         {/* Back Navigation */}
         <Link
           href="/"
