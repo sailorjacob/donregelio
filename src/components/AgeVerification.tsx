@@ -10,6 +10,7 @@ import { Globe } from "lucide-react"
 export default function AgeVerification({ onVerified }: { onVerified: () => void }) {
   const { language, setLanguage, t } = useLanguage()
   const [showLanguageMenu, setShowLanguageMenu] = useState(false)
+  const [showUnderageMessage, setShowUnderageMessage] = useState(false)
 
   const handleYes = () => {
     // Store verification in localStorage (expires in 24 hours)
@@ -19,7 +20,7 @@ export default function AgeVerification({ onVerified }: { onVerified: () => void
   }
 
   const handleNo = () => {
-    window.location.href = "https://www.google.com"
+    setShowUnderageMessage(true)
   }
 
   return (
@@ -119,56 +120,89 @@ export default function AgeVerification({ onVerified }: { onVerified: () => void
           <div className="h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent w-64 mx-auto" />
         </motion.div>
 
-        {/* Age Question */}
-        <motion.div
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-          <h2 className="text-4xl md:text-5xl font-light tracking-widest mb-12 text-white">
-            {t("ageGateTitle")}
-          </h2>
-
-          {/* Buttons */}
-          <div className="flex items-center justify-center gap-6 mb-12">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleYes}
-              className="px-16 py-4 text-xl font-light tracking-widest border-2 border-blue-400 bg-blue-400/10 text-white hover:bg-blue-400 hover:text-black transition-all duration-300 rounded-sm"
+        <AnimatePresence mode="wait">
+          {!showUnderageMessage ? (
+            /* Age Question */
+            <motion.div
+              key="age-question"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              {t("ageGateYes")}
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleNo}
-              className="px-16 py-4 text-xl font-light tracking-widest border-2 border-white/40 bg-transparent text-white/70 hover:border-white hover:text-white transition-all duration-300 rounded-sm"
-            >
-              {t("ageGateNo")}
-            </motion.button>
-          </div>
+              <h2 className="text-4xl md:text-5xl font-light tracking-widest mb-12 text-white">
+                {t("ageGateTitle")}
+              </h2>
 
-          {/* Terms and Privacy */}
-          <div className="text-sm text-white/70 font-light">
-            <p>
-              {t("ageGateTerms")}{" "}
-              <Link
-                href="/terms"
-                className="text-blue-300 hover:text-white underline transition-colors"
-              >
-                {t("termsOfUse")}
-              </Link>{" "}
-              {t("ageGateAnd")}{" "}
-              <Link
-                href="/privacy"
-                className="text-blue-300 hover:text-white underline transition-colors"
-              >
-                {t("privacyPolicy")}
-              </Link>
-            </p>
-          </div>
-        </motion.div>
+              {/* Buttons */}
+              <div className="flex items-center justify-center gap-6 mb-12">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleYes}
+                  className="px-16 py-4 text-xl font-light tracking-widest border-2 border-blue-400 bg-blue-400/10 text-white hover:bg-blue-400 hover:text-black transition-all duration-300 rounded-sm"
+                >
+                  {t("ageGateYes")}
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleNo}
+                  className="px-16 py-4 text-xl font-light tracking-widest border-2 border-white/40 bg-transparent text-white/70 hover:border-white hover:text-white transition-all duration-300 rounded-sm"
+                >
+                  {t("ageGateNo")}
+                </motion.button>
+              </div>
+
+              {/* Terms and Privacy */}
+              <div className="text-sm text-white/70 font-light">
+                <p>
+                  {t("ageGateTerms")}{" "}
+                  <Link
+                    href="/terms"
+                    className="text-blue-300 hover:text-white underline transition-colors"
+                  >
+                    {t("termsOfUse")}
+                  </Link>{" "}
+                  {t("ageGateAnd")}{" "}
+                  <Link
+                    href="/privacy"
+                    className="text-blue-300 hover:text-white underline transition-colors"
+                  >
+                    {t("privacyPolicy")}
+                  </Link>
+                </p>
+              </div>
+            </motion.div>
+          ) : (
+            /* Underage Message */
+            <motion.div
+              key="underage-message"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-8"
+            >
+              <h2 className="text-4xl md:text-5xl font-light tracking-wide mb-6 text-white">
+                {t("sorryUnderage")}
+              </h2>
+              
+              <div className="max-w-2xl mx-auto space-y-4">
+                <p className="text-xl md:text-2xl text-blue-200 font-light leading-relaxed">
+                  {t("underageMessage")}
+                </p>
+                <p className="text-lg text-blue-300 font-light">
+                  {t("underageThankYou")}
+                </p>
+              </div>
+
+              <div className="pt-8">
+                <div className="w-32 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto" />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.div>
   )

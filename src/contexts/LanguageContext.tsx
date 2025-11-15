@@ -316,6 +316,116 @@ export const translations: Translations = {
   browseCollection: {
     en: "Browse Our Collection",
     es: "Explorar Nuestra Colección"
+  },
+  gallery: {
+    en: "Gallery",
+    es: "Galería"
+  },
+  
+  // History Page Content
+  theBeginning: {
+    en: "The Beginning",
+    es: "El Comienzo"
+  },
+  historyBeginningP1: {
+    en: "Don Rogelio Cigars emerged in 2014, a year after the death of the father of Founder Thomas Martinez, as a tribute and a faithful reminder of his memory to all his family and especially their grandchildren.",
+    es: "Don Rogelio Cigars surgió en 2014, un año después de la muerte del padre del fundador Thomas Martínez, como un homenaje y un fiel recordatorio de su memoria para toda su familia y especialmente para sus nietos."
+  },
+  historyBeginningP2: {
+    en: "What began as a tribute, has turned into an ambitious project, presented cigars with an exquisite smoke and of excellent quality. It is no secret for no one that currently, the Dominican Republic has a position important in the tobacco market at the level world.",
+    es: "Lo que comenzó como un homenaje, se ha convertido en un proyecto ambicioso, presentando cigarros con un humo exquisito y de excelente calidad. No es secreto para nadie que actualmente, la República Dominicana tiene una posición importante en el mercado del tabaco a nivel mundial."
+  },
+  rogelioMartinezTitle: {
+    en: "Rogelio Martínez",
+    es: "Rogelio Martínez"
+  },
+  rogelioMartinezP1: {
+    en: "Rogelio Martinez was born in 1924 in Puerto Plata, Dominican Republic, in a small town of approximately 1,500 inhabitants called Rio Grande. In his villages and neighboring villages, he was a young man well known for his courtesy, the horses he owned, his love of music and, of course, his exquisite rolled cigarettes.",
+    es: "Rogelio Martínez nació en 1924 en Puerto Plata, República Dominicana, en un pequeño pueblo de aproximadamente 1,500 habitantes llamado Río Grande. En su pueblo y pueblos vecinos, era un joven muy conocido por su cortesía, los caballos que poseía, su amor por la música y, por supuesto, sus exquisitos cigarrillos enrollados."
+  },
+  rogelioMartinezP2: {
+    en: "Dressed in fine suits and a skillful horseman, it's no rumor that he's also a charmer. In search of a better life, Rogelio left Rio Grande to the great city of Santo Domingo and never returned. In 1940 he had joined the army and in the 1960s he remarried for the fourth and last time to Thelma Fernández, with whom he had 2 children; his youngest of five children.",
+    es: "Vestido con trajes finos y jinete hábil, no es rumor que también era un encantador. En busca de una vida mejor, Rogelio dejó Río Grande hacia la gran ciudad de Santo Domingo y nunca regresó. En 1940 se había unido al ejército y en la década de 1960 se casó por cuarta y última vez con Thelma Fernández, con quien tuvo 2 hijos; los menores de sus cinco hijos."
+  },
+  rogelioMartinezP3: {
+    en: "When the 80s hit, they went to New York, where he retired. He and Thelma later moved with their children, who were married by then, to South Florida. After a life full of adventure, love and joy, he passed away in 2013, he was 89 years old at the moment.",
+    es: "Cuando llegaron los años 80, se fueron a Nueva York, donde se jubiló. Él y Thelma luego se mudaron con sus hijos, que ya estaban casados, a South Florida. Después de una vida llena de aventura, amor y alegría, falleció en 2013, tenía 89 años en ese momento."
+  },
+  qualityPrestige: {
+    en: "Quality & Prestige",
+    es: "Calidad y Prestigio"
+  },
+  qualityPrestigeText: {
+    en: "Our products are selected carefully by hand with a long-term cultivation process.",
+    es: "Nuestros productos son seleccionados cuidadosamente a mano con un proceso de cultivo a largo plazo."
+  },
+  globalPresence: {
+    en: "Global Presence",
+    es: "Presencia Global"
+  },
+  globalPresenceText: {
+    en: "We started with the United States, Italy and Hong Kong. Right now, we have a cigar export capacity of 50,000 handcrafted units monthly.",
+    es: "Comenzamos con Estados Unidos, Italia y Hong Kong. Ahora mismo, tenemos una capacidad de exportación de cigarros de 50,000 unidades artesanales mensuales."
+  },
+  founded: {
+    en: "Founded",
+    es: "Fundado"
+  },
+  markets: {
+    en: "Markets",
+    es: "Mercados"
+  },
+  contactUs: {
+    en: "Contact Us",
+    es: "Contáctanos"
+  },
+  address: {
+    en: "Address",
+    es: "Dirección"
+  },
+  phone: {
+    en: "Phone",
+    es: "Teléfono"
+  },
+  email: {
+    en: "Email",
+    es: "Correo"
+  },
+  watchOurStory: {
+    en: "Watch Our Story",
+    es: "Ver Nuestra Historia"
+  },
+  clickToClose: {
+    en: "Click to close or wait for video to end",
+    es: "Haz clic para cerrar o espera a que termine el video"
+  },
+  
+  // Gallery Page
+  exploreOurCollection: {
+    en: "Explore Our Collection",
+    es: "Explorar Nuestra Colección"
+  },
+  experienceEssence: {
+    en: "Experience the essence of Don Rogelio",
+    es: "Experimenta la esencia de Don Rogelio"
+  },
+  shopNow: {
+    en: "SHOP NOW",
+    es: "COMPRAR AHORA"
+  },
+  
+  // Age Verification - Underage Message
+  sorryUnderage: {
+    en: "We're Sorry",
+    es: "Lo Sentimos"
+  },
+  underageMessage: {
+    en: "You must be 21 years or older to access this site. Our products are intended for adults only.",
+    es: "Debes tener 21 años o más para acceder a este sitio. Nuestros productos están destinados solo para adultos."
+  },
+  underageThankYou: {
+    en: "Thank you for your understanding.",
+    es: "Gracias por tu comprensión."
   }
 }
 

@@ -36,7 +36,7 @@ export default function HistoryPage() {
                 </Link>
                 <span className="text-blue-200/50">•</span>
                 <Link href="/gallery" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
-                  Gallery
+                  {t("gallery")}
                 </Link>
                 <span className="text-blue-200/50">•</span>
                 <Link href="/contact" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
@@ -74,33 +74,30 @@ export default function HistoryPage() {
         <div className="space-y-5">
           {/* The Beginning */}
           <div>
-            <h2 className="text-2xl font-light text-white mb-2">The Beginning</h2>
+            <h2 className="text-2xl font-light text-white mb-2">{t("theBeginning")}</h2>
             <div className="space-y-2 text-blue-100 leading-relaxed">
               <p className="text-base">
-                Don Rogelio Cigars emerged in 2014, a year after the death of the father of Founder Thomas Martinez,
-                as a tribute and a faithful reminder of his memory to all his family and especially their grandchildren.
+                {t("historyBeginningP1")}
               </p>
               <p className="text-base">
-                What began as a tribute, has turned into an ambitious project, presented cigars with an exquisite smoke
-                and of excellent quality. It is no secret for no one that currently, the Dominican Republic has a
-                position important in the tobacco market at the level world.
+                {t("historyBeginningP2")}
               </p>
             </div>
           </div>
 
           {/* Rogelio Martinez */}
           <div>
-            <h2 className="text-2xl font-light text-white mb-2">Rogelio Martínez</h2>
+            <h2 className="text-2xl font-light text-white mb-2">{t("rogelioMartinezTitle")}</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-start">
               <div className="lg:col-span-2 space-y-2 text-blue-100 leading-relaxed">
                 <p className="text-base">
-                  Rogelio Martinez was born in 1924 in Puerto Plata, Dominican Republic, in a small town of approximately 1,500 inhabitants called Rio Grande. In his villages and neighboring villages, he was a young man well known for his courtesy, the horses he owned, his love of music and, of course, his exquisite rolled cigarettes.
+                  {t("rogelioMartinezP1")}
                 </p>
                 <p className="text-base">
-                  Dressed in fine suits and a skillful horseman, it&apos;s no rumor that he&apos;s also a charmer. In search of a better life, Rogelio left Rio Grande to the great city of Santo Domingo and never returned. In 1940 he had joined the army and in the 1960s he remarried for the fourth and last time to Thelma Fernández, with whom he had 2 children; his youngest of five children.
+                  {t("rogelioMartinezP2")}
                 </p>
                 <p className="text-base">
-                  When the 80s hit, they went to New York, where he retired. He and Thelma later moved with their children, who were married by then, to South Florida. After a life full of adventure, love and joy, he passed away in 2013, he was 89 years old at the moment.
+                  {t("rogelioMartinezP3")}
                 </p>
               </div>
               <div className="flex items-start justify-center">
@@ -120,25 +117,25 @@ export default function HistoryPage() {
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <h2 className="text-2xl font-light text-white mb-2">Quality & Prestige</h2>
+                <h2 className="text-2xl font-light text-white mb-2">{t("qualityPrestige")}</h2>
                 <p className="text-base text-blue-100 leading-relaxed">
-                  Our products are selected carefully by hand with a long-term cultivation process.
+                  {t("qualityPrestigeText")}
                 </p>
               </div>
               
               <div>
-                <h2 className="text-2xl font-light text-white mb-2">Global Presence</h2>
+                <h2 className="text-2xl font-light text-white mb-2">{t("globalPresence")}</h2>
                 <p className="text-base text-blue-100 leading-relaxed mb-3">
-                  We started with the United States, Italy and Hong Kong. Right now, we have a cigar export capacity of 50,000 handcrafted units monthly.
+                  {t("globalPresenceText")}
                 </p>
                 <div className="grid grid-cols-2 gap-2">
                   <div className="text-center p-3 border border-blue-300">
                     <p className="text-lg font-light text-white">2014</p>
-                    <p className="text-xs text-blue-200 uppercase tracking-wide">Founded</p>
+                    <p className="text-xs text-blue-200 uppercase tracking-wide">{t("founded")}</p>
                   </div>
                   <div className="text-center p-3 border border-blue-300">
                     <p className="text-lg font-light text-white">Global</p>
-                    <p className="text-xs text-blue-200 uppercase tracking-wide">Markets</p>
+                    <p className="text-xs text-blue-200 uppercase tracking-wide">{t("markets")}</p>
                   </div>
                 </div>
               </div>
@@ -147,10 +144,10 @@ export default function HistoryPage() {
 
           {/* Contact Information */}
           <div>
-            <h2 className="text-2xl font-light text-white mb-2">Contact Us</h2>
+            <h2 className="text-2xl font-light text-white mb-2">{t("contactUs")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">Address</h3>
+                <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">{t("address")}</h3>
                 <p className="text-blue-100 leading-relaxed text-sm">
                   C. Arzobispo Meriño 217, piso 2<br />
                   Santo Domingo 10210<br />
@@ -158,14 +155,14 @@ export default function HistoryPage() {
                 </p>
               </div>
               <div>
-                <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">Phone</h3>
+                <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">{t("phone")}</h3>
                 <p className="text-blue-100 text-sm">
                   +1.718.675.2636<br />
                   +1.809.299.9188
                 </p>
               </div>
               <div>
-                <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">Email</h3>
+                <h3 className="text-sm font-medium text-white mb-2 uppercase tracking-wide">{t("email")}</h3>
                 <p className="text-blue-100 mb-3 text-sm">
                   info@donrogelio.com
                 </p>
@@ -173,7 +170,7 @@ export default function HistoryPage() {
                   onClick={() => setVideoOpen(true)}
                   className="bg-blue-700 text-white px-3 py-2 text-xs font-light hover:bg-blue-600 transition-colors rounded cursor-pointer"
                 >
-                  Watch Our Story
+                  {t("watchOurStory")}
                 </button>
               </div>
             </div>
@@ -236,7 +233,7 @@ export default function HistoryPage() {
 
               {/* Video Info Text */}
               <div className="text-center mt-4">
-                <p className="text-sm text-blue-200 font-light">Click to close or wait for video to end</p>
+                <p className="text-sm text-blue-200 font-light">{t("clickToClose")}</p>
               </div>
             </motion.div>
           </motion.div>

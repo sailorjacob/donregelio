@@ -537,7 +537,7 @@ export default function GalleryPage() {
                 href="/gallery"
                 className="text-sm font-light text-amber-400 transition-colors duration-300"
               >
-                Gallery
+                {t("gallery")}
               </Link>
               <Link
                 href="/contact"
@@ -632,7 +632,7 @@ export default function GalleryPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Explore Our Collection
+            {t("exploreOurCollection")}
           </motion.h2>
 
           <motion.p
@@ -642,7 +642,7 @@ export default function GalleryPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Experience the essence of Don Rogelio
+            {t("experienceEssence")}
           </motion.p>
 
           <motion.div
@@ -655,7 +655,7 @@ export default function GalleryPage() {
               href="/shop"
               className="inline-block border border-white text-white px-10 py-4 text-base font-light tracking-wider hover:bg-white hover:text-black transition-colors duration-300"
             >
-              SHOP NOW
+              {t("shopNow")}
             </Link>
           </motion.div>
         </div>
@@ -712,7 +712,7 @@ export default function GalleryPage() {
                     href="/gallery"
                     className="text-sm text-blue-200 hover:text-amber-400 transition-colors duration-300"
                   >
-                    Gallery
+                    {t("gallery")}
                   </Link>
                 </li>
                 <li>
