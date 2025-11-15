@@ -131,16 +131,9 @@ export default function HistoryPage() {
                 <p className="text-base text-gray-700 leading-relaxed mb-3">
                   {t("globalPresenceText")}
                 </p>
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="text-center p-3 border border-gray-300">
-                    <p className="text-lg font-light text-gray-900">2014</p>
-                    <p className="text-xs text-gray-600 uppercase tracking-wide">{t("founded")}</p>
-                  </div>
-                  <div className="text-center p-3 border border-gray-300">
-                    <p className="text-lg font-light text-gray-900">Global</p>
-                    <p className="text-xs text-gray-600 uppercase tracking-wide">{t("markets")}</p>
-                  </div>
-                </div>
+                <p className="text-base text-gray-900 font-medium">
+                  Founded in 2014, serving global markets
+                </p>
               </div>
             </div>
           </div>
