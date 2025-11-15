@@ -158,14 +158,14 @@ export default function ShopPage() {
   ]
 
   return (
-    <main className={`min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative ${playfair.className}`}>
+    <main className={`min-h-screen bg-gradient-to-b from-white via-gray-50 to-white text-gray-900 relative ${playfair.className}`}>
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-blue-700/50 bg-blue-900/90">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-gray-200 bg-white/90">
         <div className="w-full px-4 sm:px-6 py-2">
           <nav className="flex items-center justify-between">
             <div className="flex items-center space-x-8">
               <Link href="/" className="flex items-center">
-                <div className="w-8 h-8 rounded-full overflow-hidden">
+                <div className="w-8 h-8 rounded-lg overflow-hidden shadow-sm">
                   <Image
                     src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                     alt="Don Rogelio"
@@ -178,13 +178,13 @@ export default function ShopPage() {
 
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-6">
-                <Link href="/history" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                <Link href="/history" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
                   History
                 </Link>
-                <Link href="/shop" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                <Link href="/shop" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
                   Cigars
                 </Link>
-                <Link href="/gallery" className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300">
+                <Link href="/gallery" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
                   Gallery
                 </Link>
               </div>
@@ -194,28 +194,28 @@ export default function ShopPage() {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 hover:bg-blue-800 transition-colors duration-200 rounded-lg"
+                className="md:hidden p-2 hover:bg-gray-100 transition-colors duration-200 rounded-lg"
                 aria-label="Toggle mobile menu"
               >
-                {mobileMenuOpen ? <X className="w-5 h-5 text-blue-200" /> : <Menu className="w-5 h-5 text-blue-200" />}
+                {mobileMenuOpen ? <X className="w-5 h-5 text-gray-700" /> : <Menu className="w-5 h-5 text-gray-700" />}
               </button>
             </div>
           </nav>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-b border-blue-700 bg-blue-900">
+          <div className="md:hidden border-b border-gray-200 bg-white">
             <div className="container mx-auto px-6 py-4 space-y-3">
-              <Link href="/" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
                 Home
               </Link>
-              <Link href="/history" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/history" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
                 History
               </Link>
-              <Link href="/shop" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/shop" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
                 Cigars
               </Link>
-              <Link href="/gallery" className="block text-sm text-blue-200 hover:text-white active:text-white transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-blue-800 active:bg-blue-700" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/gallery" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
                 Gallery
               </Link>
             </div>
@@ -239,14 +239,14 @@ export default function ShopPage() {
                   onClick={() => selectProduct(product.id)}
                   className="flex-shrink-0 relative py-2 px-3 transition-colors duration-300"
                 >
-                  <span className={`text-sm font-light whitespace-nowrap ${
-                    selectedProduct === product.id ? 'text-white' : 'text-blue-200'
+                  <span className={`text-sm font-medium whitespace-nowrap ${
+                    selectedProduct === product.id ? 'text-gray-900' : 'text-gray-600'
                   }`}>
                     {product.name}
                   </span>
-                  {/* Animated golden line with glow */}
+                  {/* Animated golden line */}
                   <motion.div
-                    className="absolute left-0 right-0 bottom-0 h-0.5 bg-gradient-to-r from-amber-600 via-amber-400 to-amber-600 shadow-[0_0_8px_rgba(251,191,36,0.6)]"
+                    className="absolute left-0 right-0 bottom-0 h-0.5 bg-amber-600"
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: selectedProduct === product.id ? 1 : 0 }}
                     transition={{ duration: 0.3 }}
@@ -271,14 +271,14 @@ export default function ShopPage() {
                       onClick={() => selectProduct(product.id)}
                       className="relative block w-full text-left py-1.5 transition-colors duration-300 group"
                     >
-                      <span className={`block font-light text-sm ${
-                        selectedProduct === product.id ? 'text-white' : 'text-blue-200'
-                      } group-hover:text-white transition-colors duration-300 whitespace-nowrap`}>
+                      <span className={`block font-medium text-sm ${
+                        selectedProduct === product.id ? 'text-gray-900' : 'text-gray-700'
+                      } group-hover:text-amber-600 transition-colors duration-300 whitespace-nowrap`}>
                         {product.name}
                       </span>
-                      {/* Animated golden line with glow */}
+                      {/* Animated golden line */}
                       <motion.div
-                        className="absolute left-0 bottom-0 h-0.5 bg-gradient-to-r from-amber-600 via-amber-400 to-amber-600 origin-left shadow-[0_0_8px_rgba(251,191,36,0.6)]"
+                        className="absolute left-0 bottom-0 h-0.5 bg-amber-600 origin-left"
                         initial={{ scaleX: 0 }}
                         whileHover={{ scaleX: 1 }}
                         animate={{ scaleX: selectedProduct === product.id ? 1 : 0 }}
@@ -309,7 +309,7 @@ export default function ShopPage() {
                           {/* Left side - Product Image */}
                           <div className="flex-1 w-full">
                             <div 
-                              className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8 rounded-lg border border-white/20 p-2"
+                              className="relative h-64 sm:h-80 md:h-96 mb-6 md:mb-8 rounded-lg border border-gray-200 p-2 bg-white shadow-sm"
                             >
                               {getPackImage() ? (
                                 // Render pack image for 3pack, 5pack, or 10pack
@@ -332,11 +332,11 @@ export default function ShopPage() {
 
                             {/* Product Info */}
                             <div className="space-y-3">
-                              <h1 className="text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-wide">
+                              <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 tracking-wide">
                                 {product.name}
                               </h1>
 
-                              <p className="text-xs sm:text-sm text-blue-300 leading-relaxed max-w-xl font-extralight">
+                              <p className="text-xs sm:text-sm text-gray-700 leading-relaxed max-w-xl font-normal">
                                 {product.description}
                               </p>
                             </div>
@@ -352,7 +352,7 @@ export default function ShopPage() {
                               className="w-full lg:w-72 flex-shrink-0"
                             >
                               {/* Preview Image */}
-                              <div className="relative h-48 mb-4 rounded-lg border border-white/20 p-2">
+                              <div className="relative h-48 mb-4 rounded-lg border border-gray-200 p-2 bg-white shadow-sm">
                                 <Image
                                   src={getPreviewImage(product)}
                                   alt={`${product.name} ${selectedQuantity}`}
@@ -363,50 +363,50 @@ export default function ShopPage() {
 
                               {/* Purchase Options */}
                               <div className="space-y-4">
-                                <h3 className="text-sm font-medium text-white uppercase tracking-wide">Order Options</h3>
+                                <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Order Options</h3>
                                 <div className="space-y-1">
                                   <button
                                     onClick={() => setSelectedQuantity("single")}
-                                    className={`w-full text-left px-4 py-3 transition-colors duration-200 ${
+                                    className={`w-full text-left px-4 py-3 transition-colors duration-200 rounded ${
                                       selectedQuantity === "single"
-                                        ? "bg-blue-500 text-white"
-                                        : "bg-white/5 text-blue-200 hover:bg-white/10"
+                                        ? "bg-amber-600 text-white"
+                                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >
-                                    <div className="font-light text-sm">Single Cigar</div>
+                                    <div className="font-medium text-sm">Single Cigar</div>
                                   </button>
 
                                   <button
                                     onClick={() => setSelectedQuantity("3pack")}
-                                    className={`w-full text-left px-4 py-3 transition-colors duration-200 ${
+                                    className={`w-full text-left px-4 py-3 transition-colors duration-200 rounded ${
                                       selectedQuantity === "3pack"
-                                        ? "bg-blue-500 text-white"
-                                        : "bg-white/5 text-blue-200 hover:bg-white/10"
+                                        ? "bg-amber-600 text-white"
+                                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >
-                                    <div className="font-light text-sm">3 Pack</div>
+                                    <div className="font-medium text-sm">3 Pack</div>
                                   </button>
 
                                   <button
                                     onClick={() => setSelectedQuantity("10pack")}
-                                    className={`w-full text-left px-4 py-3 transition-colors duration-200 ${
+                                    className={`w-full text-left px-4 py-3 transition-colors duration-200 rounded ${
                                       selectedQuantity === "10pack"
-                                        ? "bg-blue-500 text-white"
-                                        : "bg-white/5 text-blue-200 hover:bg-white/10"
+                                        ? "bg-amber-600 text-white"
+                                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >
-                                    <div className="font-light text-sm">10 Pack</div>
+                                    <div className="font-medium text-sm">10 Pack</div>
                                   </button>
 
                                   <button
                                     onClick={() => setSelectedQuantity("box")}
-                                    className={`w-full text-left px-4 py-3 transition-colors duration-200 ${
+                                    className={`w-full text-left px-4 py-3 transition-colors duration-200 rounded ${
                                       selectedQuantity === "box"
-                                        ? "bg-blue-500 text-white"
-                                        : "bg-white/5 text-blue-200 hover:bg-white/10"
+                                        ? "bg-amber-600 text-white"
+                                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >
-                                    <div className="font-light text-sm">Full Box</div>
+                                    <div className="font-medium text-sm">Full Box</div>
                                   </button>
                                 </div>
                               </div>
@@ -420,11 +420,11 @@ export default function ShopPage() {
               ) : (
                 <div className="h-full flex items-center justify-center">
                   <div className="text-center px-4">
-                    <div className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-6 border-2 border-white/20 flex items-center justify-center rounded-full">
-                      <div className="w-8 h-8 sm:w-12 sm:h-12 border border-white/30 rounded-full"></div>
+                    <div className="w-16 h-16 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-6 border-2 border-gray-300 flex items-center justify-center rounded-full">
+                      <div className="w-8 h-8 sm:w-12 sm:h-12 border border-gray-300 rounded-full"></div>
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-light text-blue-200 mb-2">Select a Cigar</h3>
-                    <p className="text-sm sm:text-base text-blue-300 font-light">Choose from the tabs above</p>
+                    <h3 className="text-xl sm:text-2xl font-medium text-gray-700 mb-2">Select a Cigar</h3>
+                    <p className="text-sm sm:text-base text-gray-600 font-normal">Choose from the tabs above</p>
                   </div>
                 </div>
               )}
