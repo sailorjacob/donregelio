@@ -13,10 +13,10 @@ export default function LanguageSwitcher() {
     <div className="relative">
       <button
         onClick={() => setShowLanguageMenu(!showLanguageMenu)}
-        className="flex items-center gap-2 px-3 py-2 text-gray-700 dark:text-blue-200 hover:text-amber-600 dark:hover:text-white bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors duration-300 rounded"
+        className="flex items-center gap-2 px-3 py-2 text-gray-900 dark:text-blue-200 hover:text-amber-600 dark:hover:text-white bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 transition-colors duration-300 rounded font-semibold"
       >
         <Globe className="w-4 h-4" />
-        <span className="text-sm font-medium uppercase">
+        <span className="text-sm uppercase">
           {language}
         </span>
       </button>
@@ -38,8 +38,8 @@ export default function LanguageSwitcher() {
               }}
               className={`w-full px-4 py-2 text-left text-sm transition-colors rounded-t ${
                 language === "en"
-                  ? "bg-gray-300 dark:bg-blue-500 text-gray-900 dark:text-white font-medium"
-                  : "text-gray-700 dark:text-blue-200 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white"
+                  ? "bg-amber-600 dark:bg-blue-500 text-white dark:text-white font-semibold"
+                  : "text-gray-900 dark:text-blue-200 hover:bg-gray-50 dark:hover:bg-white/10 hover:text-amber-600 dark:hover:text-white"
               }`}
             >
               English
@@ -51,8 +51,8 @@ export default function LanguageSwitcher() {
               }}
               className={`w-full px-4 py-2 text-left text-sm transition-colors rounded-b ${
                 language === "es"
-                  ? "bg-gray-300 dark:bg-blue-500 text-gray-900 dark:text-white font-medium"
-                  : "text-gray-700 dark:text-blue-200 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white"
+                  ? "bg-amber-600 dark:bg-blue-500 text-white dark:text-white font-semibold"
+                  : "text-gray-900 dark:text-blue-200 hover:bg-gray-50 dark:hover:bg-white/10 hover:text-amber-600 dark:hover:text-white"
               }`}
             >
               Español
