@@ -22,6 +22,7 @@ interface Product {
 export default function Home() {
   const { t } = useLanguage()
   const [videoOpen, setVideoOpen] = useState(false)
+  const [footerOpen, setFooterOpen] = useState(false)
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null)
 
   // Get current image for product (hover state)
@@ -142,7 +143,7 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white flex items-center justify-center pt-16">
+      <main className="min-h-screen bg-white text-gray-900 flex items-center justify-center pt-16">
       <div className="container mx-auto px-6 py-16">
         <div className="text-center max-w-4xl mx-auto">
           {/* Logo/Brand */}
@@ -181,7 +182,7 @@ export default function Home() {
                       className="object-contain drop-shadow-lg mx-auto transition-all duration-300"
                     />
                   </motion.div>
-                  <p className="text-xs text-blue-200 text-center mt-2 font-light transition-colors duration-300 group-hover:text-white">
+                  <p className="text-xs text-gray-700 text-center mt-2 font-light transition-colors duration-300 group-hover:text-amber-600">
                     {product.name}
                   </p>
                 </Link>
@@ -192,7 +193,7 @@ export default function Home() {
             <div className="mt-12 text-center">
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors duration-300 group"
+                className="inline-flex items-center gap-2 text-gray-700 hover:text-amber-600 transition-colors duration-300 group"
               >
                 <span className="text-sm font-light tracking-wide">{t("exploreCollection")}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -202,17 +203,15 @@ export default function Home() {
             {/* Down Arrow to Reveal Footer */}
             <div className="mt-16 flex justify-center">
               <button
-                onClick={() => {
-                  document.querySelector('footer')?.scrollIntoView({ behavior: 'smooth' })
-                }}
-                className="p-3 rounded-full hover:bg-white/10 transition-all duration-300 group"
-                aria-label="Scroll to footer"
+                onClick={() => setFooterOpen(!footerOpen)}
+                className="p-3 rounded-full hover:bg-gray-200 transition-all duration-300 group"
+                aria-label={footerOpen ? "Hide footer" : "Show footer"}
               >
                 <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  animate={footerOpen ? { rotate: 180 } : { y: [0, 8, 0] }}
+                  transition={footerOpen ? { duration: 0.3 } : { duration: 2, repeat: Infinity }}
                 >
-                  <ChevronDown className="w-6 h-6 text-blue-200 group-hover:text-white transition-colors" />
+                  <ChevronDown className="w-6 h-6 text-gray-700 group-hover:text-amber-600 transition-colors" />
                 </motion.div>
               </button>
             </div>
@@ -220,7 +219,15 @@ export default function Home() {
         </div>
       </main>
 
-      <Footer />
+      <motion.div
+        initial={{ y: "100%" }}
+        animate={{ y: footerOpen ? 0 : "100%" }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="fixed bottom-0 left-0 right-0 w-full overflow-hidden"
+        style={{ zIndex: footerOpen ? 40 : -1 }}
+      >
+        <Footer />
+      </motion.div>
 
       {/* Video Modal */}
       <AnimatePresence>
