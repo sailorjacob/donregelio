@@ -212,7 +212,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/20"
             onClick={() => setVideoOpen(false)}
           >
             <motion.div
@@ -241,7 +241,7 @@ export default function Home() {
 
               {/* Video Info Text */}
               <div className="text-center mt-4">
-                <p className="text-sm text-blue-200 font-light">Click to close or wait for video to end</p>
+                <p className="text-sm text-blue-200 font-light">Click to close</p>
               </div>
             </motion.div>
           </motion.div>
