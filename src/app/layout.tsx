@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/contexts/LanguageContext"
+import { CartProvider } from "@/contexts/CartContext"
 import AgeVerification from "@/components/AgeVerification"
 import { useState } from "react"
 
@@ -55,8 +56,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <LanguageProvider>
-            {!isVerified && <AgeVerification onVerified={handleVerified} />}
-            {isVerified && children}
+            <CartProvider>
+              {!isVerified && <AgeVerification onVerified={handleVerified} />}
+              {isVerified && children}
+            </CartProvider>
           </LanguageProvider>
         </ThemeProvider>
       </body>

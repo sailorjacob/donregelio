@@ -4,9 +4,11 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Menu, X, ShoppingCart } from "lucide-react"
+import { Menu, X, ShoppingCart, Plus } from "lucide-react"
 import { Playfair_Display } from "next/font/google"
 import WhatsAppButton from "@/components/WhatsAppButton"
+import { useCart } from "@/contexts/CartContext"
+import Cart from "@/components/Cart"
 
 const playfair = Playfair_Display({ 
   subsets: ["latin"],
@@ -27,6 +29,58 @@ export default function ShopPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState<string | null>("robusto")
   const [selectedQuantity, setSelectedQuantity] = useState<"single" | "3pack" | "10pack" | "box">("single")
+  const { addItem, getTotalItems, openCart } = useCart()
+
+  // Pricing structure per cigar type (USD)
+  const cigarPrices: { [key: string]: number } = {
+    robusto: 10,      // $10 USD | 600 DOP
+    doubletoro: 15,   // $15 USD | 950 DOP
+    lancero: 12,      // $12 USD | 750 DOP
+    perfecto: 10,     // $10 USD | 600 DOP
+    salamon: 12.50,   // $12.50 USD | 800 DOP
+    toro: 11,         // $11 USD | 700 DOP
+    torpedo: 11,      // $11 USD | 700 DOP
+    taco: 9           // $9 USD | 575 DOP
+  }
+
+  // Get base price for selected product
+  const getBasePrice = () => {
+    if (!selectedProduct) return 0
+    return cigarPrices[selectedProduct] || 10
+  }
+
+  // Get price based on quantity with discounts
+  const getPrice = () => {
+    const basePrice = getBasePrice()
+    switch (selectedQuantity) {
+      case "single":
+        return basePrice
+      case "3pack":
+        return Math.round(basePrice * 3 * 0.9 * 100) / 100 // 10% discount
+      case "10pack":
+        return Math.round(basePrice * 10 * 0.8 * 100) / 100 // 20% discount
+      case "box":
+        return Math.round(basePrice * 20 * 0.75 * 100) / 100 // 25% discount for 20 cigars
+      default:
+        return basePrice
+    }
+  }
+
+  // Handle add to cart
+  const handleAddToCart = () => {
+    if (!selectedProduct) return
+
+    const product = products.find(p => p.id === selectedProduct)
+    if (!product) return
+
+    addItem({
+      productId: product.id,
+      productName: product.name,
+      quantityType: selectedQuantity,
+      price: getPrice(),
+      image: product.hoverImage || product.image
+    })
+  }
 
   // Prevent body scroll when product is selected (desktop only)
   useEffect(() => {
@@ -60,10 +114,6 @@ export default function ShopPage() {
     return product.hoverImage || product.image
   }
 
-  // Check if we should show pack image in main display
-  const shouldShowPackImage = () => {
-    return selectedQuantity === "3pack" || selectedQuantity === "10pack"
-  }
 
   // Get pack image URL for main display
   const getPackImage = () => {
@@ -184,6 +234,9 @@ export default function ShopPage() {
                 <Link href="/shop" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
                   Cigars
                 </Link>
+                <Link href="/accessories" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
+                  Accessories
+                </Link>
                 <Link href="/gallery" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
                   Gallery
                 </Link>
@@ -191,12 +244,18 @@ export default function ShopPage() {
             </div>
 
             <div className="flex items-center space-x-4">
-              {/* Cart Icon */}
+              {/* Cart Icon with Badge */}
               <button
-                className="p-2 hover:bg-gray-100 transition-colors duration-200 rounded-lg"
+                onClick={openCart}
+                className="relative p-2 hover:bg-gray-100 transition-colors duration-200 rounded-lg"
                 aria-label="Shopping cart"
               >
                 <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-amber-600 transition-colors duration-300" />
+                {getTotalItems() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-amber-600 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {getTotalItems()}
+                  </span>
+                )}
               </button>
 
               {/* Mobile Menu Button */}
@@ -222,6 +281,9 @@ export default function ShopPage() {
               </Link>
               <Link href="/shop" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
                 Cigars
+              </Link>
+              <Link href="/accessories" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
+                Accessories
               </Link>
               <Link href="/gallery" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
                 Gallery
@@ -381,7 +443,10 @@ export default function ShopPage() {
                                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">Single Cigar</div>
+                                    <div className="flex items-center justify-between">
+                                      <span className="font-medium text-sm">Single Cigar</span>
+                                      <span className="text-sm font-semibold">${getBasePrice()}</span>
+                                    </div>
                                   </button>
 
                                   <button
@@ -392,7 +457,10 @@ export default function ShopPage() {
                                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">3 Pack</div>
+                                    <div className="flex items-center justify-between">
+                                      <span className="font-medium text-sm">3 Pack (10% off)</span>
+                                      <span className="text-sm font-semibold">${Math.round(getBasePrice() * 3 * 0.9 * 100) / 100}</span>
+                                    </div>
                                   </button>
 
                                   <button
@@ -403,7 +471,10 @@ export default function ShopPage() {
                                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">10 Pack</div>
+                                    <div className="flex items-center justify-between">
+                                      <span className="font-medium text-sm">10 Pack (20% off)</span>
+                                      <span className="text-sm font-semibold">${Math.round(getBasePrice() * 10 * 0.8 * 100) / 100}</span>
+                                    </div>
                                   </button>
 
                                   <button
@@ -414,8 +485,38 @@ export default function ShopPage() {
                                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                                   >
-                                    <div className="font-medium text-sm">Full Box</div>
+                                    <div className="flex items-center justify-between">
+                                      <span className="font-medium text-sm">Full Box - 20 cigars (25% off)</span>
+                                      <span className="text-sm font-semibold">${Math.round(getBasePrice() * 20 * 0.75 * 100) / 100}</span>
+                                    </div>
                                   </button>
+                                </div>
+
+                                {/* Price and Add to Cart Button */}
+                                <div className="pt-4 border-t border-gray-200">
+                                  <div className="flex justify-between items-center mb-4">
+                                    <span className="text-sm text-gray-600">Price</span>
+                                    <span className="text-2xl font-bold text-gray-900">${getPrice()}</span>
+                                  </div>
+
+                                  <button
+                                    onClick={handleAddToCart}
+                                    className="w-full px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all duration-300 flex items-center justify-center gap-2 group"
+                                  >
+                                    <Plus className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                    Add to Cart
+                                  </button>
+
+                                  <button
+                                    onClick={openCart}
+                                    className="w-full mt-2 px-6 py-2 bg-gray-100 text-gray-900 rounded-lg font-medium hover:bg-gray-200 transition-all duration-300 text-sm"
+                                  >
+                                    View Cart ({getTotalItems()})
+                                  </button>
+
+                                  <p className="text-xs text-gray-500 text-center mt-3">
+                                    Secure checkout powered by Stripe
+                                  </p>
                                 </div>
                               </div>
                             </motion.div>
@@ -442,6 +543,7 @@ export default function ShopPage() {
       </section>
 
       <WhatsAppButton />
+      <Cart />
     </main>
   )
 }
