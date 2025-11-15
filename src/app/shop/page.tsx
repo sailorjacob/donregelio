@@ -162,7 +162,7 @@ export default function ShopPage() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-gray-200 bg-white/90">
         <div className="w-full px-4 sm:px-6 py-2">
-          <nav className="flex items-center justify-between">
+          <nav className="flex items-center justify-between max-w-4xl mx-auto">
             <div className="flex items-center space-x-8">
               <Link href="/" className="flex items-center">
                 <div className="w-8 h-8 rounded-lg overflow-hidden shadow-sm">
