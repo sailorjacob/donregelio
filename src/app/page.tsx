@@ -4,7 +4,7 @@ import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, ChevronDown } from "lucide-react"
 import { useLanguage } from "@/contexts/LanguageContext"
 import Footer from "@/components/Footer"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
@@ -21,7 +21,7 @@ interface Product {
 
 export default function Home() {
   const { t } = useLanguage()
-  const [videoOpen, setVideoOpen] = useState(true) // Auto-open on page load
+  const [videoOpen, setVideoOpen] = useState(false)
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null)
 
   // Get current image for product (hover state)
@@ -197,6 +197,24 @@ export default function Home() {
                 <span className="text-sm font-light tracking-wide">{t("exploreCollection")}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
+            </div>
+
+            {/* Down Arrow to Reveal Footer */}
+            <div className="mt-16 flex justify-center">
+              <button
+                onClick={() => {
+                  document.querySelector('footer')?.scrollIntoView({ behavior: 'smooth' })
+                }}
+                className="p-3 rounded-full hover:bg-white/10 transition-all duration-300 group"
+                aria-label="Scroll to footer"
+              >
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <ChevronDown className="w-6 h-6 text-blue-200 group-hover:text-white transition-colors" />
+                </motion.div>
+              </button>
             </div>
           </div>
         </div>
