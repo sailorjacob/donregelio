@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ShoppingCart } from "lucide-react"
 import { Playfair_Display } from "next/font/google"
 import WhatsAppButton from "@/components/WhatsAppButton"
 
@@ -191,6 +191,14 @@ export default function ShopPage() {
             </div>
 
             <div className="flex items-center space-x-4">
+              {/* Cart Icon */}
+              <button
+                className="p-2 hover:bg-gray-100 transition-colors duration-200 rounded-lg"
+                aria-label="Shopping cart"
+              >
+                <ShoppingCart className="w-5 h-5 text-gray-700 hover:text-amber-600 transition-colors duration-300" />
+              </button>
+
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
