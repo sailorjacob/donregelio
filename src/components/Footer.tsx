@@ -10,14 +10,17 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-gradient-to-b from-blue-900/50 to-black border-t border-blue-700/50">
+    <footer className="relative bg-white dark:bg-slate-950 border-t border-gray-200 dark:border-slate-800">
+      {/* Subtle background accent */}
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-slate-50/50 dark:to-slate-900/30 pointer-events-none" />
+      
       {/* Main Footer Content */}
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="relative container mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-blue-400">
+              <div className="w-12 h-12 rounded-lg overflow-hidden border border-gray-300 dark:border-slate-700 shadow-sm">
                 <Image
                   src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                   alt="Don Rogelio"
@@ -26,23 +29,25 @@ export default function Footer() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-white">DON ROGELIO</h3>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight">
+                DON ROGELIO
+              </h3>
             </div>
-            <p className="text-sm text-blue-300 font-light leading-relaxed">
+            <p className="text-sm text-gray-600 dark:text-gray-400 font-light leading-relaxed">
               {t("footerAboutText")}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">
               {t("footerQuickLinks")}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               <li>
                 <Link
                   href="/history"
-                  className="text-sm text-blue-300 hover:text-white transition-colors duration-300"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                 >
                   {t("history")}
                 </Link>
@@ -50,7 +55,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/shop"
-                  className="text-sm text-blue-300 hover:text-white transition-colors duration-300"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                 >
                   {t("shop")}
                 </Link>
@@ -58,7 +63,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/gallery"
-                  className="text-sm text-blue-300 hover:text-white transition-colors duration-300"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                 >
                   Gallery
                 </Link>
@@ -66,7 +71,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-blue-300 hover:text-white transition-colors duration-300"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                 >
                   {t("contact")}
                 </Link>
@@ -76,14 +81,14 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">
               {t("footerLegal")}
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               <li>
                 <Link
                   href="/privacy"
-                  className="text-sm text-blue-300 hover:text-white transition-colors duration-300"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                 >
                   {t("privacyPolicy")}
                 </Link>
@@ -91,7 +96,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/terms"
-                  className="text-sm text-blue-300 hover:text-white transition-colors duration-300"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                 >
                   {t("termsOfUse")}
                 </Link>
@@ -101,39 +106,39 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">
+            <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">
               {t("footerContactUs")}
             </h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-blue-400 mt-1 flex-shrink-0" />
+                <Mail className="w-4 h-4 text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0" />
                 <a
                   href="mailto:info@donrogelio.com"
-                  className="text-sm text-blue-300 hover:text-white transition-colors duration-300 break-all"
+                  className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 break-all"
                 >
                   info@donrogelio.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-blue-400 mt-1 flex-shrink-0" />
-                <div className="text-sm text-blue-300 space-y-1">
+                <Phone className="w-4 h-4 text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0" />
+                <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
                   <a
                     href="tel:+18096999188"
-                    className="block hover:text-white transition-colors duration-300"
+                    className="block hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                   >
                     +1.809.299.9188
                   </a>
                   <a
                     href="tel:+17186752636"
-                    className="block hover:text-white transition-colors duration-300"
+                    className="block hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
                   >
                     +1.718.675.2636
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-blue-400 mt-1 flex-shrink-0" />
-                <span className="text-sm text-blue-300">
+                <MapPin className="w-4 h-4 text-gray-400 dark:text-gray-500 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-gray-600 dark:text-gray-400">
                   Dominican Republic
                 </span>
               </li>
@@ -142,10 +147,13 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Divider */}
+      <div className="relative border-t border-gray-200 dark:border-slate-800" />
+
       {/* Bottom Bar */}
-      <div className="bg-black py-3">
+      <div className="relative bg-gray-50 dark:bg-slate-900/50 py-4">
         <div className="container mx-auto px-6">
-          <p className="text-xs text-blue-400/60 text-center">
+          <p className="text-xs text-gray-500 dark:text-gray-500 text-center font-medium">
             © {currentYear} Don Rogelio. {t("footerRights")}
           </p>
         </div>
