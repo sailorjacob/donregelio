@@ -97,12 +97,12 @@ export default function Home() {
   return (
     <div>
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-gray-200 bg-white/80">
+      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-blue-700 bg-blue-900/80">
         <div className="w-full px-4 sm:px-6 py-2">
           <nav className="flex items-center justify-between">
             <div className="flex items-center space-x-8">
               <Link href="/" className="flex items-center">
-                <div className="w-8 h-8 rounded-lg overflow-hidden shadow-sm">
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-amber-400">
                   <Image
                     src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                     alt="Don Rogelio"
@@ -117,19 +117,19 @@ export default function Home() {
               <div className="hidden md:flex items-center space-x-6">
                 <Link
                   href="/history"
-                  className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300"
+                  className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300"
                 >
                   {t("history")}
                 </Link>
                 <Link
                   href="/shop"
-                  className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300"
+                  className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300"
                 >
                   {t("shop")}
                 </Link>
                 <Link
                   href="/gallery"
-                  className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300"
+                  className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300"
                 >
                   Gallery
                 </Link>
