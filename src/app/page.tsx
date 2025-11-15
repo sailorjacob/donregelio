@@ -21,7 +21,7 @@ interface Product {
 
 export default function Home() {
   const { t } = useLanguage()
-  const [videoOpen, setVideoOpen] = useState(false)
+  const [videoOpen, setVideoOpen] = useState(true)
   const [footerOpen, setFooterOpen] = useState(false)
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null)
 
