@@ -206,9 +206,9 @@ export default function Home() {
                 onClick={() => {
                   setFooterOpen(!footerOpen)
                   if (!footerOpen) {
-                    // Scroll to footer end when opening
+                    // Smooth scroll to footer end when opening
                     setTimeout(() => {
-                      document.documentElement.scrollTop = document.documentElement.scrollHeight
+                      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })
                     }, 500)
                   }
                 }}
