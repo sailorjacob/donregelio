@@ -203,9 +203,18 @@ export default function Home() {
             {/* Down Arrow to Reveal Footer */}
             <div className="mt-16 flex justify-center">
               <button
-                onClick={() => setFooterOpen(!footerOpen)}
-                className="p-3 rounded-full hover:bg-gray-200 transition-all duration-300 group"
-                aria-label={footerOpen ? "Hide footer" : "Show footer"}
+                onClick={() => {
+                  setFooterOpen(!footerOpen)
+                  if (!footerOpen) {
+                    // Scroll to footer when opening
+                    setTimeout(() => {
+                      document.querySelector('footer')?.scrollIntoView({ behavior: 'smooth' })
+                    }, 100)
+                  }
+                }}
+                className="p-3 rounded-full hover:bg-gray-200 transition-all duration-300 group relative"
+                aria-label={footerOpen ? "Close footer" : "Open footer"}
+                title={footerOpen ? "Click to close footer" : "Click to open footer"}
               >
                 <motion.div
                   animate={footerOpen ? { rotate: 180 } : { y: [0, 8, 0] }}
@@ -213,6 +222,16 @@ export default function Home() {
                 >
                   <ChevronDown className="w-6 h-6 text-gray-700 group-hover:text-amber-600 transition-colors" />
                 </motion.div>
+                {/* Tooltip showing this button closes too */}
+                {footerOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="absolute bottom-full mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded whitespace-nowrap pointer-events-none"
+                  >
+                    Close footer
+                  </motion.div>
+                )}
               </button>
             </div>
           </div>
