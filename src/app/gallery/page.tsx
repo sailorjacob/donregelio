@@ -507,7 +507,7 @@ export default function GalleryPage() {
       {/* Header Navigation */}
       <header className="fixed top-0 left-0 right-0 z-[60] backdrop-blur-xl bg-transparent">
         <div className="w-full px-4 sm:px-6 py-3">
-          <nav className="flex items-center justify-between max-w-7xl mx-auto">
+          <nav className="flex items-center justify-between max-w-4xl mx-auto">
             <Link href="/" className="flex items-center group">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-amber-400/50 group-hover:border-amber-400 transition-colors">
                 <Image
