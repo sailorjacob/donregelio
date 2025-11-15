@@ -219,6 +219,21 @@ export default function Home() {
         </div>
       </main>
 
+      {/* Footer Overlay Backdrop */}
+      <AnimatePresence>
+        {footerOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/30 z-30"
+            onClick={() => setFooterOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Footer Slide-In */}
       <motion.div
         initial={{ y: "100%" }}
         animate={{ y: footerOpen ? 0 : "100%" }}
