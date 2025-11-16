@@ -1,32 +1,35 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { motion } from "framer-motion"
 import { Users, TrendingUp } from "lucide-react"
 
+// Calculate client count based on elapsed time
+const calculateClientCount = () => {
+  // Starting date: November 16, 2025
+  const startDate = new Date("2025-11-16T00:00:00")
+  const currentDate = new Date()
+  
+  // Calculate hours elapsed since start date
+  const hoursElapsed = Math.floor((currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60))
+  
+  // Every 3 hours, add 1-2 clients (we'll use 1.5 average, so ~1 per 3 hours)
+  const periodsElapsed = Math.floor(hoursElapsed / 3)
+  
+  // Random increment between 1-2 for each period
+  const increment = periodsElapsed > 0 ? Math.floor(periodsElapsed * 1.5) : 0
+  
+  return 50000 + increment
+}
+
 export default function ClientCounter() {
-  const [clientCount, setClientCount] = useState(50000)
+  const clientCount = useMemo(() => calculateClientCount(), [])
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // Starting date: November 16, 2025
-    const startDate = new Date("2025-11-16T00:00:00")
-    const currentDate = new Date()
-    
-    // Calculate hours elapsed since start date
-    const hoursElapsed = Math.floor((currentDate.getTime() - startDate.getTime()) / (1000 * 60 * 60))
-    
-    // Every 3 hours, add 1-2 clients (we'll use 1.5 average, so ~1 per 3 hours)
-    const periodsElapsed = Math.floor(hoursElapsed / 3)
-    
-    // Random increment between 1-2 for each period
-    const increment = periodsElapsed > 0 ? Math.floor(periodsElapsed * 1.5) : 0
-    
-    const totalClients = 50000 + increment
-    setClientCount(totalClients)
-
     // Trigger animation after component mounts
-    setTimeout(() => setIsVisible(true), 500)
+    const timer = setTimeout(() => setIsVisible(true), 500)
+    return () => clearTimeout(timer)
   }, [])
 
   // Animated counter effect

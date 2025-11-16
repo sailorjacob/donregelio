@@ -1,9 +1,8 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Sparkles, Package, ShoppingBag, Award, Heart } from "lucide-react"
-import Image from "next/image"
 
 interface PromoModalProps {
   onClose: () => void
@@ -57,13 +56,8 @@ const promos = [
 ]
 
 export default function PromoModal({ onClose }: PromoModalProps) {
-  const [currentPromo, setCurrentPromo] = useState(0)
-
-  useEffect(() => {
-    // Randomly select a promo to show
-    const randomIndex = Math.floor(Math.random() * promos.length)
-    setCurrentPromo(randomIndex)
-  }, [])
+  // Randomly select a promo to show on initial render
+  const [currentPromo] = useState(() => Math.floor(Math.random() * promos.length))
 
   const promo = promos[currentPromo]
   const Icon = promo.icon
