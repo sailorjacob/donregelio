@@ -10,6 +10,7 @@ export interface CartItem {
   price: number
   quantity: number
   image: string
+  currency: 'USD' | 'DOP'
 }
 
 interface CartContextType {

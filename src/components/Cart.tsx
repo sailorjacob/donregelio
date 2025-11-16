@@ -25,6 +25,17 @@ export default function Cart() {
     }
   }
 
+  // Format price with currency
+  const formatPrice = (price: number, currency: 'USD' | 'DOP') => {
+    if (currency === 'DOP') {
+      return `RD$${price.toLocaleString()}`
+    }
+    return `$${price.toFixed(2)}`
+  }
+
+  // Get currency from cart items (they should all be the same)
+  const cartCurrency = items.length > 0 ? items[0].currency : 'USD'
+
   return (
     <>
       {/* Backdrop */}
@@ -105,7 +116,7 @@ export default function Cart() {
                             {getQuantityLabel(item.quantityType)}
                           </p>
                           <p className="text-sm font-semibold text-gray-900 mt-1">
-                            ${item.price}
+                            {formatPrice(item.price, item.currency)}
                           </p>
                         </div>
 
@@ -164,7 +175,7 @@ export default function Cart() {
                 <div className="flex justify-between items-center mb-4">
                   <span className="text-gray-600 font-medium">Total:</span>
                   <span className="text-2xl font-bold text-gray-900">
-                    ${getTotalPrice().toFixed(2)}
+                    {formatPrice(getTotalPrice(), cartCurrency)}
                   </span>
                 </div>
 

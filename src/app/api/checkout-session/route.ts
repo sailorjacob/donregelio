@@ -31,20 +31,25 @@ export async function POST(req: NextRequest) {
       }
     }
 
+    // Get currency from first item (all items should have same currency)
+    const currency = items[0]?.currency?.toLowerCase() || 'usd'
+
     // Create line items for Stripe
     const lineItems = items.map((item: { 
       productName: string; 
       quantityType: string; 
       price: number; 
-      quantity: number 
+      quantity: number;
+      currency?: string
     }) => ({
       price_data: {
-        currency: 'usd',
+        currency: currency,
         product_data: {
           name: `${item.productName} - ${item.quantityType}`,
           description: `Premium handcrafted cigar from Don Rogelio`,
         },
-        unit_amount: Math.round(item.price * 100), // Convert to cents
+        // Stripe needs amounts in smallest currency unit (cents for USD, centavos for DOP)
+        unit_amount: Math.round(item.price * 100),
       },
       quantity: item.quantity,
     }));

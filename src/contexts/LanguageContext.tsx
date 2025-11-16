@@ -429,10 +429,14 @@ export const translations: Translations = {
   }
 }
 
+export type Currency = "USD" | "DOP"
+
 interface LanguageContextType {
   language: Language
   setLanguage: (lang: Language) => void
   t: (key: string) => string
+  currency: Currency
+  getCurrency: () => Currency
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
@@ -458,8 +462,15 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     return translations[key]?.[language] || key
   }
 
+  // Get currency based on language
+  const getCurrency = (): Currency => {
+    return language === "es" ? "DOP" : "USD"
+  }
+
+  const currency = getCurrency()
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, currency, getCurrency }}>
       {children}
     </LanguageContext.Provider>
   )

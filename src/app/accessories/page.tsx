@@ -9,6 +9,7 @@ import { Playfair_Display } from "next/font/google"
 import WhatsAppButton from "@/components/WhatsAppButton"
 import { useCart } from "@/contexts/CartContext"
 import Cart from "@/components/Cart"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 const playfair = Playfair_Display({ 
   subsets: ["latin"],
@@ -28,6 +29,7 @@ interface Accessory {
 export default function AccessoriesPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { addItem, getTotalItems, openCart } = useCart()
+  const { currency } = useLanguage()
 
   // Accessories catalog
   const accessories: Accessory[] = [
@@ -87,7 +89,8 @@ export default function AccessoriesPage() {
       productName: accessory.name,
       quantityType: 'single',
       price: accessory.price,
-      image: accessory.image
+      image: accessory.image,
+      currency: currency
     })
   }
 

@@ -9,6 +9,7 @@ import { Playfair_Display } from "next/font/google"
 import WhatsAppButton from "@/components/WhatsAppButton"
 import { useCart } from "@/contexts/CartContext"
 import Cart from "@/components/Cart"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 const playfair = Playfair_Display({ 
   subsets: ["latin"],
@@ -30,23 +31,36 @@ export default function ShopPage() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>("robusto")
   const [selectedQuantity, setSelectedQuantity] = useState<"single" | "3pack" | "10pack" | "box">("single")
   const { addItem, getTotalItems, openCart } = useCart()
+  const { currency } = useLanguage()
 
-  // Pricing structure per cigar type (USD) - FLAT RATES
-  const cigarPrices: { [key: string]: number } = {
-    robusto: 10,      // $10 USD | 600 DOP
-    doubletoro: 15,   // $15 USD | 950 DOP
-    lancero: 12,      // $12 USD | 750 DOP
-    perfecto: 10,     // $10 USD | 600 DOP
-    salamon: 12.50,   // $12.50 USD | 800 DOP
-    toro: 11,         // $11 USD | 700 DOP
-    torpedo: 11,      // $11 USD | 700 DOP
-    taco: 9           // $9 USD | 575 DOP
+  // Pricing structure per cigar type - FLAT RATES
+  const cigarPricesUSD: { [key: string]: number } = {
+    robusto: 10,
+    doubletoro: 15,
+    lancero: 12,
+    perfecto: 10,
+    salamon: 12.50,
+    toro: 11,
+    torpedo: 11,
+    taco: 9
   }
 
-  // Get base price for selected product
+  const cigarPricesDOP: { [key: string]: number } = {
+    robusto: 600,
+    doubletoro: 950,
+    lancero: 750,
+    perfecto: 600,
+    salamon: 800,
+    toro: 700,
+    torpedo: 700,
+    taco: 575
+  }
+
+  // Get base price for selected product based on currency
   const getBasePrice = () => {
     if (!selectedProduct) return 0
-    return cigarPrices[selectedProduct] || 10
+    const prices = currency === "DOP" ? cigarPricesDOP : cigarPricesUSD
+    return prices[selectedProduct] || (currency === "DOP" ? 600 : 10)
   }
 
   // Get price based on quantity - FLAT RATE (no discounts)
@@ -66,6 +80,14 @@ export default function ShopPage() {
     }
   }
 
+  // Format price with currency symbol
+  const formatPrice = (price: number) => {
+    if (currency === "DOP") {
+      return `RD$${price.toLocaleString()}`
+    }
+    return `$${price.toFixed(2)}`
+  }
+
   // Handle add to cart
   const handleAddToCart = () => {
     if (!selectedProduct) return
@@ -78,7 +100,8 @@ export default function ShopPage() {
       productName: product.name,
       quantityType: selectedQuantity,
       price: getPrice(),
-      image: product.hoverImage || product.image
+      image: product.hoverImage || product.image,
+      currency: currency
     })
   }
 
@@ -445,7 +468,7 @@ export default function ShopPage() {
                                   >
                                     <div className="flex items-center justify-between">
                                       <span className="font-medium text-sm">Single Cigar</span>
-                                      <span className="text-sm font-semibold">${getBasePrice()}</span>
+                                      <span className="text-sm font-semibold">{formatPrice(getBasePrice())}</span>
                                     </div>
                                   </button>
 
@@ -459,7 +482,7 @@ export default function ShopPage() {
                                   >
                                     <div className="flex items-center justify-between">
                                       <span className="font-medium text-sm">3 Pack</span>
-                                      <span className="text-sm font-semibold">${getBasePrice() * 3}</span>
+                                      <span className="text-sm font-semibold">{formatPrice(getBasePrice() * 3)}</span>
                                     </div>
                                   </button>
 
@@ -473,7 +496,7 @@ export default function ShopPage() {
                                   >
                                     <div className="flex items-center justify-between">
                                       <span className="font-medium text-sm">10 Pack</span>
-                                      <span className="text-sm font-semibold">${getBasePrice() * 10}</span>
+                                      <span className="text-sm font-semibold">{formatPrice(getBasePrice() * 10)}</span>
                                     </div>
                                   </button>
 
@@ -487,7 +510,7 @@ export default function ShopPage() {
                                   >
                                     <div className="flex items-center justify-between">
                                       <span className="font-medium text-sm">Full Box - 20 cigars</span>
-                                      <span className="text-sm font-semibold">${getBasePrice() * 20}</span>
+                                      <span className="text-sm font-semibold">{formatPrice(getBasePrice() * 20)}</span>
                                     </div>
                                   </button>
                                 </div>
@@ -496,7 +519,7 @@ export default function ShopPage() {
                                 <div className="pt-4 border-t border-gray-200">
                                   <div className="flex justify-between items-center mb-4">
                                     <span className="text-sm text-gray-600">Price</span>
-                                    <span className="text-2xl font-bold text-gray-900">${getPrice()}</span>
+                                    <span className="text-2xl font-bold text-gray-900">{formatPrice(getPrice())}</span>
                                   </div>
 
                                   <button
