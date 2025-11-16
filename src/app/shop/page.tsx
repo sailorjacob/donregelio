@@ -63,18 +63,18 @@ export default function ShopPage() {
     return prices[selectedProduct] || (currency === "DOP" ? 600 : 10)
   }
 
-  // Get price based on quantity - FLAT RATE (no discounts)
+  // Get price based on quantity with volume discounts
   const getPrice = () => {
     const basePrice = getBasePrice()
     switch (selectedQuantity) {
       case "single":
-        return basePrice
+        return basePrice  // No discount
       case "3pack":
-        return basePrice * 3  // Flat rate: price × 3
+        return Math.round(basePrice * 3 * 0.9 * 100) / 100  // 10% discount
       case "10pack":
-        return basePrice * 10  // Flat rate: price × 10
+        return Math.round(basePrice * 10 * 0.8 * 100) / 100  // 20% discount
       case "box":
-        return basePrice * 20  // Flat rate: price × 20 cigars
+        return Math.round(basePrice * 20 * 0.7 * 100) / 100  // 30% discount for 20 cigars
       default:
         return basePrice
     }
@@ -481,8 +481,8 @@ export default function ShopPage() {
                                     }`}
                                   >
                                     <div className="flex items-center justify-between">
-                                      <span className="font-medium text-sm">3 Pack</span>
-                                      <span className="text-sm font-semibold">{formatPrice(getBasePrice() * 3)}</span>
+                                      <span className="font-medium text-sm">3 Pack (10% off)</span>
+                                      <span className="text-sm font-semibold">{formatPrice(Math.round(getBasePrice() * 3 * 0.9 * 100) / 100)}</span>
                                     </div>
                                   </button>
 
@@ -495,8 +495,8 @@ export default function ShopPage() {
                                     }`}
                                   >
                                     <div className="flex items-center justify-between">
-                                      <span className="font-medium text-sm">10 Pack</span>
-                                      <span className="text-sm font-semibold">{formatPrice(getBasePrice() * 10)}</span>
+                                      <span className="font-medium text-sm">10 Pack (20% off)</span>
+                                      <span className="text-sm font-semibold">{formatPrice(Math.round(getBasePrice() * 10 * 0.8 * 100) / 100)}</span>
                                     </div>
                                   </button>
 
@@ -509,8 +509,8 @@ export default function ShopPage() {
                                     }`}
                                   >
                                     <div className="flex items-center justify-between">
-                                      <span className="font-medium text-sm">Full Box - 20 cigars</span>
-                                      <span className="text-sm font-semibold">{formatPrice(getBasePrice() * 20)}</span>
+                                      <span className="font-medium text-sm">Full Box - 20 cigars (30% off)</span>
+                                      <span className="text-sm font-semibold">{formatPrice(Math.round(getBasePrice() * 20 * 0.7 * 100) / 100)}</span>
                                     </div>
                                   </button>
                                 </div>
@@ -524,9 +524,9 @@ export default function ShopPage() {
 
                                   <button
                                     onClick={handleAddToCart}
-                                    className="w-full px-6 py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all duration-300 flex items-center justify-center gap-2 group"
+                                    className="w-full px-6 py-3 bg-gray-200 text-gray-900 rounded-lg font-semibold hover:bg-gray-300 transition-all duration-300 flex items-center justify-center gap-2 group"
                                   >
-                                    <Plus className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                    <Plus className="w-5 h-5 group-hover:scale-110 transition-transform text-gray-700" />
                                     Add to Cart
                                   </button>
 
