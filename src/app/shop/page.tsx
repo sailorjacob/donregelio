@@ -31,7 +31,7 @@ export default function ShopPage() {
   const [selectedQuantity, setSelectedQuantity] = useState<"single" | "3pack" | "10pack" | "box">("single")
   const { addItem, getTotalItems, openCart } = useCart()
 
-  // Pricing structure per cigar type (USD)
+  // Pricing structure per cigar type (USD) - FLAT RATES
   const cigarPrices: { [key: string]: number } = {
     robusto: 10,      // $10 USD | 600 DOP
     doubletoro: 15,   // $15 USD | 950 DOP
@@ -49,18 +49,18 @@ export default function ShopPage() {
     return cigarPrices[selectedProduct] || 10
   }
 
-  // Get price based on quantity with discounts
+  // Get price based on quantity - FLAT RATE (no discounts)
   const getPrice = () => {
     const basePrice = getBasePrice()
     switch (selectedQuantity) {
       case "single":
         return basePrice
       case "3pack":
-        return Math.round(basePrice * 3 * 0.9 * 100) / 100 // 10% discount
+        return basePrice * 3  // Flat rate: price × 3
       case "10pack":
-        return Math.round(basePrice * 10 * 0.8 * 100) / 100 // 20% discount
+        return basePrice * 10  // Flat rate: price × 10
       case "box":
-        return Math.round(basePrice * 20 * 0.75 * 100) / 100 // 25% discount for 20 cigars
+        return basePrice * 20  // Flat rate: price × 20 cigars
       default:
         return basePrice
     }
@@ -458,8 +458,8 @@ export default function ShopPage() {
                                     }`}
                                   >
                                     <div className="flex items-center justify-between">
-                                      <span className="font-medium text-sm">3 Pack (10% off)</span>
-                                      <span className="text-sm font-semibold">${Math.round(getBasePrice() * 3 * 0.9 * 100) / 100}</span>
+                                      <span className="font-medium text-sm">3 Pack</span>
+                                      <span className="text-sm font-semibold">${getBasePrice() * 3}</span>
                                     </div>
                                   </button>
 
@@ -472,8 +472,8 @@ export default function ShopPage() {
                                     }`}
                                   >
                                     <div className="flex items-center justify-between">
-                                      <span className="font-medium text-sm">10 Pack (20% off)</span>
-                                      <span className="text-sm font-semibold">${Math.round(getBasePrice() * 10 * 0.8 * 100) / 100}</span>
+                                      <span className="font-medium text-sm">10 Pack</span>
+                                      <span className="text-sm font-semibold">${getBasePrice() * 10}</span>
                                     </div>
                                   </button>
 
@@ -486,8 +486,8 @@ export default function ShopPage() {
                                     }`}
                                   >
                                     <div className="flex items-center justify-between">
-                                      <span className="font-medium text-sm">Full Box - 20 cigars (25% off)</span>
-                                      <span className="text-sm font-semibold">${Math.round(getBasePrice() * 20 * 0.75 * 100) / 100}</span>
+                                      <span className="font-medium text-sm">Full Box - 20 cigars</span>
+                                      <span className="text-sm font-semibold">${getBasePrice() * 20}</span>
                                     </div>
                                   </button>
                                 </div>

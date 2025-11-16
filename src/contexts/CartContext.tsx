@@ -43,14 +43,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     return []
   })
   const [isCartOpen, setIsCartOpen] = useState(false)
-  const [isInitialized, setIsInitialized] = useState(true)
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
-    if (isInitialized) {
+    if (typeof window !== 'undefined') {
       localStorage.setItem('donregelio_cart', JSON.stringify(items))
     }
-  }, [items, isInitialized])
+  }, [items])
 
   const addItem = (newItem: Omit<CartItem, 'id' | 'quantity'>) => {
     setItems(prevItems => {

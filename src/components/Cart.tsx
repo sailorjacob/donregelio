@@ -4,46 +4,15 @@ import { useCart } from '@/contexts/CartContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react'
 import Image from 'next/image'
-import { useState } from 'react'
 
 export default function Cart() {
   const { items, removeItem, updateQuantity, getTotalPrice, isCartOpen, closeCart, clearCart } = useCart()
-  const [isCheckingOut, setIsCheckingOut] = useState(false)
 
-  const handleCheckout = async () => {
+  const handleCheckout = () => {
     if (items.length === 0) return
-
-    setIsCheckingOut(true)
-
-    try {
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          items: items.map(item => ({
-            productName: item.productName,
-            quantityType: getQuantityLabel(item.quantityType),
-            price: item.price,
-            quantity: item.quantity,
-          })),
-        }),
-      })
-
-      const data = await response.json()
-
-      if (data.url) {
-        // Redirect to Stripe Checkout
-        window.location.assign(data.url)
-      } else {
-        throw new Error('No checkout URL returned')
-      }
-    } catch (error) {
-      console.error('Checkout error:', error)
-      alert('There was an error processing your checkout. Please try again.')
-      setIsCheckingOut(false)
-    }
+    
+    // Redirect to embedded checkout page
+    window.location.href = '/checkout'
   }
 
   const getQuantityLabel = (quantityType: string) => {
@@ -201,19 +170,10 @@ export default function Cart() {
 
                 <button
                   onClick={handleCheckout}
-                  disabled={isCheckingOut}
-                  className="w-full py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  {isCheckingOut ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                      Processing...
-                    </>
-                  ) : (
-                    <>
-                      Proceed to Checkout
-                    </>
-                  )}
+                  <ShoppingBag className="w-5 h-5" />
+                  Proceed to Checkout
                 </button>
 
                 <p className="text-xs text-gray-500 text-center mt-3">
