@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 
 export default function PaymentInstructionsPage() {
   const [copiedField, setCopiedField] = useState<string | null>(null)
-  const { language } = useLanguage()
+  const { language, setLanguage } = useLanguage()
 
   const copyToClipboard = (text: string, field: string) => {
     navigator.clipboard.writeText(text)
@@ -52,11 +52,7 @@ export default function PaymentInstructionsPage() {
             {/* Language Switcher */}
             <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
               <button
-                onClick={() => {
-                  const newLang = language === 'en' ? 'es' : 'en';
-                  // This will trigger through the context
-                  window.location.href = window.location.pathname + (newLang === 'es' ? '?lang=es' : '');
-                }}
+                onClick={() => setLanguage('en')}
                 className={`px-3 py-1 text-xs font-medium rounded transition-colors ${
                   language === 'en'
                     ? 'bg-white text-gray-900 shadow-sm'
@@ -66,10 +62,7 @@ export default function PaymentInstructionsPage() {
                 EN 🇺🇸
               </button>
               <button
-                onClick={() => {
-                  const newLang = language === 'es' ? 'en' : 'es';
-                  window.location.href = window.location.pathname + (newLang === 'es' ? '?lang=es' : '');
-                }}
+                onClick={() => setLanguage('es')}
                 className={`px-3 py-1 text-xs font-medium rounded transition-colors ${
                   language === 'es'
                     ? 'bg-white text-gray-900 shadow-sm'
@@ -106,10 +99,10 @@ export default function PaymentInstructionsPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
-                className="bg-gradient-to-br from-white to-amber-50/30 border border-amber-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-br from-amber-600 to-amber-700 rounded-lg shadow-sm">
+                  <div className="p-3 bg-gray-900 rounded-lg shadow-sm">
                     <MessageCircle className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
@@ -117,7 +110,7 @@ export default function PaymentInstructionsPage() {
                       <h2 className="text-xl font-semibold text-gray-900">
                         WhatsApp
                       </h2>
-                      <span className="text-xs font-medium px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full">
+                      <span className="text-xs font-medium px-2.5 py-1 bg-gray-100 text-gray-700 rounded-full">
                         {isSpanish ? 'Recomendado' : 'Recommended'}
                       </span>
                     </div>
@@ -130,7 +123,7 @@ export default function PaymentInstructionsPage() {
                       href="https://wa.me/18092999188"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-amber-600 text-white rounded-lg font-medium hover:bg-amber-700 transition-all duration-300 text-sm shadow-sm"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-all duration-300 text-sm shadow-sm"
                     >
                       <MessageCircle className="w-4 h-4" />
                       {isSpanish ? 'Contactar por WhatsApp' : 'Contact via WhatsApp'}
@@ -405,10 +398,9 @@ export default function PaymentInstructionsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="mt-6 bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-lg p-6"
+              className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-6"
             >
-              <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                <span className="text-amber-600">ℹ️</span>
+              <h3 className="font-semibold text-gray-900 mb-3">
                 {isSpanish ? 'Notas Importantes' : 'Important Notes'}
               </h3>
               <ul className="space-y-2.5 text-sm text-gray-600">
