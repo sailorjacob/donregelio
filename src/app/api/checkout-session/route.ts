@@ -32,7 +32,15 @@ export async function POST(req: NextRequest) {
     }
 
     // Get currency from first item (all items should have same currency)
-    const currency = items[0]?.currency?.toLowerCase() || 'usd'
+    const itemCurrency = items[0]?.currency;
+    const currency = itemCurrency ? itemCurrency.toLowerCase() : 'usd';
+    
+    console.log('🔍 Checkout Debug:', {
+      itemCurrency,
+      currency,
+      firstItemPrice: items[0]?.price,
+      firstItem: items[0]
+    });
 
     // Create line items for Stripe
     const lineItems = items.map((item: { 

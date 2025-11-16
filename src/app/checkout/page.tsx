@@ -47,6 +47,7 @@ export default function CheckoutPage() {
               quantityType: getQuantityLabel(item.quantityType),
               price: item.price,
               quantity: item.quantity,
+              currency: item.currency,
             })),
           }),
         })
@@ -141,9 +142,7 @@ export default function CheckoutPage() {
             <div id="checkout">
               <EmbeddedCheckoutProvider
                 stripe={stripePromise}
-                options={{ 
-                  clientSecret,
-                }}
+                options={{ clientSecret }}
               >
                 <EmbeddedCheckout />
               </EmbeddedCheckoutProvider>

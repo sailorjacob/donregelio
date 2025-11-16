@@ -88,6 +88,47 @@ export default function ShopPage() {
     return `$${price.toFixed(2)}`
   }
 
+  // Get the alternate currency price for display
+  const getAlternateCurrencyDisplay = (priceUSD: number, priceDOP: number) => {
+    if (currency === "USD") {
+      return `RD$${priceDOP.toLocaleString()}`
+    }
+    return `$${priceUSD.toFixed(2)}`
+  }
+
+  // Get both currency prices for a product
+  const getBothPrices = (productId: string, quantity: "single" | "3pack" | "10pack" | "box") => {
+    const basePriceUSD = cigarPricesUSD[productId] || 10
+    const basePriceDOP = cigarPricesDOP[productId] || 600
+
+    let multiplier = 1
+    let discount = 1
+
+    switch (quantity) {
+      case "single":
+        multiplier = 1
+        discount = 1
+        break
+      case "3pack":
+        multiplier = 3
+        discount = 0.9  // 10% off
+        break
+      case "10pack":
+        multiplier = 10
+        discount = 0.8  // 20% off
+        break
+      case "box":
+        multiplier = 20
+        discount = 0.7  // 30% off
+        break
+    }
+
+    const priceUSD = Math.round(basePriceUSD * multiplier * discount * 100) / 100
+    const priceDOP = Math.round(basePriceDOP * multiplier * discount)
+
+    return { priceUSD, priceDOP }
+  }
+
   // Handle add to cart
   const handleAddToCart = () => {
     if (!selectedProduct) return
@@ -468,7 +509,17 @@ export default function ShopPage() {
                                   >
                                     <div className="flex items-center justify-between">
                                       <span className="font-medium text-sm">Single Cigar</span>
-                                      <span className="text-sm font-semibold">{formatPrice(getBasePrice())}</span>
+                                      <div className="text-right">
+                                        <span className="text-sm font-semibold block">{formatPrice(getBasePrice())}</span>
+                                        {selectedProduct && (
+                                          <span className="text-xs text-gray-500">
+                                            {getAlternateCurrencyDisplay(
+                                              getBothPrices(selectedProduct, "single").priceUSD,
+                                              getBothPrices(selectedProduct, "single").priceDOP
+                                            )}
+                                          </span>
+                                        )}
+                                      </div>
                                     </div>
                                   </button>
 
@@ -482,7 +533,17 @@ export default function ShopPage() {
                                   >
                                     <div className="flex items-center justify-between">
                                       <span className="font-medium text-sm">3 Pack (10% off)</span>
-                                      <span className="text-sm font-semibold">{formatPrice(Math.round(getBasePrice() * 3 * 0.9 * 100) / 100)}</span>
+                                      <div className="text-right">
+                                        <span className="text-sm font-semibold block">{formatPrice(Math.round(getBasePrice() * 3 * 0.9 * 100) / 100)}</span>
+                                        {selectedProduct && (
+                                          <span className="text-xs text-gray-500">
+                                            {getAlternateCurrencyDisplay(
+                                              getBothPrices(selectedProduct, "3pack").priceUSD,
+                                              getBothPrices(selectedProduct, "3pack").priceDOP
+                                            )}
+                                          </span>
+                                        )}
+                                      </div>
                                     </div>
                                   </button>
 
@@ -496,7 +557,17 @@ export default function ShopPage() {
                                   >
                                     <div className="flex items-center justify-between">
                                       <span className="font-medium text-sm">10 Pack (20% off)</span>
-                                      <span className="text-sm font-semibold">{formatPrice(Math.round(getBasePrice() * 10 * 0.8 * 100) / 100)}</span>
+                                      <div className="text-right">
+                                        <span className="text-sm font-semibold block">{formatPrice(Math.round(getBasePrice() * 10 * 0.8 * 100) / 100)}</span>
+                                        {selectedProduct && (
+                                          <span className="text-xs text-gray-500">
+                                            {getAlternateCurrencyDisplay(
+                                              getBothPrices(selectedProduct, "10pack").priceUSD,
+                                              getBothPrices(selectedProduct, "10pack").priceDOP
+                                            )}
+                                          </span>
+                                        )}
+                                      </div>
                                     </div>
                                   </button>
 
@@ -510,7 +581,17 @@ export default function ShopPage() {
                                   >
                                     <div className="flex items-center justify-between">
                                       <span className="font-medium text-sm">Full Box - 20 cigars (30% off)</span>
-                                      <span className="text-sm font-semibold">{formatPrice(Math.round(getBasePrice() * 20 * 0.7 * 100) / 100)}</span>
+                                      <div className="text-right">
+                                        <span className="text-sm font-semibold block">{formatPrice(Math.round(getBasePrice() * 20 * 0.7 * 100) / 100)}</span>
+                                        {selectedProduct && (
+                                          <span className="text-xs text-gray-500">
+                                            {getAlternateCurrencyDisplay(
+                                              getBothPrices(selectedProduct, "box").priceUSD,
+                                              getBothPrices(selectedProduct, "box").priceDOP
+                                            )}
+                                          </span>
+                                        )}
+                                      </div>
                                     </div>
                                   </button>
                                 </div>
@@ -519,7 +600,17 @@ export default function ShopPage() {
                                 <div className="pt-4 border-t border-gray-200">
                                   <div className="flex justify-between items-center mb-4">
                                     <span className="text-sm text-gray-600">Price</span>
-                                    <span className="text-2xl font-bold text-gray-900">{formatPrice(getPrice())}</span>
+                                    <div className="text-right">
+                                      <span className="text-2xl font-bold text-gray-900 block">{formatPrice(getPrice())}</span>
+                                      {selectedProduct && (
+                                        <span className="text-xs text-gray-500 block mt-1">
+                                          {getAlternateCurrencyDisplay(
+                                            getBothPrices(selectedProduct, selectedQuantity).priceUSD,
+                                            getBothPrices(selectedProduct, selectedQuantity).priceDOP
+                                          )}
+                                        </span>
+                                      )}
+                                    </div>
                                   </div>
 
                                   <button
