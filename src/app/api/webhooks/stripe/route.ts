@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
         if (customerEmailResult.success) {
           console.log('✉️  Confirmation email sent to customer');
         } else {
-          console.error('❌ Failed to send customer email:', customerEmailResult.error);
+          console.error('❌ Failed to send customer email:', 'error' in customerEmailResult ? customerEmailResult.error : 'Unknown error');
         }
 
         // Send notification to admin
@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
         if (adminEmailResult.success) {
           console.log('✉️  Notification email sent to admin');
         } else {
-          console.warn('⚠️  Admin notification not sent:', adminEmailResult.error);
+          console.warn('⚠️  Admin notification not sent:', 'error' in adminEmailResult ? adminEmailResult.error : 'Unknown error');
         }
 
         // TODO: Additional fulfillment tasks

@@ -17,48 +17,6 @@ const playfair = Playfair_Display({
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
-// Custom appearance to match Don Rogelio branding
-const appearance = {
-  theme: 'stripe' as const,
-  variables: {
-    colorPrimary: '#d97706',      // Amber-600
-    colorBackground: '#ffffff',
-    colorText: '#111827',          // Gray-900
-    colorDanger: '#dc2626',        // Red-600
-    fontFamily: 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif',
-    spacingUnit: '4px',
-    borderRadius: '8px',
-  },
-  rules: {
-    '.Label': {
-      color: '#374151',            // Gray-700
-      fontWeight: '500',
-    },
-    '.Input': {
-      border: '1px solid #d1d5db', // Gray-300
-      boxShadow: 'none',
-    },
-    '.Input:focus': {
-      border: '1px solid #d97706', // Amber-600
-      boxShadow: '0 0 0 3px rgba(217, 119, 6, 0.1)',
-    },
-    '.Tab': {
-      border: '1px solid #e5e7eb',
-      boxShadow: 'none',
-    },
-    '.Tab:hover': {
-      color: '#d97706',
-    },
-    '.Tab--selected': {
-      borderColor: '#d97706',
-      boxShadow: '0 0 0 1px #d97706',
-    },
-    '.TabLabel': {
-      fontWeight: '500',
-    },
-  },
-}
-
 export default function CheckoutPage() {
   const { items } = useCart()
   const [clientSecret, setClientSecret] = useState<string | null>(null)
@@ -185,7 +143,6 @@ export default function CheckoutPage() {
                 stripe={stripePromise}
                 options={{ 
                   clientSecret,
-                  appearance
                 }}
               >
                 <EmbeddedCheckout />
