@@ -98,12 +98,12 @@ export default function Home() {
   return (
     <div>
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-blue-700 bg-blue-900/80">
-        <div className="w-full px-4 sm:px-6 py-2">
-          <nav className="flex items-center justify-between max-w-4xl mx-auto">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+        <div className="w-full px-4 sm:px-6 py-3">
+          <nav className="flex items-center justify-between max-w-6xl mx-auto">
             <div className="flex items-center space-x-8">
               <Link href="/" className="flex items-center">
-                <div className="w-8 h-8 rounded-full overflow-hidden border border-amber-400">
+                <div className="w-8 h-8 rounded-full overflow-hidden">
                   <Image
                     src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                     alt="Don Rogelio"
@@ -115,22 +115,22 @@ export default function Home() {
               </Link>
 
               {/* Desktop Navigation */}
-              <div className="hidden md:flex items-center space-x-6">
+              <div className="hidden md:flex items-center space-x-8">
                 <Link
                   href="/history"
-                  className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300"
+                  className="text-sm font-light text-gray-600 hover:text-black transition-colors"
                 >
                   {t("history")}
                 </Link>
                 <Link
                   href="/shop"
-                  className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300"
+                  className="text-sm font-light text-gray-600 hover:text-black transition-colors"
                 >
                   {t("shop")}
                 </Link>
                 <Link
                   href="/gallery"
-                  className="text-sm font-light text-blue-200 hover:text-white transition-colors duration-300"
+                  className="text-sm font-light text-gray-600 hover:text-black transition-colors"
                 >
                   Gallery
                 </Link>
@@ -143,24 +143,24 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="min-h-screen bg-white text-gray-900 flex items-center justify-center pt-16">
-      <div className="container mx-auto px-6 py-16">
-        <div className="text-center max-w-4xl mx-auto">
+      <main className="min-h-screen bg-white text-gray-900 flex items-center justify-center pt-20">
+      <div className="container mx-auto px-6 py-20">
+        <div className="text-center max-w-6xl mx-auto">
           {/* Logo/Brand */}
-          <div className="mb-8">
-              <div className="inline-flex items-center justify-center w-32 h-32 rounded-full mb-8 overflow-hidden border-2 border-amber-400">
+          <div className="mb-12">
+              <div className="inline-flex items-center justify-center w-24 h-24 rounded-full mb-8 overflow-hidden">
               <Image
                 src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/donregelio/losdgo.png"
                 alt="Don Rogelio Logo"
-                width={128}
-                height={128}
+                width={96}
+                height={96}
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
 
             {/* Product Showcase - All Cigar Collection */}
-            <div className="mt-12 mb-8 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 opacity-90">
+            <div className="mt-16 mb-12 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8">
               {products.map((product) => (
                 <Link
                   key={product.id}
@@ -170,19 +170,19 @@ export default function Home() {
                   onMouseLeave={() => setHoveredProduct(null)}
                 >
                   <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                    className="relative"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative bg-white border border-gray-100 rounded-lg p-6 hover:border-gray-200 transition-all"
                   >
                     <Image
                       src={getCurrentImage(product.id)}
                       alt={`${product.name} Cigar`}
                       width={150}
                       height={90}
-                      className="object-contain drop-shadow-lg mx-auto transition-all duration-300"
+                      className="object-contain mx-auto"
                     />
                   </motion.div>
-                  <p className="text-xs text-gray-700 text-center mt-2 font-light transition-colors duration-300 group-hover:text-amber-600">
+                  <p className="text-xs text-gray-600 text-center mt-3 font-light tracking-wide uppercase transition-colors group-hover:text-black">
                     {product.name}
                   </p>
                 </Link>
@@ -190,18 +190,18 @@ export default function Home() {
             </div>
 
             {/* Explore Collection CTA */}
-            <div className="mt-12 text-center">
+            <div className="mt-16 text-center">
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 text-gray-700 hover:text-amber-600 transition-colors duration-300 group"
+                className="inline-flex items-center gap-2 text-gray-900 hover:text-gray-600 transition-colors group border-b border-gray-900 pb-1"
               >
-                <span className="text-sm font-light tracking-wide">{t("exploreCollection")}</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                <span className="text-sm font-light tracking-wider uppercase">{t("exploreCollection")}</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
             {/* Down Arrow to Reveal Footer */}
-            <div className="mt-16 flex justify-center">
+            <div className="mt-20 flex justify-center">
               <button
                 onClick={() => {
                   setFooterOpen(!footerOpen)
@@ -212,20 +212,20 @@ export default function Home() {
                     }, 500)
                   }
                 }}
-                className="relative p-4 rounded-full bg-amber-600/10 hover:bg-amber-600/20 transition-all duration-200 group border border-amber-600/20"
+                className="relative p-3 rounded-full border border-gray-200 hover:border-gray-300 transition-all group"
                 aria-label={footerOpen ? "Close footer" : "Open footer"}
               >
                 <motion.div
                   animate={{ 
                     rotate: footerOpen ? 180 : 0,
-                    y: footerOpen ? 0 : [0, 6, 0]
+                    y: footerOpen ? 0 : [0, 4, 0]
                   }}
                   transition={{ 
                     rotate: { duration: 0.2, ease: "easeInOut" },
                     y: footerOpen ? { duration: 0 } : { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
                   }}
                 >
-                  <ChevronDown className="w-5 h-5 text-amber-600 group-hover:text-amber-700 transition-colors" />
+                  <ChevronDown className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" />
                 </motion.div>
               </button>
             </div>
@@ -280,7 +280,7 @@ export default function Home() {
 
               {/* Video Info Text */}
               <div className="text-center mt-4">
-                <p className="text-sm text-blue-200 font-light">Click to close</p>
+                <p className="text-sm text-white font-light">Click to close</p>
               </div>
             </motion.div>
           </motion.div>

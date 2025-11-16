@@ -64,46 +64,21 @@ export default function ClientCounter() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-40 pointer-events-none"
     >
-      <div className="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-white px-6 py-3 rounded-full shadow-2xl border border-amber-400/50 backdrop-blur-sm">
+      <div className="bg-white text-gray-900 px-6 py-3 rounded-full shadow-lg border border-gray-200">
         <div className="flex items-center gap-3">
-          <motion.div
-            animate={{ 
-              scale: [1, 1.2, 1],
-              rotate: [0, 10, -10, 0]
-            }}
-            transition={{ 
-              duration: 2,
-              repeat: Infinity,
-              repeatDelay: 3
-            }}
-          >
-            <Users className="w-5 h-5" />
-          </motion.div>
+          <Users className="w-4 h-4 text-gray-600" />
           
           <div className="flex items-center gap-2">
             <motion.span
               key={displayCount}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="font-bold text-lg tabular-nums"
+              className="font-semibold text-base tabular-nums text-gray-900"
             >
               {displayCount.toLocaleString()}+
             </motion.span>
-            <span className="font-medium text-sm">Clients Served</span>
+            <span className="font-light text-xs text-gray-600 uppercase tracking-wide">Clients Served</span>
           </div>
-
-          <motion.div
-            animate={{ 
-              y: [0, -3, 0]
-            }}
-            transition={{ 
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          >
-            <TrendingUp className="w-4 h-4 text-amber-200" />
-          </motion.div>
         </div>
       </div>
     </motion.div>
