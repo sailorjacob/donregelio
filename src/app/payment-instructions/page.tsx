@@ -36,6 +36,7 @@ export default function PaymentInstructionsPage() {
               <ArrowLeft className="w-5 h-5" />
               <span className="text-sm font-medium">{isSpanish ? 'Volver a la tienda' : 'Back to Shop'}</span>
             </Link>
+            
             <Link href="/" className="flex items-center">
               <div className="w-8 h-8 rounded-lg overflow-hidden shadow-sm">
                 <Image
@@ -47,6 +48,37 @@ export default function PaymentInstructionsPage() {
                 />
               </div>
             </Link>
+
+            {/* Language Switcher */}
+            <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+              <button
+                onClick={() => {
+                  const newLang = language === 'en' ? 'es' : 'en';
+                  // This will trigger through the context
+                  window.location.href = window.location.pathname + (newLang === 'es' ? '?lang=es' : '');
+                }}
+                className={`px-3 py-1 text-xs font-medium rounded transition-colors ${
+                  language === 'en'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                EN 🇺🇸
+              </button>
+              <button
+                onClick={() => {
+                  const newLang = language === 'es' ? 'en' : 'es';
+                  window.location.href = window.location.pathname + (newLang === 'es' ? '?lang=es' : '');
+                }}
+                className={`px-3 py-1 text-xs font-medium rounded transition-colors ${
+                  language === 'es'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                ES 🇩🇴
+              </button>
+            </div>
           </nav>
         </div>
       </header>
@@ -74,10 +106,10 @@ export default function PaymentInstructionsPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
-                className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-gradient-to-br from-white to-amber-50/30 border border-amber-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gray-900 rounded-lg">
+                  <div className="p-3 bg-gradient-to-br from-amber-600 to-amber-700 rounded-lg shadow-sm">
                     <MessageCircle className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
@@ -85,7 +117,7 @@ export default function PaymentInstructionsPage() {
                       <h2 className="text-xl font-semibold text-gray-900">
                         WhatsApp
                       </h2>
-                      <span className="text-xs font-medium px-2 py-1 bg-gray-100 text-gray-700 rounded">
+                      <span className="text-xs font-medium px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full">
                         {isSpanish ? 'Recomendado' : 'Recommended'}
                       </span>
                     </div>
@@ -98,7 +130,7 @@ export default function PaymentInstructionsPage() {
                       href="https://wa.me/18092999188"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-all duration-300 text-sm"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-amber-600 text-white rounded-lg font-medium hover:bg-amber-700 transition-all duration-300 text-sm shadow-sm"
                     >
                       <MessageCircle className="w-4 h-4" />
                       {isSpanish ? 'Contactar por WhatsApp' : 'Contact via WhatsApp'}
@@ -115,11 +147,11 @@ export default function PaymentInstructionsPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
-                className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gray-100 rounded-lg">
-                    <Building2 className="w-6 h-6 text-gray-900" />
+                  <div className="p-3 bg-blue-50 rounded-lg">
+                    <Building2 className="w-6 h-6 text-blue-600" />
                   </div>
                   <div className="flex-1">
                     <h2 className="text-xl font-semibold text-gray-900 mb-2">
@@ -195,11 +227,11 @@ export default function PaymentInstructionsPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gray-100 rounded-lg">
-                    <Building2 className="w-6 h-6 text-gray-900" />
+                  <div className="p-3 bg-blue-50 rounded-lg">
+                    <Building2 className="w-6 h-6 text-blue-600" />
                   </div>
                   <div className="flex-1">
                     <h2 className="text-xl font-semibold text-gray-900 mb-2">
@@ -258,11 +290,11 @@ export default function PaymentInstructionsPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4 }}
-                className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gray-100 rounded-lg">
-                    <Banknote className="w-6 h-6 text-gray-900" />
+                  <div className="p-3 bg-green-50 rounded-lg">
+                    <Banknote className="w-6 h-6 text-green-600" />
                   </div>
                   <div className="flex-1">
                     <h2 className="text-xl font-semibold text-gray-900 mb-2">
@@ -298,7 +330,7 @@ export default function PaymentInstructionsPage() {
                       href="https://wa.me/18092999188?text=Hola!%20Me%20interesa%20pagar%20en%20efectivo"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-all duration-300 text-sm"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-all duration-300 text-sm shadow-sm"
                     >
                       {isSpanish ? 'Coordinar pago en efectivo' : 'Arrange cash payment'}
                     </a>
@@ -311,11 +343,11 @@ export default function PaymentInstructionsPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5 }}
-                className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gray-100 rounded-lg">
-                    <CreditCard className="w-6 h-6 text-gray-900" />
+                  <div className="p-3 bg-purple-50 rounded-lg">
+                    <CreditCard className="w-6 h-6 text-purple-600" />
                   </div>
                   <div className="flex-1">
                     <h2 className="text-xl font-semibold text-gray-900 mb-2">
@@ -359,7 +391,7 @@ export default function PaymentInstructionsPage() {
                       href="https://wa.me/18092999188?text=Hi!%20I%27d%20like%20to%20use%20an%20alternative%20payment%20method"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-all duration-300 text-sm"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-all duration-300 text-sm shadow-sm"
                     >
                       {isSpanish ? 'Consultar disponibilidad' : 'Check availability'}
                     </a>
@@ -373,9 +405,10 @@ export default function PaymentInstructionsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-6"
+              className="mt-6 bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-lg p-6"
             >
-              <h3 className="font-semibold text-gray-900 mb-3">
+              <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                <span className="text-amber-600">ℹ️</span>
                 {isSpanish ? 'Notas Importantes' : 'Important Notes'}
               </h3>
               <ul className="space-y-2.5 text-sm text-gray-600">
