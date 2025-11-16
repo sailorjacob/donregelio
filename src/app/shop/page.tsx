@@ -550,7 +550,7 @@ export default function ShopPage() {
                                     }`}
                                   >
                                     <div className="flex items-center justify-between">
-                                      <span className="font-medium text-sm">Single Cigar</span>
+                                      <span className="font-medium text-sm">Single</span>
                                       <div className="text-right">
                                         <span className="text-sm font-semibold block">{formatPrice(getBasePrice())}</span>
                                         {selectedProduct && (
@@ -671,7 +671,7 @@ export default function ShopPage() {
                                   </button>
 
                                   <p className="text-xs text-gray-500 text-center mt-3">
-                                    Secure checkout powered by Stripe
+                                    Multiple payment options available
                                   </p>
                                 </div>
                               </div>

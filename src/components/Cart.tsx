@@ -2,22 +2,54 @@
 
 import { useCart } from '@/contexts/CartContext'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Minus, Plus, Trash2, ShoppingBag } from 'lucide-react'
+import { X, Minus, Plus, Trash2, ShoppingBag, MessageCircle, Building2, Banknote } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Cart() {
   const { items, removeItem, updateQuantity, getTotalPrice, isCartOpen, closeCart, clearCart } = useCart()
 
-  const handleCheckout = () => {
+  const handleWhatsAppOrder = () => {
     if (items.length === 0) return
     
-    // Redirect to embedded checkout page
-    window.location.href = '/checkout'
+    // Get currency from first item
+    const currency = items.length > 0 ? items[0].currency : 'USD'
+    
+    // Build order message
+    let message = '🛒 *New Order from Don Rogelio Website*\n\n'
+    message += '*ORDER DETAILS:*\n'
+    message += '━━━━━━━━━━━━━━━━\n'
+    
+    items.forEach((item, index) => {
+      message += `\n${index + 1}. *${item.productName}*\n`
+      message += `   Type: ${getQuantityLabel(item.quantityType)}\n`
+      message += `   Quantity: ${item.quantity}\n`
+      message += `   Price: ${formatPrice(item.price, item.currency)} each\n`
+      message += `   Subtotal: ${formatPrice(item.price * item.quantity, item.currency)}\n`
+    })
+    
+    message += '\n━━━━━━━━━━━━━━━━\n'
+    message += `*TOTAL: ${formatPrice(getTotalPrice(), currency)}*\n`
+    message += '━━━━━━━━━━━━━━━━\n\n'
+    message += '📍 Please confirm this order and provide:\n'
+    message += '• Delivery address\n'
+    message += '• Preferred payment method\n'
+    message += '• Any special requests\n\n'
+    message += 'Thank you! 🚀'
+    
+    const whatsappNumber = '18092999188'
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+    
+    window.open(whatsappUrl, '_blank')
+  }
+
+  const handleBankTransferInfo = () => {
+    window.location.href = '/payment-instructions'
   }
 
   const getQuantityLabel = (quantityType: string) => {
     switch (quantityType) {
-      case 'single': return 'Single Cigar'
+      case 'single': return 'Single'
       case '3pack': return '3 Pack'
       case '10pack': return '10 Pack'
       case 'box': return 'Full Box'
@@ -169,7 +201,7 @@ export default function Cart() {
               )}
             </div>
 
-            {/* Footer / Checkout */}
+            {/* Footer / Payment Options */}
             {items.length > 0 && (
               <div className="border-t border-gray-200 p-4 bg-gray-50">
                 <div className="flex justify-between items-center mb-4">
@@ -179,16 +211,39 @@ export default function Cart() {
                   </span>
                 </div>
 
-                <button
-                  onClick={handleCheckout}
-                  className="w-full py-3 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-all duration-300 flex items-center justify-center gap-2"
-                >
-                  <ShoppingBag className="w-5 h-5" />
-                  Proceed to Checkout
-                </button>
+                <div className="space-y-2">
+                  {/* WhatsApp Order Button */}
+                  <button
+                    onClick={handleWhatsAppOrder}
+                    className="w-full py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    Order via WhatsApp
+                  </button>
+
+                  {/* Bank Transfer Button */}
+                  <button
+                    onClick={handleBankTransferInfo}
+                    className="w-full py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <Building2 className="w-5 h-5" />
+                    Bank Transfer Info
+                  </button>
+
+                  {/* Cash Option (Info) */}
+                  <div className="mt-3 p-3 bg-amber-50 rounded-lg border border-amber-200">
+                    <div className="flex items-start gap-2">
+                      <Banknote className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                      <div className="text-xs text-amber-900">
+                        <p className="font-semibold mb-1">Cash Payment Available</p>
+                        <p className="text-amber-700">For local DR customers: Cash on delivery or in-person pickup available. Contact us via WhatsApp to arrange.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 <p className="text-xs text-gray-500 text-center mt-3">
-                  Secure payment powered by Stripe
+                  💳 Multiple secure payment options • 🚚 Fast delivery
                 </p>
               </div>
             )}
