@@ -346,11 +346,11 @@ export default function PaymentInstructionsPage() {
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-gray-400 mt-0.5">•</span>
-                          <span>Western Union</span>
+                          <span>Bitcoin</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-gray-400 mt-0.5">•</span>
-                          <span>MoneyGram</span>
+                          <span>Crypto / USDC</span>
                         </li>
                       </ul>
                     </div>
