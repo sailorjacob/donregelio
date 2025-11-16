@@ -163,7 +163,7 @@ export default function ShopPage() {
     }
   }, [selectedProduct])
 
-  // Show promo modal after 3 seconds if not shown in this session
+  // Show promo modal after 2 seconds if not shown in this session
   useEffect(() => {
     const hasSeenPromo = sessionStorage.getItem('hasSeenPromo')
     
@@ -171,7 +171,7 @@ export default function ShopPage() {
       const timer = setTimeout(() => {
         setShowPromoModal(true)
         sessionStorage.setItem('hasSeenPromo', 'true')
-      }, 3000)
+      }, 2000) // Reduced to 2 seconds for faster appearance
 
       return () => clearTimeout(timer)
     }
