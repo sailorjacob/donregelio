@@ -10,6 +10,8 @@ import WhatsAppButton from "@/components/WhatsAppButton"
 import { useCart } from "@/contexts/CartContext"
 import Cart from "@/components/Cart"
 import { useLanguage } from "@/contexts/LanguageContext"
+import ClientCounter from "@/components/ClientCounter"
+import PromoModal from "@/components/PromoModal"
 
 const playfair = Playfair_Display({ 
   subsets: ["latin"],
@@ -32,6 +34,7 @@ export default function ShopPage() {
   const [selectedQuantity, setSelectedQuantity] = useState<"single" | "3pack" | "10pack" | "box">("single")
   const { addItem, getTotalItems, openCart } = useCart()
   const { currency, language, setLanguage } = useLanguage()
+  const [showPromoModal, setShowPromoModal] = useState(false)
 
   // Pricing structure per cigar type - FLAT RATES
   const cigarPricesUSD: { [key: string]: number } = {
@@ -159,6 +162,20 @@ export default function ShopPage() {
       document.body.style.overflow = 'unset'
     }
   }, [selectedProduct])
+
+  // Show promo modal after 3 seconds if not shown in this session
+  useEffect(() => {
+    const hasSeenPromo = sessionStorage.getItem('hasSeenPromo')
+    
+    if (!hasSeenPromo) {
+      const timer = setTimeout(() => {
+        setShowPromoModal(true)
+        sessionStorage.setItem('hasSeenPromo', 'true')
+      }, 3000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [])
 
   // Product selection function
   const selectProduct = (productId: string) => {
@@ -700,6 +717,8 @@ export default function ShopPage() {
 
       <WhatsAppButton />
       <Cart />
+      <ClientCounter />
+      {showPromoModal && <PromoModal onClose={() => setShowPromoModal(false)} />}
     </main>
   )
 }

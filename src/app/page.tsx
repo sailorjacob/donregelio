@@ -212,14 +212,20 @@ export default function Home() {
                     }, 500)
                   }
                 }}
-                className="p-3 rounded-full hover:bg-gray-200 transition-all duration-300 group"
+                className="relative p-4 rounded-full bg-amber-600/10 hover:bg-amber-600/20 transition-all duration-200 group border border-amber-600/20"
                 aria-label={footerOpen ? "Close footer" : "Open footer"}
               >
                 <motion.div
-                  animate={footerOpen ? { rotate: 180 } : { y: [0, 8, 0] }}
-                  transition={footerOpen ? { duration: 0.3 } : { duration: 2, repeat: Infinity }}
+                  animate={{ 
+                    rotate: footerOpen ? 180 : 0,
+                    y: footerOpen ? 0 : [0, 6, 0]
+                  }}
+                  transition={{ 
+                    rotate: { duration: 0.2, ease: "easeInOut" },
+                    y: footerOpen ? { duration: 0 } : { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+                  }}
                 >
-                  <ChevronDown className="w-6 h-6 text-gray-700 group-hover:text-amber-600 transition-colors" />
+                  <ChevronDown className="w-5 h-5 text-amber-600 group-hover:text-amber-700 transition-colors" />
                 </motion.div>
               </button>
             </div>
