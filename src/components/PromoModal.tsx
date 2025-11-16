@@ -139,42 +139,50 @@ export default function PromoModal({ onClose }: PromoModalProps) {
 
             {promo.type === "deal" ? (
               <div className="space-y-3 mb-6">
-                {promo.features.map((feature, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 + 0.3 }}
-                    className="flex items-center justify-between p-3 bg-amber-50 rounded-lg border border-amber-200"
-                  >
-                    <div className="flex items-center gap-3">
-                      <Package className="w-5 h-5 text-amber-600" />
-                      <div>
-                        <div className="font-semibold text-gray-900 text-sm">{feature.package}</div>
-                        <div className="text-xs text-amber-600 font-medium">{feature.discount}</div>
+                {promo.features.map((feature, index) => {
+                  // Type guard for deal features
+                  const dealFeature = feature as { package: string; discount: string; price: string; originalPrice: string }
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 + 0.3 }}
+                      className="flex items-center justify-between p-3 bg-amber-50 rounded-lg border border-amber-200"
+                    >
+                      <div className="flex items-center gap-3">
+                        <Package className="w-5 h-5 text-amber-600" />
+                        <div>
+                          <div className="font-semibold text-gray-900 text-sm">{dealFeature.package}</div>
+                          <div className="text-xs text-amber-600 font-medium">{dealFeature.discount}</div>
+                        </div>
                       </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="font-bold text-gray-900">{feature.price}</div>
-                      <div className="text-xs text-gray-500 line-through">{feature.originalPrice}</div>
-                    </div>
-                  </motion.div>
-                ))}
+                      <div className="text-right">
+                        <div className="font-bold text-gray-900">{dealFeature.price}</div>
+                        <div className="text-xs text-gray-500 line-through">{dealFeature.originalPrice}</div>
+                      </div>
+                    </motion.div>
+                  )
+                })}
               </div>
             ) : (
               <div className="grid grid-cols-2 gap-3 mb-6">
-                {promo.features.map((feature, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 + 0.3 }}
-                    className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-center"
-                  >
-                    <div className="text-2xl mb-1">{feature.label}</div>
-                    <div className="text-xs text-gray-700 font-medium">{feature.text}</div>
-                  </motion.div>
-                ))}
+                {promo.features.map((feature, index) => {
+                  // Type guard for brand/quality features
+                  const infoFeature = feature as { label: string; text: string }
+                  return (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.1 + 0.3 }}
+                      className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-center"
+                    >
+                      <div className="text-2xl mb-1">{infoFeature.label}</div>
+                      <div className="text-xs text-gray-700 font-medium">{infoFeature.text}</div>
+                    </motion.div>
+                  )
+                })}
               </div>
             )}
 

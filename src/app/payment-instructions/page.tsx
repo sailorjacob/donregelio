@@ -4,7 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { ArrowLeft, Copy, CheckCircle, Building2, Banknote, MessageCircle, CreditCard } from "lucide-react"
+import { ArrowLeft, Building2, Banknote, MessageCircle, CreditCard } from "lucide-react"
 import { Playfair_Display } from "next/font/google"
 import { useLanguage } from "@/contexts/LanguageContext"
 
@@ -15,14 +15,7 @@ const playfair = Playfair_Display({
 })
 
 export default function PaymentInstructionsPage() {
-  const [copiedField, setCopiedField] = useState<string | null>(null)
   const { language, setLanguage } = useLanguage()
-
-  const copyToClipboard = (text: string, field: string) => {
-    navigator.clipboard.writeText(text)
-    setCopiedField(field)
-    setTimeout(() => setCopiedField(null), 2000)
-  }
 
   const isSpanish = language === 'es'
 
