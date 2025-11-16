@@ -27,16 +27,16 @@ export default function CoffeePage() {
                 Cigars
               </Link>
               <span className="text-gray-300">•</span>
-              <Link href="/rum" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
-                Rum
+              <Link href="/coffee" className="text-sm font-medium text-amber-600 transition-colors duration-300">
+                Coffee
               </Link>
               <span className="text-gray-300">•</span>
               <Link href="/cacao" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
-                Cacao
+                Chocolate
               </Link>
               <span className="text-gray-300">•</span>
-              <Link href="/coffee" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
-                Coffee
+              <Link href="/rum" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
+                Rum
               </Link>
             </div>
           </nav>

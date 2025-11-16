@@ -38,7 +38,15 @@ export async function POST(req: NextRequest) {
 
     // Get currency from first item (all items should have same currency)
     const itemCurrency = items[0]?.currency;
-    const currency = itemCurrency ? itemCurrency.toLowerCase() : 'usd';
+    let currency = itemCurrency ? itemCurrency.toLowerCase() : 'usd';
+    
+    // IMPORTANT: DOP must be enabled in Stripe Dashboard
+    // If DOP is not enabled, fallback to USD
+    const supportedCurrencies = ['usd', 'dop'];
+    if (!supportedCurrencies.includes(currency)) {
+      console.warn(`⚠️  Unsupported currency: ${currency}, falling back to USD`);
+      currency = 'usd';
+    }
     
     console.log('🔍 Checkout Debug:', {
       itemCurrency,
@@ -55,18 +63,30 @@ export async function POST(req: NextRequest) {
       price: number; 
       quantity: number;
       currency?: string
-    }) => ({
-      price_data: {
-        currency: currency,
-        product_data: {
-          name: `${item.productName} - ${item.quantityType}`,
-          description: `Premium handcrafted cigar from Don Rogelio`,
+    }) => {
+      const unitAmount = Math.round(item.price * 100);
+      
+      // Validate amount
+      if (unitAmount <= 0 || isNaN(unitAmount)) {
+        console.error(`❌ Invalid unit amount for ${item.productName}: ${unitAmount}`);
+        throw new Error(`Invalid price for ${item.productName}: ${item.price}`);
+      }
+      
+      console.log(`💰 Line item: ${item.productName} - ${currency.toUpperCase()} ${item.price} (${unitAmount} cents/centavos)`);
+      
+      return {
+        price_data: {
+          currency: currency,
+          product_data: {
+            name: `${item.productName} - ${item.quantityType}`,
+            description: `Premium handcrafted cigar from Don Rogelio`,
+          },
+          // Stripe needs amounts in smallest currency unit (cents for USD, centavos for DOP)
+          unit_amount: unitAmount,
         },
-        // Stripe needs amounts in smallest currency unit (cents for USD, centavos for DOP)
-        unit_amount: Math.round(item.price * 100),
-      },
-      quantity: item.quantity,
-    }));
+        quantity: item.quantity,
+      };
+    });
 
     // Create checkout session for embedded checkout
     // IMPORTANT: Only ONE currency is sent to Stripe (set in line_items)

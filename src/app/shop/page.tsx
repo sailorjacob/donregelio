@@ -295,8 +295,17 @@ export default function ShopPage() {
                 <Link href="/history" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
                   History
                 </Link>
-                <Link href="/shop" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
+                <Link href="/shop" className="text-sm font-medium text-amber-600 transition-colors duration-300">
                   Cigars
+                </Link>
+                <Link href="/coffee" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
+                  Coffee
+                </Link>
+                <Link href="/cacao" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
+                  Chocolate
+                </Link>
+                <Link href="/rum" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
+                  Rum
                 </Link>
                 <Link href="/accessories" className="text-sm font-medium text-gray-700 hover:text-amber-600 transition-colors duration-300">
                   Accessories
@@ -367,8 +376,17 @@ export default function ShopPage() {
               <Link href="/history" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
                 History
               </Link>
-              <Link href="/shop" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/shop" className="block text-sm text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg bg-gray-50" onClick={() => setMobileMenuOpen(false)}>
                 Cigars
+              </Link>
+              <Link href="/coffee" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
+                Coffee
+              </Link>
+              <Link href="/cacao" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
+                Chocolate
+              </Link>
+              <Link href="/rum" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
+                Rum
               </Link>
               <Link href="/accessories" className="block text-sm text-gray-700 hover:text-amber-600 active:text-amber-600 transition-colors tracking-wider uppercase py-3 px-4 rounded-lg hover:bg-gray-50 active:bg-gray-100" onClick={() => setMobileMenuOpen(false)}>
                 Accessories
