@@ -231,12 +231,12 @@ export default function Cart() {
                   </button>
 
                   {/* Cash Option (Info) */}
-                  <div className="mt-3 p-3 bg-amber-50 rounded-lg border border-amber-200">
+                  <div className="mt-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
                     <div className="flex items-start gap-2">
-                      <Banknote className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-                      <div className="text-xs text-amber-900">
+                      <Banknote className="w-5 h-5 text-gray-700 mt-0.5 flex-shrink-0" />
+                      <div className="text-xs text-gray-700">
                         <p className="font-semibold mb-1">Cash Payment Available</p>
-                        <p className="text-amber-700">For local DR customers: Cash on delivery or in-person pickup available. Contact us via WhatsApp to arrange.</p>
+                        <p className="text-gray-600">For local DR customers: Cash on delivery or in-person pickup available. Contact us via WhatsApp to arrange.</p>
                       </div>
                     </div>
                   </div>
