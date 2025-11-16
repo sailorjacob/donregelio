@@ -5,6 +5,7 @@ export async function POST(req: NextRequest) {
   try {
     // Check if Stripe is properly configured
     if (!isStripeConfigured()) {
+      console.error('❌ Stripe not configured');
       return NextResponse.json(
         { error: 'Stripe is not configured. Please add your API keys to .env.local' },
         { status: 500 }
@@ -14,7 +15,10 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { items } = body;
 
+    console.log('📦 Received checkout request:', { itemCount: items?.length });
+
     if (!items || !Array.isArray(items) || items.length === 0) {
+      console.error('❌ Cart is empty or invalid');
       return NextResponse.json(
         { error: 'Cart is empty or invalid' },
         { status: 400 }
@@ -24,8 +28,9 @@ export async function POST(req: NextRequest) {
     // Validate items
     for (const item of items) {
       if (!item.productName || !item.price || !item.quantity || !item.quantityType) {
+        console.error('❌ Invalid item data:', item);
         return NextResponse.json(
-          { error: 'Invalid item data' },
+          { error: 'Invalid item data', details: 'Missing required fields' },
           { status: 400 }
         );
       }
@@ -39,7 +44,8 @@ export async function POST(req: NextRequest) {
       itemCurrency,
       currency,
       firstItemPrice: items[0]?.price,
-      firstItem: items[0]
+      firstItem: items[0],
+      allItems: items
     });
 
     // Create line items for Stripe
@@ -81,11 +87,24 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    console.log('✅ Checkout session created:', session.id);
     return NextResponse.json({ clientSecret: session.client_secret });
   } catch (error) {
-    console.error('Stripe checkout error:', error);
+    const err = error as Error & { type?: string; code?: string; statusCode?: number };
+    console.error('❌ Stripe checkout error:', error);
+    console.error('Error details:', {
+      message: err?.message,
+      type: err?.type,
+      code: err?.code,
+      statusCode: err?.statusCode
+    });
+    
     return NextResponse.json(
-      { error: 'Error creating checkout session' },
+      { 
+        error: 'Error creating checkout session',
+        details: err?.message || 'Unknown error',
+        type: err?.type
+      },
       { status: 500 }
     );
   }
