@@ -31,7 +31,7 @@ export default function ShopPage() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>("robusto")
   const [selectedQuantity, setSelectedQuantity] = useState<"single" | "3pack" | "10pack" | "box">("single")
   const { addItem, getTotalItems, openCart } = useCart()
-  const { currency } = useLanguage()
+  const { currency, language, setLanguage } = useLanguage()
 
   // Pricing structure per cigar type - FLAT RATES
   const cigarPricesUSD: { [key: string]: number } = {
@@ -308,6 +308,30 @@ export default function ShopPage() {
             </div>
 
             <div className="flex items-center space-x-4">
+              {/* Language Switcher */}
+              <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`px-3 py-1 text-xs font-medium rounded transition-colors ${
+                    language === 'en'
+                      ? 'bg-white text-gray-900 shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  EN 🇺🇸
+                </button>
+                <button
+                  onClick={() => setLanguage('es')}
+                  className={`px-3 py-1 text-xs font-medium rounded transition-colors ${
+                    language === 'es'
+                      ? 'bg-white text-gray-900 shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  ES 🇩🇴
+                </button>
+              </div>
+
               {/* Cart Icon with Badge */}
               <button
                 onClick={openCart}

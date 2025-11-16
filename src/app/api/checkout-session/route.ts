@@ -63,6 +63,8 @@ export async function POST(req: NextRequest) {
     }));
 
     // Create checkout session for embedded checkout
+    // IMPORTANT: Only ONE currency is sent to Stripe (set in line_items)
+    // This prevents Stripe from showing dual currency options
     const session = await stripe.checkout.sessions.create({
       ui_mode: 'embedded',
       payment_method_types: ['card'],
@@ -75,6 +77,7 @@ export async function POST(req: NextRequest) {
           type: item.quantityType,
           quantity: item.quantity
         }))),
+        checkout_currency: currency.toUpperCase(), // Store which currency was used
       },
     });
 
